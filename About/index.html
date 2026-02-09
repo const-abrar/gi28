@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About GI28 – Web Tools Engine by Constant Abrar | Developer Portfolio</title>
+
+<meta name="description" content="GI28 is a performance-driven web tools platform built by Constant Abrar. Explore modern digital utilities and hire for custom web development projects.">
+
+<meta name="keywords" content="About GI28, GI28 mission, GI28 tools, Constant Abrar developer, GI28 web tools, hire web developer India, modern UI developer, custom web tools">
+
+<meta name="author" content="GI28">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://gi28.in/About">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://gi28.in/assets/gi28-logo.png" type="image/x-icon">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="About GI28 – Web Tools Engine by Constant Abrar">
+<meta property="og:description" content="GI28 is a performance-driven web tools platform showcasing modern UI systems and scalable development.">
+<meta property="og:url" content="https://gi28.in/About">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About GI28 – Free Digital Tools">
+<meta name="twitter:description" content="Discover the vision and mission behind GI28 tools.">
+<meta name="twitter:image" content="https://gi28.in/assets/og-image.png">
+
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Structured Data for Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GI28 by Constant Abrar",
+  "url": "https://gi28.in/",
+  "logo": "https://gi28.in/logo.png",
+  "sameAs": [
+    "https://instagram.com/const.abrar",
+    "https://x.com/Const_Abrar"
+  ],
+"description": "GI28 is a modern web tools platform built by Constant Abrar, focused on performance-driven digital utilities and advanced UI systems."
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* --- 3D Canvas --- */
+        #canvas-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; opacity: 0.5;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid var(--c-magenta);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* =========================================
+           LIQUID GLASS NAVIGATION
+           ========================================= */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2); transform: scale(1.05);
+        }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Full Screen Menu */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+            color: #888; text-decoration: none; display: block;
+            transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* --- Layout --- */
+        .main-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 4rem) 2rem 4rem 2rem;
+            display: flex; flex-direction: column; gap: 8rem;
+            min-height: 100vh; position: relative; z-index: 2;
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal-text {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s var(--ease-out);
+        }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Staggered delays */
+        .d-100 { transition-delay: 0.1s; }
+        .d-200 { transition-delay: 0.2s; }
+        .d-300 { transition-delay: 0.3s; }
+
+        /* --- Typography Helpers --- */
+        .highlight-cyan { color: var(--c-cyan); font-weight: 700; }
+        .highlight-magenta { color: var(--c-magenta); font-weight: 700; }
+        .tech-head { 
+            font-family: var(--font-tech); text-transform: uppercase; 
+            letter-spacing: 2px; color: var(--c-purple); 
+            margin-bottom: 1rem; display: block; font-size: 1rem;
+        }
+        .text-body {
+            font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .brand-block h1 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 4.5rem;
+            font-weight: 700; line-height: 0.95;
+            background: linear-gradient(135deg, #fff 0%, var(--c-cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .tech-desc {
+            font-size: 1.1rem; color: #ccc; line-height: 1.6; padding: 2rem;
+            background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+            border-left: 3px solid var(--c-cyan); border-radius: 0 12px 12px 0;
+        }
+
+        /* --- Glass Panels --- */
+        .glass-panel {
+            background: var(--c-panel); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px); padding: 3rem;
+            border-radius: 24px; border: 1px solid var(--c-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative; transition: transform 0.3s;
+        }
+        .glass-panel h2 { font-family: 'Space Grotesk'; font-size: 2rem; margin-bottom: 1.5rem; color: white; }
+
+        /* --- Screws --- */
+        .screw {
+            position: absolute; width: 10px; height: 10px; border-radius: 50%;
+            background: #222; border: 1px solid #444; display: flex; align-items: center; justify-content: center;
+        }
+        .screw::after { content: '+'; font-size: 10px; color: #555; }
+        .screw.tl { top: 15px; left: 15px; } .screw.tr { top: 15px; right: 15px; }
+        .screw.bl { bottom: 15px; left: 15px; } .screw.br { bottom: 15px; right: 15px; }
+
+        /* --- Grids --- */
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .list-unstyled { list-style: none; }
+        .list-unstyled li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #ddd; }
+        .list-unstyled li i { color: var(--c-cyan); }
+
+        /* --- New Content Sections --- */
+        .origin-story {
+            border-left: 1px solid var(--c-purple);
+            padding-left: 2rem;
+        }
+
+        .roadmap-container {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            margin-top: 2rem;
+        }
+        .roadmap-card {
+            background: rgba(255,255,255,0.02); padding: 1.5rem;
+            border-radius: 12px; border-top: 2px solid var(--c-border);
+        }
+        .roadmap-step { font-family: var(--font-tech); color: var(--c-cyan); font-size: 1.5rem; margin-bottom: 10px; }
+        
+        /* --- FAQ Grid --- */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .faq-item h4 { color: white; margin-bottom: 0.5rem; font-family: 'Space Grotesk'; }
+        .faq-item p { font-size: 0.9rem; color: #999; }
+
+        /* --- Contact Form --- */
+        .form-title {
+            font-family: var(--font-tech); font-size: 1.5rem; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--c-cyan); margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .input-group { position: relative; margin-bottom: 2rem; }
+        .input-field {
+            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--c-border);
+            padding: 15px; color: white; font-family: var(--font-main); border-radius: 8px; transition: 0.3s;
+        }
+        .input-field:focus { border-color: var(--c-purple); background: rgba(0,0,0,0.5); outline: none; }
+        .input-label {
+            position: absolute; left: 15px; top: 15px; color: #666; pointer-events: none;
+            transition: 0.3s; background: transparent; padding: 0 5px;
+        }
+        .input-field:focus ~ .input-label, .input-field:not(:placeholder-shown) ~ .input-label {
+            top: -10px; left: 10px; font-size: 0.8rem; color: var(--c-cyan); background: var(--c-dark);
+        }
+        .submit-btn {
+            width: 100%; padding: 1.2rem; background: linear-gradient(90deg, var(--c-magenta), var(--c-purple));
+            border: none; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            border-radius: 8px; transition: 0.3s;
+        }
+        .submit-btn:hover { box-shadow: 0 0 30px rgba(255, 0, 80, 0.4); transform: scale(1.02); }
+
+        /* --- Footer --- */
+        .pro-footer {
+            margin-top: auto; border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8); padding: 2rem; text-align: center;
+            font-size: 0.9rem; color: #666; position: relative; z-index: 5;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        @media (max-width: 992px) {
+            .hero-section, .split-grid, .roadmap-container, .faq-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .brand-block h1 { font-size: 3rem; }
+            .glass-nav { padding: 0 1.5rem; }
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <a href="https://gi28.in/" class="nav-logo">
+        GI<span>28</span>
+        </a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/">Home</a></li>
+            <li><a href="https://gi28.in/Terms/">Terms & Conditions</a></li>
+            <li><a href="https://gi28.in/Cookies/">Cookies & Privacy Policy</a></li>
+            <li><a href="https://gi28.in/Contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        
+        <section class="hero-section reveal-text">
+            <div class="brand-block">
+                               <h1>About GI28</h1>
+                <p style="color: var(--c-magenta); font-family: var(--font-tech); font-size: 1.2rem; letter-spacing: 1px; margin-top: 10px;">
+                  Performance • Precision • Clean Code </p>
+ <span class="tech-head">A Web Tools Platform by Constant Abrar</span>
+
+            </div>
+            <div class="tech-desc" data-tilt>
+<p class="text-body" style="margin-bottom: 0;">
+GI28 is an evolving ecosystem of high-performance digital utilities designed with modern UI systems and optimized logic.<br><br>
+
+Every tool here is built to solve real-world problems while demonstrating clean architecture, interactive design, and scalable development principles.
+</p>
+            </div>
+        </section>
+
+        <section class="split-grid">
+            <div class="origin-story reveal-text d-100">
+                <h2 style="font-family: 'Space Grotesk'; font-size: 2.5rem; line-height: 1.1; margin-bottom: 20px;">Why GI28 Exists?</h2>
+
+                <span class="tech-head"></span>
+                <p class="text-body">GI28 was created to move <br>beyond generic template websites and build functional digital systems that provide real utility.</p>
+                <p class="text-body">
+                    The focus is simple — engineer fast, minimal and scalable tools that reflect technical clarity and thoughtful interface design.
+                </p>
+            </div>
+            <div class="glass-panel reveal-text d-200" data-tilt>
+                <div class="screw tl"></div><div class="screw tr"></div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                
+               <h2>Development Framework</h2>
+                <p class="text-body">I operate on a three-phase cycle designed for sustainable evolution:</p>
+                <span class="tech-head"></span>
+              
+                <ul class="list-unstyled">
+                    <li>
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+                        <div>
+                            <strong>Research & System Architecture</strong>
+       
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-code-branch"></i>
+                        <div>
+                            <strong>Interface Engineering
+</strong>
+                            <br>
+                      </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-rocket"></i>
+                        <div>
+                            <strong>Optimization & Deployment
+SEO</strong>
+                                          </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="reveal-text">
+            <span class="tech-head" style="text-align: center;">// Platform Expansion Roadmap</span>
+            <h2 style="text-align: center; font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 1rem;">What’s Next for GI28</h2>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-card reveal-text d-100" style="border-top-color: var(--c-cyan);">
+                    <div class="roadmap-step">Phase 01</div>
+                    <h3 style="margin-bottom: 10px; color: white;"> Core Utility Tools</h3>
+                    <p style="font-size: 0.9rem; color: #aaa;">QR tools, generators, Particle Engines, Link & Card Generators and other tools!</p>
+                </div>
+                <div class="roadmap-card reveal-text d-200" style="border-top-color: var(--c-purple);">
+                    <div class="roadmap-step">Phase 02</div>
+                    <h3 style="margin-bottom: 10px; color: white;">Advanced Web Applications</h3>
+                    <p style="font-size: 0.9rem; color: #aaa;">AI-integrated tools, dynamic data systems.</p>
+                </div>
+                <div class="roadmap-card reveal-text d-300" style="border-top-color: var(--c-magenta);">
+                    <div class="roadmap-step">Phase 03</div>
+                    <h3 style="margin-bottom: 10px; color: white;">Custom Client Builds</h3>
+                    <p style="font-size: 0.9rem; color: #aaa;">Tailored web systems and high-performance UI projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="split-grid">
+            <div class="glass-panel reveal-text" style="border: 1px solid rgba(255,0,80,0.3); background: rgba(255,0,80,0.05);">
+                <span class="tech-head" style="color: var(--c-magenta);"><i class="fa-solid fa-shield-halved"></i> Data Security</span>
+                <h2>Professional Principles</h2>
+              <p class="text-body">
+Every project is approached with structured logic, clean architecture, long-term scalability and security.
+</p>
+            <ul class="list-unstyled">
+    <li>
+        <i class="fa-solid fa-code"></i>
+        <span><strong>Clean Code</strong> </span>
+    </li>
+    <li>
+        <i class="fa-solid fa-gauge-high"></i>
+        <span><strong>Performance First</strong></span>
+    </li>
+    <li>
+        <i class="fa-solid fa-layer-group"></i>
+        <span><strong>Scalable Architecture</strong></span>
+    </li>
+</ul>
+            </div>
+
+            <div class="reveal-text">
+                
+
+
+                <h2>Frequently Asked Data</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Who develops GI28?</h4>
+                        <p>GI28 is independently developed and maintained by Constant Abrar.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I hire you for a project?</h4>
+                        <p>Yes, Custom web tools, landing pages and interactive UI systems are open for collaboration.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What type of projects do you work on?</h4>
+                        <p>Utility-based platforms, performance-first landing pages and visually engineered frontend systems.</p>
+       </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-panel reveal-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.5rem; font-family: 'Space Grotesk'; line-height: 1.4; margin-bottom: 2rem;">
+                Have a project in mind?<br>
+Let’s build something <span class="highlight-cyan">technically sharp and visually powerful.</span></p>
+            <a href="https://gi28.in/Contact/" class="submit-btn" style="text-decoration: none; padding: 15px 40px; display: inline-block; width: auto;">
+               Continue<i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+            </a>
+        </section>
+
+    </div>
+
+    <footer class="pro-footer">
+        <div class="container">
+            © 2026 <b>GI28 By Abrar</b>. All rights reserved.<br>
+            <div style="margin-top: 10px;">
+                <a href="https://gi28.in/Terms/">Terms</a> • <a href="https://gi28.in/Contact/">Contact</a> • <a href="https://gi28.in/Terms/">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        /* --- 1. NAVIGATION TOGGLE --- */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        /* --- 2. SMOOTH SCROLL REVEAL ANIMATION --- */
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-text').forEach(el => {
+            observer.observe(el);
+        });
+
+        /* --- 3. CUSTOM CURSOR --- */
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+
+            // Hover effects
+            document.querySelectorAll('a, button, .nav-trigger').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    cursorOutline.style.backgroundColor = "rgba(0, 242, 234, 0.1)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.backgroundColor = "transparent";
+                });
+            });
+        }
+
+        /* --- 4. TILT EFFECT --- */
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
+
+        /* --- 5. THREE.JS BACKGROUND --- */
+        const canvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvas.appendChild(renderer.domElement);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 350;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        scene.add(ring);
+
+        camera.position.z = 5;
+
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            particlesMesh.rotation.y += mouseX * 0.5;
+            ring.rotation.x = elapsedTime * 0.1;
+            ring.rotation.y = elapsedTime * 0.1;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
