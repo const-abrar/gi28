@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Rajdhani:wght@400;600;700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Contact Constant Abrar – Hire Web Developer | GI28</title>
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Contact Constant Abrar, founder of GI28, to build high-performance websites, custom web tools and interactive UI systems. Available for freelance and collaboration projects.">
+
+<meta name="keywords" content="Contact Constant Abrar, hire web developer India, GI28 developer, freelance frontend developer, custom web tools developer, interactive UI designer">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="language" content="English">
+<meta name="distribution" content="global">
+
+<link rel="canonical" href="https://gi28.in/Contact/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hire Constant Abrar – Web Tools & UI Developer">
+<meta property="og:description" content="Start your project with Constant Abrar. Performance-driven web development, interactive UI systems and scalable digital tools.">
+<meta property="og:url" content="https://gi28.in/Contact/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Constant Abrar – Web Developer">
+<meta name="twitter:description" content="Discuss your project with Constant Abrar. Custom web tools, landing pages and interactive UI systems.">
+<meta name="twitter:image" content="https://gi28.in/assets/og-image.png">
+
+<meta name="theme-color" content="#050507">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Constant Abrar",
+  "url": "https://gi28.in/",
+  "sameAs": [
+    "https://instagram.com/const.abrar",
+    "https://x.com/Const_Abrar"
+  ],
+  "jobTitle": "Web Developer & UI Systems Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "GI28"
+  },
+  "description": "Constant Abrar is a web developer focused on performance-driven websites, interactive UI systems and scalable digital tools."
+}
+</script>
+    <style>
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+            cursor: none; /* Custom cursor default */
+        }
+
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* --- 3D Canvas Background --- */
+        #canvas-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* --- Custom Cursor (PC Only) --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid var(--c-magenta);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+
+        /* --- Liquid Glass Navigation --- */
+        .glass-nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+
+        .nav-trigger {
+            width: 50px; height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--c-border);
+            cursor: pointer; /* Fallback */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1);
+            border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Full Screen Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: #888;
+            text-decoration: none;
+            transition: 0.3s;
+            display: block;
+            transform: translateY(100%);
+            transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* --- Main Layout --- */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--nav-height) + 2rem) 2rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            min-height: 100vh;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Left Column (Info) --- */
+        .info-col { display: flex; flex-direction: column; gap: 3rem; }
+
+        .brand-block {
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--c-cyan);
+        }
+
+        .brand-block h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 0%, var(--c-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .brand-block span {
+            color: var(--c-magenta);
+            font-family: var(--font-tech);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .tech-desc {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+            max-width: 90%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05), transparent);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            border-left: 1px solid var(--c-purple);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--c-border);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--c-cyan);
+            box-shadow: 0 10px 30px rgba(0, 242, 234, 0.1);
+        }
+
+        .stat-num {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--c-cyan);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Right Column (Form) --- */
+        .form-container {
+            background: var(--c-panel);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--c-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .screw {
+            position: absolute;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #222;
+            border: 1px solid #444;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .screw::after { content: '+'; font-size: 10px; color: #555; }
+        .screw.tl { top: 15px; left: 15px; } .screw.tr { top: 15px; right: 15px; }
+        .screw.bl { bottom: 15px; left: 15px; } .screw.br { bottom: 15px; right: 15px; }
+
+        .form-title {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--c-cyan);
+            margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .form-title i { font-size: 1rem; animation: blink 2s infinite; }
+
+        .input-group { position: relative; margin-bottom: 2rem; }
+
+        .input-field {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--c-border);
+            padding: 15px;
+            color: white;
+            font-family: var(--font-main);
+            border-radius: 8px;
+            transition: 0.3s;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--c-purple);
+            box-shadow: 0 0 15px rgba(160, 0, 255, 0.2);
+            background: rgba(0,0,0,0.5);
+        }
+
+        .input-label {
+            position: absolute;
+            left: 15px; top: 15px;
+            color: #666;
+            pointer-events: none;
+            transition: 0.3s;
+            background: transparent;
+            padding: 0 5px;
+        }
+
+        .input-field:focus ~ .input-label,
+        .input-field:not(:placeholder-shown) ~ .input-label {
+            top: -10px; left: 10px;
+            font-size: 0.8rem;
+            color: var(--c-cyan);
+            background: var(--c-dark);
+        }
+
+    .submit-btn {
+    width: auto;              /* Full width hata diya */
+    min-width: 200px;         /* Minimum width */
+    max-width: 260px;         /* Control size */
+    padding: 0.9rem 2rem;     /* Height kam */
+    display: block;
+    margin: 0 auto;           /* Center */
+    background: linear-gradient(90deg, var(--c-magenta), var(--c-purple));
+    border: none;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+        .submit-btn:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 80, 0.4);
+            transform: scale(1.02);
+        }
+        .submit-btn.success { background: linear-gradient(90deg, #00f260, #0575e6); pointer-events: none; }
+
+        /* --- Desktop Social Dock --- */
+        .social-dock { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;}
+        .social-pill {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--c-border);
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .social-pill:hover { transform: translateY(-3px); border-color: var(--c-cyan); background: rgba(0,242,234,0.1); }
+
+        /* --- Footer --- */
+        .pro-footer {
+            margin-top: auto;
+            border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8);
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            z-index: 5;
+            position: relative;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 8px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        /* --- Mobile Bottom Dock --- */
+        .mobile-dock {
+            display: none;
+            position: fixed;
+            bottom: 20px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 25, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 85%; max-width: 400px;
+            justify-content: space-between;
+        }
+        .dock-item {
+            color: #ccc; font-size: 1.5rem;
+            position: relative; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+        }
+        .dock-item:hover, .dock-item.active { color: white; transform: translateY(-3px); }
+
+        /* --- Toast --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--c-dark);
+            color: #fff;
+            text-align: center;
+            border: 1px solid var(--c-cyan);
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1001;
+            left: 50%; bottom: 100px;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(0, 242, 234, 0.3);
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+        #toast.show { visibility: visible; opacity: 1; bottom: 120px; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        /* --- RESPONSIVE OPTIMIZATION --- */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding-bottom: 120px; /* Space for dock */
+                padding-top: 100px;
+            }
+            
+            .brand-block h1 { font-size: 3rem; }
+            .tech-desc { max-width: 100%; }
+            
+            .mobile-dock { display: flex; }
+            .social-dock { display: none; }
+            
+            /* Disable custom cursor on mobile to improve UX */
+            .cursor-dot, .cursor-outline { display: none !important; }
+            * { cursor: auto; }
+            
+            /* Better Form Padding for mobile */
+            .form-container { padding: 2rem 1.5rem; }
+            .glass-nav { padding: 0 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .brand-block h1 { font-size: 2.5rem; }
+            .stats-grid { gap: 0.5rem; }
+            .stat-num { font-size: 1.5rem; }
+            .stat-label { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+
+    <div id="toast"><i class="fa-solid fa-circle-check" style="color: var(--c-cyan);"></i> Transmission Successful</div>
+
+    <nav class="glass-nav">
+        <a href="https://gi28.in/" class="nav-logo">
+            GI<span>28</span>
+        </a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/About/">About Data</a></li>
+            <li><a href="https://gi28.in/Tools/">Tools</a></li>
+            <li><a href="https://gi28.in/Terms/">Terms & Conditions</a></li>
+            <li><a href="https://gi28.in/Cookies/">Cookies & Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="info-col">
+            <div class="brand-block" data-tilt>
+                <h1>Gi28</h1>
+                <span>Genuine Intelligence 28</span>
+            </div>
+
+            <div class="tech-desc">
+                <i class="fa-solid fa-quote-left" style="color:var(--c-purple); margin-right:10px;"></i>
+                Bridging the gap between imagination and digital reality. We specialize in high-performance web architecture, AI integration, and immersive UI/UX experiences.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Project Success</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">24/7</span>
+                    <span class="stat-label">Message Accept</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">5+</span>
+                    <span class="stat-label">Website Built</span>
+                </div>
+            </div>
+
+            <div class="social-dock">
+                <a href="mailto:const.abrar@proton.me" class="social-pill"><i class="fa-solid fa-envelope"></i> Hire Me / Complaints</a>
+                <a href="https://instagram.com/const.abrar" class="social-pill"><i class="fa-brands fa-instagram"></i> Projects</a>
+                <a href="https://t.me/ConstAbrar" class="social-pill"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="form-container" data-tilt>
+            <div class="screw tl"></div><div class="screw tr"></div>
+            <div class="screw bl"></div><div class="screw br"></div>
+
+            <div class="form-title">
+                <i class="fa-solid fa-circle" id="status-light" style="color: var(--c-cyan);"></i> Secure Connection
+            </div>
+
+            <form id="contactForm">
+                <input type="hidden" name="access_key" value="3d78cc0c-876c-4736-8484-5c09534ef4e6">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <div class="input-group">
+                    <input type="text" name="name" class="input-field" placeholder=" " required>
+                    <label class="input-label">Identity (Name)</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="email" class="input-field" placeholder=" " required>
+                    <label class="input-label">Frequency (Email)</label>
+                </div>
+
+                <div class="input-group">
+                    <select name="subject" class="input-field" style="color: #aaa;" required onchange="this.style.color='white'">
+                        <option value="" disabled selected>Select Protocol</option>
+                        <option value="Hire Developer">Hire As Developer</option>
+                        <option value="Project Inquiry">Project Inquiry</option>
+                        <option value="Complaint/Issue">Report Issue</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <textarea name="message" class="input-field" rows="4" placeholder=" " required style="resize: none;"></textarea>
+                    <label class="input-label">Transmission Data (Message)</label>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+    Request <i class="fa-solid fa-bolt" style="margin-left:8px;"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mobile-dock">
+        <a href="https://wa.me/918637213741?text=Hello%20Constant%20Abrar,%20I'm%20from%20gi28.in%20and%20I'm%20free%20to%20talk%20you%20now,%20Please%20Reply%20Shortly." class="dock-item" style="color:#25D366"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://t.me/ConstAbrar" class="dock-item" style="color:#0088cc"><i class="fa-brands fa-telegram"></i></a>
+        <a href="mailto:const.abrar@proton.me" class="dock-item active"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://instagram.com/const.abrar" class="dock-item" style="color:#E1306C"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+    <footer class="pro-footer">
+        <div class="container">
+            © 2026 <b>Genuine Intelligence 28</b>. All rights reserved.<br>
+            <div style="margin-top: 10px;">
+                <a href="https://gi28.in/Terms/">Terms</a> • <a href="https://gi28.in/Cookies/">Cookies</a> • <a href="https://gi28.in/About/">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        /* --- NAVIGATION TOGGLE --- */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        /* --- FORM HANDLING SCRIPT (AJAX) --- */
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusLight = document.getElementById('status-light');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Transmitting Data... <i class="fa-solid fa-circle-notch fa-spin"></i>';
+            submitBtn.style.opacity = "0.8";
+            statusLight.style.color = "yellow";
+            statusLight.style.animation = "none";
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    submitBtn.innerHTML = 'Connection Established <i class="fa-solid fa-check"></i>';
+                    submitBtn.classList.add('success');
+                    statusLight.style.color = "#00f260";
+                    toast.className = "show";
+                    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+                    form.reset();
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.classList.remove('success');
+                        submitBtn.style.opacity = "1";
+                        statusLight.style.color = "var(--c-cyan)";
+                        statusLight.style.animation = "blink 2s infinite";
+                    }, 5000);
+                } else {
+                    submitBtn.innerHTML = 'Transmission Failed';
+                    submitBtn.style.background = "red";
+                    statusLight.style.color = "red";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                submitBtn.innerHTML = 'System Error';
+                statusLight.style.color = "red";
+            });
+        });
+
+        /* --- VISUALS (Cursor & 3D) --- */
+        // Only activate custom cursor on non-touch devices
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            // Hover effects for cursor
+            document.querySelectorAll('a, button, .nav-trigger, .input-field').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    cursorOutline.style.backgroundColor = "rgba(0, 242, 234, 0.1)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.backgroundColor = "transparent";
+                });
+            });
+        }
+
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.2 });
+
+        /* --- 3D THREE.JS BACKGROUND --- */
+        const canvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Optimize for mobile
+        canvas.appendChild(renderer.domElement);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = window.innerWidth < 768 ? 150 : 300; // Reduce particles on mobile
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+
+        // Ring
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        scene.add(ring);
+
+        camera.position.z = 5;
+
+        let mouseX = 0; let mouseY = 0;
+        // Gyroscope for Mobile / Mouse for PC
+        if (window.matchMedia("(pointer: coarse)").matches && window.DeviceOrientationEvent) {
+             window.addEventListener('deviceorientation', (event) => {
+                mouseX = event.gamma / 50; 
+                mouseY = event.beta / 50;
+            });
+        } else {
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX / window.innerWidth - 0.5;
+                mouseY = event.clientY / window.innerHeight - 0.5;
+            });
+        }
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            particlesMesh.rotation.y += mouseX * 0.5;
+            ring.rotation.x = elapsedTime * 0.1;
+            ring.rotation.y = elapsedTime * 0.1;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+    </script>
+</body>
+</html>
