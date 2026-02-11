@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+
+<!-- ================= BASIC META ================= -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GI28 Chronos – Free Age & Date Difference Calculator</title>
+
+<meta name="description" content="GI28 Chronos is an advanced temporal calculator. Instantly calculate age, date difference, duration between two dates, and total days with precision. Free online tool.">
+<meta name="keywords" content="Age Calculator, Date Difference Calculator, Duration Calculator, Days Between Dates, Chronos Tool, GI28 Tools India">
+<meta name="author" content="Genuine Intelligence 28">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+
+<!-- ================= CANONICAL ================= -->
+<link rel="canonical" href="https://gi28.in/chronos/">
+
+<!-- ================= OPEN GRAPH ================= -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GI28 Chronos – Age & Date Calculator">
+<meta property="og:description" content="Calculate precise time difference, age & total days between two dates. Fast & accurate.">
+<meta property="og:url" content="https://gi28.in/chronos/">
+<meta property="og:site_name" content="GI28 Tools">
+<meta property="og:image" content="https://gi28.in/assets/chronos-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+
+<!-- ================= TWITTER ================= -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GI28 Chronos – Free Temporal Calculator">
+<meta name="twitter:description" content="Accurate age & date difference calculator online.">
+<meta name="twitter:image" content="https://gi28.in/assets/chronos-preview.jpg">
+
+<!-- ================= PERFORMANCE ================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+<!-- ================= FAVICON ================= -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+<!-- ================= THEME ================= -->
+<meta name="theme-color" content="#050505">
+
+<!-- ================= SECURITY ================= -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- ================= STRUCTURED DATA ================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GI28 Chronos",
+  "applicationCategory": "CalculatorApplication",
+  "operatingSystem": "Web Browser",
+  "url": "https://gi28.in/chronos/",
+  "description": "Online age and date difference calculator to measure years, months, days and total duration between two dates.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Genuine Intelligence 28",
+    "url": "https://gi28.in/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  }
+}
+</script>
+
+    <style>
+        /* =========================================
+           GI28 CORE DESIGN SYSTEM
+           ========================================= */
+        :root {
+            --bg-deep: #050505;
+            --bg-surface: #0a0a0f;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #b26cff;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(20, 20, 25, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --font-tech: 'Space Grotesk', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- BACKGROUND FX --- */
+        #canvas-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; opacity: 0.6; }
+        .noise-overlay {
+            position: fixed; inset: 0; z-index: -1; opacity: 0.05; pointer-events: none;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0MDAnIGhlaWdodD0nNDAwJz48ZmlsdGVyIGlkPSdub2lzZSc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bT1vY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI25vaXNlKScgb3BhY2l0eT0nMC4wNScvPjwvc3ZnPg==');
+        }
+
+        /* --- NAVIGATION --- */
+        .glass-nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 0; z-index: 100;
+            background: rgba(5,5,5,0.8); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-container {
+            width: 90%; max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+        .brand-logo span { color: var(--neon-cyan); }
+        .nav-btn {
+            background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);
+            color: #fff; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
+
+        /* --- LAYOUT --- */
+        .main-wrapper { padding-top: 120px; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
+        .container { width: 90%; max-width: 800px; margin: 0 auto; }
+
+        /* --- TYPOGRAPHY --- */
+        h1.tool-title {
+            font-family: var(--font-heading); font-size: 3rem; text-align: center;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        p.tool-desc { text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem; }
+
+        /* --- GLASS CARDS (GI28 STYLE) --- */
+        .gi-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            position: relative; overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .gi-card:hover { border-color: rgba(0, 240, 255, 0.3); }
+        .gi-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0.5;
+        }
+
+        .card-header { display: flex; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .card-label { font-family: var(--font-tech); color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
+        
+        /* --- INPUTS --- */
+        .input-grid { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 15px; margin-bottom: 20px; }
+        
+        input, select {
+            width: 100%; padding: 14px;
+            background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px;
+            color: #fff; font-family: var(--font-tech); font-size: 1rem;
+            transition: 0.3s;
+        }
+        input:focus, select:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+        
+        /* --- BUTTONS --- */
+        .btn-action {
+            width: 100%; padding: 16px; margin-top: 10px;
+            background: var(--neon-cyan); color: #000;
+            border: none; border-radius: 12px;
+            font-family: var(--font-heading); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn-action:hover { box-shadow: 0 0 30px var(--neon-cyan); transform: translateY(-2px); }
+        
+        .btn-secondary {
+            background: transparent; border: 1px solid var(--glass-border); color: var(--text-secondary);
+            margin-top: 15px;
+        }
+        .btn-secondary:hover { border-color: #fff; color: #fff; }
+
+        /* --- RESULTS PANEL --- */
+        .result-panel {
+            margin-top: 30px; padding: 30px;
+            background: rgba(0, 240, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 16px;
+            text-align: center; display: none; animation: slideUp 0.5s ease;
+        }
+        .result-main { font-family: var(--font-tech); font-size: 2rem; color: #fff; margin: 10px 0; }
+        .result-main span { color: var(--neon-cyan); }
+        .result-sub { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: auto; padding: 50px 0; border-top: 1px solid var(--glass-border);
+            text-align: center; background: #000;
+        }
+        .footer-links a { color: var(--text-secondary); margin: 0 10px; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--neon-cyan); }
+        .copyright { color: var(--text-secondary); font-size: 0.8rem; margin-top: 20px; font-family: var(--font-tech); }
+
+        /* --- UTILITIES --- */
+        .hidden { display: none; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .input-grid { grid-template-columns: 1fr; }
+            h1.tool-title { font-size: 2rem; }
+        }
+    </style>
+<!-- ================= FONTS ================= -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    <div class="noise-overlay"></div>
+
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="https://gi28.in/" class="brand-logo">GI<span>28</span></a>
+            <a href="https://gi28.in/Chronos/" class="nav-btn">Reload</a>
+        </div>
+    </nav>
+
+    <main class="main-wrapper">
+        <div class="container">
+            
+            <h1 class="tool-title" data-tilt>GI28 Chronos</h1>
+            <p class="tool-desc">Advanced Temporal Calculator. Measure precise duration between two coordinates in time.</p>
+
+            <div class="gi-card" id="card-origin">
+                <div class="card-header">
+                    <span class="card-label">01 // Initialize Origin</span>
+                    <i class="fa-solid fa-calendar" style="color:var(--text-secondary)"></i>
+                </div>
+
+                <div class="input-grid">
+                    <input type="number" id="origin-d" placeholder="DD" min="1" max="31">
+                    <select id="origin-m">
+                        <option value="" disabled selected>Month</option>
+                        <option value="1">January</option><option value="2">February</option><option value="3">March</option>
+                        <option value="4">April</option><option value="5">May</option><option value="6">June</option>
+                        <option value="7">July</option><option value="8">August</option><option value="9">September</option>
+                        <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+                    </select>
+                    <input type="number" id="origin-y" placeholder="YYYY" min="1900">
+                </div>
+
+                <button class="btn-action" onclick="App.setOrigin()">Confirm Origin Date</button>
+            </div>
+
+            <div class="gi-card hidden" id="card-target">
+                <div class="card-header">
+                    <span class="card-label">02 // Target Coordinates</span>
+                    <span style="font-family: var(--font-tech); font-size: 0.7rem; color: var(--neon-purple);">ORIGIN LOCKED</span>
+                </div>
+
+                <div class="input-grid">
+                    <input type="number" id="target-d" placeholder="DD">
+                    <select id="target-m">
+                        <option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option>
+                        <option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option>
+                        <option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option>
+                        <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                    </select>
+                    <input type="number" id="target-y" placeholder="YYYY">
+                </div>
+
+                <button class="btn-action" onclick="App.calculate()">Execute Calculation</button>
+                <button class="btn-action btn-secondary" onclick="location.reload()">Reset System</button>
+
+                <div class="result-panel" id="result-box">
+                    <div class="card-label">CALCULATION COMPLETE</div>
+                    <div class="result-main" id="result-text"></div>
+                    <div class="result-sub" id="result-days"></div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; opacity: 0.5;">
+                <span class="card-label" style="font-size: 0.6rem;">SPONSORED CONTENT</span>
+                <div style="background: rgba(255,255,255,0.05); border: 1px dashed #444; height: 100px; margin-top: 10px; display:flex; align-items:center; justify-content:center; border-radius:12px; font-family:var(--font-tech); font-size:0.8rem;">
+                    [ AD SLOT ]
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="brand-logo" style="margin-bottom: 20px;">GI<span>28</span></div>
+            <div class="footer-links">
+                <a href="https://gi28.in/Cookies/">Cookies & Privacy Policy</a> •
+                <a href="https://gi28.in/Terms/">Terms & Conditions</a> • 
+                <a href="https://gi28.in/Contact/">Contact Me</a>
+            </div>
+            <p class="copyright">© 2026 Genuine Intelligence 28. Engineered by Constant Abrar.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    
+    <script>
+        /* =========================================
+           LOGIC: CHRONOS ENGINE
+           ========================================= */
+        const App = {
+            dob: null,
+
+            setOrigin() {
+                const d = document.getElementById('origin-d').value;
+                const m = document.getElementById('origin-m').value;
+                const y = document.getElementById('origin-y').value;
+
+                if(!d || !m || !y) { alert("Please enter a valid date."); return; }
+
+                this.dob = new Date(y, m-1, d);
+                
+                // Visual Transition
+                const originCard = document.getElementById('card-origin');
+                originCard.style.opacity = '0.5';
+                originCard.style.pointerEvents = 'none';
+
+                const targetCard = document.getElementById('card-target');
+                targetCard.classList.remove('hidden');
+                
+                // Auto-fill Today
+                const today = new Date();
+                document.getElementById('target-d').value = today.getDate();
+                document.getElementById('target-m').value = today.getMonth() + 1;
+                document.getElementById('target-y').value = today.getFullYear();
+
+                targetCard.scrollIntoView({behavior: "smooth", block: "center"});
+            },
+
+            calculate() {
+                const d = document.getElementById('target-d').value;
+                const m = document.getElementById('target-m').value;
+                const y = document.getElementById('target-y').value;
+                
+                const targetDate = new Date(y, m-1, d);
+
+                // Calculation Logic
+                let years = targetDate.getFullYear() - this.dob.getFullYear();
+                let months = targetDate.getMonth() - this.dob.getMonth();
+                let days = targetDate.getDate() - this.dob.getDate();
+
+                if (days < 0) {
+                    months--;
+                    days += new Date(targetDate.getFullYear(), targetDate.getMonth(), 0).getDate();
+                }
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                const totalDays = Math.floor((targetDate - this.dob) / (1000 * 60 * 60 * 24));
+
+                // Display
+                const resBox = document.getElementById('result-box');
+                resBox.style.display = 'block';
+                
+                document.getElementById('result-text').innerHTML = 
+                    `${years}<span>Y</span> &nbsp; ${months}<span>M</span> &nbsp; ${days}<span>D</span>`;
+                
+                document.getElementById('result-days').innerText = 
+                    `Total Days: ${totalDays.toLocaleString()}`;
+            }
+        };
+
+        /* =========================================
+           VISUAL: THREE.JS PARTICLES
+           ========================================= */
+        const initBg = () => {
+            const container = document.getElementById('canvas-bg');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            const geometry = new THREE.BufferGeometry();
+            const count = 600;
+            const pos = new Float32Array(count * 3);
+            
+            for(let i=0; i<count*3; i++) {
+                pos[i] = (Math.random() - 0.5) * 50; 
+            }
+            
+            geometry.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            const material = new THREE.PointsMaterial({ size: 0.1, color: 0x00f0ff });
+            const particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            
+            camera.position.z = 10;
+
+            const animate = () => {
+                requestAnimationFrame(animate);
+                particles.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            };
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+
+        // Initialize Tilt & Background
+        VanillaTilt.init(document.querySelector(".tool-title"), { max: 10, speed: 400 });
+        initBg();
+
+    </script>
+</body>
+</html>
