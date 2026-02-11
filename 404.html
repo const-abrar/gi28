@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>404 // Signal Lost – GI28</title>
+
+<meta name="description" content="Error 404. Page not found. Play Tic-Tac-Toe against the AI while you wait.">
+<meta name="robots" content="noindex, follow">
+
+<link rel="canonical" href="https://gi28.in/">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://gi28.in/assets/gi28-logo.png" type="image/x-icon">
+
+<meta name="theme-color" content="#0f172a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* --- 3D Canvas --- */
+        #canvas-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; opacity: 0.5;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-magenta); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid var(--c-cyan);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* --- Navigation --- */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan);
+        }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Full Screen Menu */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+            color: #888; text-decoration: none; display: block;
+            transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); }
+
+        /* --- Layout --- */
+        .main-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 2rem) 2rem 4rem 2rem;
+            min-height: 80vh; position: relative; z-index: 2;
+        }
+
+        .split-layout {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+        }
+
+        .error-content h1 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 6rem;
+            font-weight: 700; line-height: 0.9;
+            background: linear-gradient(135deg, var(--c-magenta) 0%, #fff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .error-path {
+            font-family: var(--font-tech); color: var(--c-magenta);
+            background: rgba(255, 0, 80, 0.1); padding: 2px 8px; border-radius: 4px;
+        }
+        .tech-head { 
+            font-family: var(--font-tech); text-transform: uppercase; 
+            letter-spacing: 2px; color: var(--c-cyan); display: block; margin-bottom: 10px;
+        }
+
+        /* --- TIC TAC TOE GAME PANEL --- */
+        .game-panel {
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(15px);
+            border: 1px solid var(--c-border); border-radius: 16px;
+            padding: 25px; position: relative;
+            box-shadow: 0 0 40px rgba(0, 242, 234, 0.05);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        
+        .game-header {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+        }
+        .game-status { font-family: var(--font-tech); font-size: 1.1rem; color: #aaa; }
+        .status-highlight { color: var(--c-cyan); font-weight: bold; }
+
+        /* Grid Layout */
+        .ttt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ttt-cell {
+            width: 90px; height: 90px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            cursor: none; /* Custom cursor */
+            transition: all 0.3s;
+        }
+
+        .ttt-cell:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        .ttt-cell.x { color: var(--c-cyan); text-shadow: 0 0 10px rgba(0, 242, 234, 0.5); }
+        .ttt-cell.o { color: var(--c-magenta); text-shadow: 0 0 10px rgba(255, 0, 80, 0.5); }
+        
+        /* Winning Line Effect */
+        .ttt-cell.win {
+            background: rgba(0, 242, 234, 0.1);
+            border-color: var(--c-cyan);
+            transform: scale(1.05);
+        }
+        .ttt-cell.lose {
+            background: rgba(255, 0, 80, 0.1);
+            border-color: var(--c-magenta);
+        }
+
+        /* --- Buttons --- */
+        .action-grid {
+            margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;
+        }
+        .submit-btn {
+            padding: 1rem 2rem; background: linear-gradient(90deg, var(--c-cyan), var(--c-purple));
+            border: none; color: var(--c-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            border-radius: 8px; transition: 0.3s; display: inline-flex; align-items: center; gap: 10px;
+            text-decoration: none;
+        }
+        .submit-btn:hover { box-shadow: 0 0 30px rgba(0, 242, 234, 0.4); transform: scale(1.02); color: black; }
+        .btn-ghost {
+            background: transparent; border: 1px solid var(--c-border); color: #fff;
+        }
+        .btn-ghost:hover { border-color: var(--c-cyan); background: rgba(0, 242, 234, 0.05); }
+
+        /* Small Game Btn */
+        .game-btn {
+            padding: 8px 20px; background: rgba(255,255,255,0.1); 
+            border: 1px solid rgba(255,255,255,0.2); color: white;
+            font-family: var(--font-tech); text-transform: uppercase;
+            border-radius: 4px; cursor: none; transition: 0.3s;
+        }
+        .game-btn:hover { background: var(--c-magenta); border-color: var(--c-magenta); }
+
+        .reveal-text { opacity: 0; transform: translateY(20px); transition: 1s ease; }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- Footer --- */
+        .pro-footer {
+            margin-top: auto; border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8); padding: 2rem; text-align: center;
+            font-size: 0.9rem; color: #666; position: relative; z-index: 5;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        @media (max-width: 992px) {
+            .split-layout { grid-template-columns: 1fr; }
+            .error-content { text-align: center; margin-bottom: 2rem; }
+            .action-grid { justify-content: center; }
+            .glass-nav { padding: 0 1.5rem; }
+            .ttt-cell { width: 70px; height: 70px; font-size: 2.5rem; }
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+        }
+        html {
+  scroll-behavior: smooth;
+}
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <a href="https://gi28.in/" class="nav-logo">GI<span>28</span></a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/">Home</a></li>
+            <li><a href="https://gi28.in/About/">About Us</a></li>
+            <li><a href="https://gi28.in/Contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        
+        <div class="split-layout">
+            
+            <div class="error-content reveal-text">
+                <span class="tech-head"><i class="fa-solid fa-triangle-exclamation"></i> Gusse wale log dur raho, Yeh page bana hi masti karne k liye hai! </span>
+                <h1>404</h1>
+                <p style="color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">
+                    The coordinates <span id="lost-url" class="error-path">...</span> cannot be resolved.
+                    <br><br>
+      Actually this page doesn't exist, You can visit <a href="https://gi28.in/"> Homepage</a> or try a game with me!
+                </p>
+
+                <div class="action-grid">
+                    <a href="https://gi28.in/" class="submit-btn">
+                        <i class="fa-solid fa-house-signal"></i> Return Home
+                    </a>
+              <a href="#" class="submit-btn btn-ghost" id="scrollDownBtn">
+    <i class="fa-solid fa-layer-group"></i> Game khelna hai🫠
+</a>
+                </div>
+            </div>
+
+            <div class="game-panel reveal-text" data-tilt>
+                <div class="game-header">
+                    <span style="font-family: var(--font-tech); letter-spacing: 1px;"><i class="fa-solid fa-chess-board"></i> TIC TAC TOE</span>
+                    <button class="game-btn" onclick="resetGame()">Restart</button>
+                </div>
+                
+                <div class="ttt-grid" id="grid-container">
+                    <div class="ttt-cell" onclick="userMove(0)"></div>
+                    <div class="ttt-cell" onclick="userMove(1)"></div>
+                    <div class="ttt-cell" onclick="userMove(2)"></div>
+                    <div class="ttt-cell" onclick="userMove(3)"></div>
+                    <div class="ttt-cell" onclick="userMove(4)"></div>
+                    <div class="ttt-cell" onclick="userMove(5)"></div>
+                    <div class="ttt-cell" onclick="userMove(6)"></div>
+                    <div class="ttt-cell" onclick="userMove(7)"></div>
+                    <div class="ttt-cell" onclick="userMove(8)"></div>
+                </div>
+
+                <div class="game-status">Constant Abrar;<br> <span id="status-text" class="status-highlight">😈 Aaja 1v1! 😈</span></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="pro-footer">
+        <div class="container">
+            © 2026 <b>GI28 By Abrar</b>. All rights reserved.<br>
+            <div style="margin-top: 10px;">
+                <a href="https://gi28.in/Terms/">Terms</a> • <a href="https://gi28.in/Tools/">All Tools</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        /* --- 1. DYNAMIC URL & UI --- */
+        document.addEventListener("DOMContentLoaded", function() {
+            const pathName = window.location.pathname;
+            const displayPath = pathName.length > 25 ? pathName.substring(0, 25) + "..." : pathName;
+            document.getElementById('lost-url').textContent = displayPath;
+            
+            setTimeout(() => {
+                document.querySelectorAll('.reveal-text').forEach(el => el.classList.add('visible'));
+            }, 100);
+        });
+
+        /* --- 2. MENU TOGGLE --- */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        /* --- 3. TIC TAC TOE LOGIC (PLAYER VS BOT) --- */
+        let board = ["", "", "", "", "", "", "", "", ""];
+        let gameActive = true;
+        const player = "X";
+        const bot = "O";
+        const statusText = document.getElementById("status-text");
+        const cells = document.querySelectorAll(".ttt-cell");
+        
+        const winConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Cols
+            [0, 4, 8], [2, 4, 6]             // Diagonals
+        ];
+
+        function userMove(index) {
+            if (board[index] !== "" || !gameActive) return;
+
+            updateCell(index, player);
+            checkWinner();
+
+            if (gameActive) {
+                statusText.innerText = "Le meri chaal! 😏";
+                document.body.style.cursor = "wait"; // Visual cue
+                setTimeout(botMove, 500); // Slight delay for realism
+            }
+        }
+
+        function botMove() {
+            if (!gameActive) return;
+
+            // Simple AI Logic: 1. Win if can, 2. Block player, 3. Random
+            let move = -1;
+
+            // 1. Try to win
+            move = findBestMove(bot);
+            
+            // 2. Block player
+            if (move === -1) move = findBestMove(player);
+
+            // 3. Random available spot
+            if (move === -1) {
+                let available = board.map((val, idx) => val === "" ? idx : null).filter(val => val !== null);
+                if (available.length > 0) {
+                    move = available[Math.floor(Math.random() * available.length)];
+                }
+            }
+
+            if (move !== -1) {
+                updateCell(move, bot);
+                checkWinner();
+            }
+            
+            if (gameActive) {
+                statusText.innerText = "Chal apne chaal, Looole...  😏";
+                document.body.style.cursor = "none"; // Restore custom cursor logic
+            }
+        }
+
+        function findBestMove(symbol) {
+            for (let condition of winConditions) {
+                let [a, b, c] = condition;
+                if (board[a] === symbol && board[b] === symbol && board[c] === "") return c;
+                if (board[a] === symbol && board[c] === symbol && board[b] === "") return b;
+                if (board[b] === symbol && board[c] === symbol && board[a] === "") return a;
+            }
+            return -1;
+        }
+
+        function updateCell(index, symbol) {
+            board[index] = symbol;
+            cells[index].innerText = symbol;
+            cells[index].classList.add(symbol.toLowerCase());
+        }
+
+        function checkWinner() {
+            let roundWon = false;
+            let winningLine = [];
+
+            for (let condition of winConditions) {
+                let [a, b, c] = condition;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    roundWon = true;
+                    winningLine = condition;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                let winner = board[winningLine[0]];
+                statusText.innerText = winner === player ? "🫵🏻 Uchhal mat mera ping high ho gaya tha, Again aao dekhte hain! 😤🤜🏻🤛🏻 Is baar hara dunga 😭" : "Hara Diya na Maine! 😁 Again try karoge? 😛";
+                statusText.style.color = winner === player ? "var(--c-cyan)" : "var(--c-magenta)";
+                gameActive = false;
+                
+                // Highlight winning cells
+                winningLine.forEach(idx => {
+                    cells[idx].classList.add(winner === player ? "win" : "lose");
+                });
+                return;
+            }
+
+            if (!board.includes("")) {
+                statusText.innerText = "🤨 Dismiss karwa diya? Aaja is baar! 😈 ";
+                statusText.style.color = "#fff";
+                gameActive = false;
+                return;
+            }
+        }
+
+        function resetGame() {
+            board = ["", "", "", "", "", "", "", "", ""];
+            gameActive = true;
+            statusText.innerText = "Jaldi kar yrrr, subah panwel nikalna hai... 🥱";
+            statusText.style.color = "var(--c-cyan)";
+            cells.forEach(cell => {
+                cell.innerText = "";
+                cell.classList.remove("x", "o", "win", "lose");
+            });
+        }
+
+        /* --- 4. TILT & CURSOR --- */
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+
+            document.querySelectorAll('a, button, .ttt-cell').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    if(el.classList.contains('ttt-cell')) cursorOutline.style.borderColor = "var(--c-magenta)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.borderColor = "var(--c-cyan)";
+                });
+            });
+        }
+
+        /* --- 5. THREE.JS BG --- */
+        const bgCanvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        bgCanvas.appendChild(renderer.domElement);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 350;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+
+        // Broken Ring for 404
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        ring.rotation.x = 1.5; 
+        scene.add(ring);
+
+        camera.position.z = 5;
+
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            ring.rotation.z = elapsedTime * 0.2;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        document.getElementById("scrollDownBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    
+    window.scrollBy({
+        top: 300,   // Kitna scroll karna hai (pixels me)
+        left: 0,
+        behavior: "smooth"
+    });
+});
+    </script>
+</body>
+</html>
