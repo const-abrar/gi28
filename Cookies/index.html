@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Privacy Policy & Cookies – GI28 (Constant Abrar)</title>
+
+<meta name="description" content="Read the official Privacy Policy and Cookies Policy of GI28, operated by Constant Abrar. Learn how we collect, use and protect personal data across our web tools and contact forms.">
+
+<meta name="keywords" content="GI28 privacy policy, GI28 cookies policy, Constant Abrar data protection, web tools privacy policy India, GDPR CCPA compliance website">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="revisit-after" content="7 days">
+<meta name="language" content="English">
+<meta name="distribution" content="global">
+<meta name="rating" content="general">
+
+<link rel="canonical" href="https://gi28.in/Cookies/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Privacy Policy & Cookies – GI28">
+<meta property="og:description" content="Official data handling and cookies policy of GI28 by Constant Abrar. Transparency, compliance and security first.">
+<meta property="og:url" content="https://gi28.in/Cookies/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/og-image.png">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GI28 Privacy & Cookies Policy">
+<meta name="twitter:description" content="Understand how GI28 collects and protects your information.">
+<meta name="twitter:image" content="https://gi28.in/assets/og-image.png">
+
+<meta name="theme-color" content="#050507">
+<meta name="color-scheme" content="dark">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PrivacyPolicy",
+  "name": "Privacy Policy & Cookies Policy",
+  "url": "https://gi28.in/Cookies/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GI28",
+    "url": "https://gi28.in/"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Constant Abrar"
+  },
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-01-01",
+  "inLanguage": "en-IN"
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* --- 3D Canvas --- */
+        #canvas-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; opacity: 0.5;
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid var(--c-magenta);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* =========================================
+           LIQUID GLASS NAVIGATION
+           ========================================= */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2); transform: scale(1.05);
+        }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Full Screen Menu */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+            color: #888; text-decoration: none; display: block;
+            transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* --- Layout --- */
+        .main-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 4rem) 2rem 4rem 2rem;
+            display: flex; flex-direction: column; gap: 4rem;
+            min-height: 100vh; position: relative; z-index: 2;
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal-text {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s var(--ease-out);
+        }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+        .d-100 { transition-delay: 0.1s; } .d-200 { transition-delay: 0.2s; }
+
+        /* --- Typography & Elements --- */
+        .tech-head { 
+            font-family: var(--font-tech); text-transform: uppercase; 
+            letter-spacing: 2px; color: var(--c-purple); 
+            margin-bottom: 1rem; display: block; font-size: 1rem;
+        }
+        .highlight-cyan { color: var(--c-cyan); font-weight: 700; }
+        
+        .hero-section { text-align: center; margin-bottom: 2rem; }
+        .hero-section h1 {
+            font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--c-cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Glass Panels --- */
+        .glass-panel {
+            background: var(--c-panel); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px); padding: 3rem;
+            border-radius: 24px; border: 1px solid var(--c-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative; transition: transform 0.3s;
+        }
+        .glass-panel h2 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin-bottom: 1rem; color: white; }
+        .glass-panel p { color: #aaa; line-height: 1.7; margin-bottom: 1rem; }
+        
+        /* Screws */
+        .screw { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #222; border: 1px solid #444; display: flex; align-items: center; justify-content: center; }
+        .screw::after { content: '+'; font-size: 10px; color: #555; }
+        .screw.tl { top: 15px; left: 15px; } .screw.tr { top: 15px; right: 15px; }
+        .screw.bl { bottom: 15px; left: 15px; } .screw.br { bottom: 15px; right: 15px; }
+
+        /* Lists */
+        .list-unstyled { list-style: none; margin-bottom: 1rem; }
+        .list-unstyled li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #ccc; }
+        .list-unstyled li i { color: var(--c-cyan); min-width: 20px; }
+
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+        /* Security Box */
+        .security-box { border: 1px solid rgba(255, 0, 80, 0.3); background: rgba(255, 0, 80, 0.05); }
+
+        /* --- Footer --- */
+        .pro-footer {
+            margin-top: auto; border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8); padding: 2rem; text-align: center;
+            font-size: 0.9rem; color: #666; position: relative; z-index: 5;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        @media (max-width: 992px) {
+            .split-grid { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 2.5rem; }
+            .glass-nav { padding: 0 1.5rem; }
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <a href="https://gi28.in/" class="nav-logo">
+    GI<span>28</span>
+        </a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/">Home</a></li>
+            <li><a href="https://gi28.in/About/">About Data</a></li>
+            <li><a href="https://gi28.in/Terms/">Terms & Conditions</a></li>
+            <li><a href="https://gi28.in/Contact/">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        
+        <section class="hero-section reveal-text">
+            <span class="tech-head">// System Protocols</span>
+            <h1>Privacy Policy & Cookies</h1>
+            <p style="color: #888; max-width: 600px; margin: 0 auto;">
+                Transparency is our priority. This document outlines exactly how <strong>Genuine Intelligence 28</strong> collects, uses and protects your data.
+                <br><em>Last Updated: January 01, 2026</em>
+            </p>
+        </section>
+
+        <section class="split-grid">
+            <div class="glass-panel reveal-text d-100" data-tilt>
+                <div class="screw tl"></div><div class="screw tr"></div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                
+                <span class="tech-head">// 01.A - User Input</span>
+                <h2>Information You Provide</h2>
+                <p>We only collect personal information that you voluntarily submit to us via our interaction points.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-keyboard"></i> <strong>Form Submissions:</strong></li>
+                    <li><i class="fa-solid fa-envelope"></i> <strong>Communication:</strong></li>
+                    <li><i class="fa-solid fa-comment-dots"></i> <strong>Feedback</strong></li>
+                </ul>
+                <p style="font-size: 0.9rem; border-top: 1px solid var(--c-border); padding-top: 15px; margin-top: 20px; color: #888;">
+                    We do not use this data for marketing unless explicitly consented to.
+                </p>
+            </div>
+
+            <div class="glass-panel reveal-text d-200" data-tilt>
+                <div class="screw tl"></div><div class="screw tr"></div>
+                <div class="screw bl"></div><div class="screw br"></div>
+
+                <span class="tech-head">// 01.B - Telemetry</span>
+                <h2>Automated Data Collection</h2>
+                <p>To maintain system integrity and improve user experience, we automatically collect standard log data.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-network-wired"></i> <strong>IP Adress</strong></li>
+                    <li><i class="fa-solid fa-laptop-code"></i> <strong>Device Info</strong></li>
+                    <li><i class="fa-solid fa-route"></i> <strong>Usage Metrics</strong></li>
+                </ul>
+                <p style="font-size: 0.9rem; border-top: 1px solid var(--c-border); padding-top: 15px; margin-top: 20px; color: #888;">
+                    This data is used strictly for <span class="highlight-cyan">security analytics</span> and performance optimization.
+                </p>
+            </div>
+        </section>
+
+        <div class="glass-panel security-box reveal-text" data-tilt style="text-align: center;">
+            <div class="screw tl"></div><div class="screw tr"></div>
+            <div class="screw bl"></div><div class="screw br"></div>
+
+            <span class="tech-head" style="color: var(--c-magenta);"><i class="fa-solid fa-shield-halved"></i> Negative Data Protocol</span>
+            <h2 style="margin-bottom: 1rem;">What We Never Collect</h2>
+            <p style="margin-bottom: 2rem;">We prioritize user safety by strictly limiting our data intake.</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <span style="color: #ddd; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-ban" style="color: var(--c-magenta);"></i> Passwords
+                </span>
+                <span style="color: #ddd; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-ban" style="color: var(--c-magenta);"></i> Login Credentials
+                </span>
+                <span style="color: #ddd; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-ban" style="color: var(--c-magenta);"></i> Private Tokens
+                </span>
+            </div>
+        </div>
+
+        <section class="split-grid">
+            <div class="glass-panel reveal-text d-100" data-tilt>
+                <div class="screw tl"></div><div class="screw tr"></div>
+                <div class="screw bl"></div><div class="screw br"></div>
+
+                <span class="tech-head">// 02. Tracking</span>
+                <h2>Cookies & Web Beacons</h2>
+                <p>Cookies are small files stored on your device to enhance functionality. You retain full control over these via your browser settings.</p>
+                <p><strong>Primary Functions:</strong></p>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-memory"></i> <strong>Session Management</strong></li>
+                    <li><i class="fa-solid fa-chart-line"></i> <strong>Analytics</strong> </li>
+                    <li><i class="fa-solid fa-bullhorn"></i> <strong>Advertising</strong></li>
+                </ul>
+            </div>
+
+            <div class="glass-panel reveal-text d-200" data-tilt>
+                <div class="screw tl"></div><div class="screw tr"></div>
+                <div class="screw bl"></div><div class="screw br"></div>
+
+                <span class="tech-head">// 03. Partners</span>
+                <h2>Third-Party Processors</h2>
+                <p>We utilize trusted third-party services to maintain our infrastructure. These partners have their own privacy policies.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fa-brands fa-google"></i> <strong>Google AdSense</strong> </li>
+                    <li><i class="fa-solid fa-server"></i> <strong>Hosting Providers</strong></li>
+                    <li><i class="fa-solid fa-paper-plane"></i> <strong>Web3Forms</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="glass-panel reveal-text" data-tilt>
+            <div class="screw tl"></div><div class="screw tr"></div>
+            <div class="screw bl"></div><div class="screw br"></div>
+
+            <span class="tech-head">// 04. Compliance</span>
+            <h2>Your Data Rights (GDPR / CCPA)</h2>
+            <p>Regardless of your location, we believe in fundamental digital rights. You have the right to:</p>
+            <div class="split-grid" style="margin-top: 1.5rem;">
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-eye"></i> <strong>Access</strong></li>
+                    <li><i class="fa-solid fa-eraser"></i> <strong>Erasure</strong></li>
+                    <li><i class="fa-solid fa-pen-to-square"></i> <strong>Rectification</strong></li>
+                </ul>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-hand"></i> <strong>Opt-Out</strong></li>
+                    <li><i class="fa-solid fa-child"></i> <strong>Children's Privacy</strong></li>
+                </ul>
+            </div>
+            <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+                If you wish to exercise any of these rights, please contact us. We have one month to respond to your request.
+            </p>
+        </section>
+
+        <section class="reveal-text" style="text-align: center; margin-top: 2rem;">
+            <p style="color: #666; font-size: 0.9rem;">
+                By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.
+            </p>
+        </section>
+
+    </div>
+
+    <footer class="pro-footer">
+        <div class="container">
+            © 2026 <b>Genuine Intelligence 28</b>. All rights reserved.<br>
+            <div style="margin-top: 10px;">
+                <a href="https://gi28.in/Terms/">Terms</a> • <a href="https://gi28.in/Contact/">Contact</a> • <a href="https://gi28.in/About/">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        /* --- NAVIGATION TOGGLE --- */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        /* --- SCROLL REVEAL ANIMATION --- */
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+
+        /* --- CUSTOM CURSOR (PC Only) --- */
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            document.querySelectorAll('a, button, .nav-trigger').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    cursorOutline.style.backgroundColor = "rgba(0, 242, 234, 0.1)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.backgroundColor = "transparent";
+                });
+            });
+        }
+
+        /* --- TILT EFFECT --- */
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
+
+        /* --- THREE.JS BACKGROUND --- */
+        const canvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvas.appendChild(renderer.domElement);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 350;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        scene.add(ring);
+
+        camera.position.z = 5;
+
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            particlesMesh.rotation.y += mouseX * 0.5;
+            ring.rotation.x = elapsedTime * 0.1;
+            ring.rotation.y = elapsedTime * 0.1;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
