@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+<!-- ========== BASIC META ========== -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GI28 Tools – Free Username Checker, QR Code Generator & Profile Card Maker</title>
+
+<meta name="description" content="GI28 Tools offers free username checker, QR code generator, profile card maker & powerful online utilities. No login. No watermark. Fast, secure & mobile optimized.">
+<meta name="keywords" content="GI28 Tools, Username Checker, QR Code Generator, Profile Card Maker, Free Online Tools India, Social Username Search, Digital Utilities">
+<meta name="author" content="GI28 Technologies">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+
+<!-- ========== CANONICAL ========== -->
+<link rel="canonical" href="https://gi28.in/">
+
+<!-- ========== OPEN GRAPH ========== -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GI28 Tools – Free Online Username & QR Tools">
+<meta property="og:description" content="Generate QR codes, check usernames & create profile cards instantly. 100% free tools by GI28.">
+<meta property="og:url" content="https://gi28.in/">
+<meta property="og:site_name" content="GI28 Tools">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image" content="https://gi28.in/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- ========== TWITTER CARD ========== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GI28 Tools – Free Username & QR Generator">
+<meta name="twitter:description" content="Powerful free online tools. No login required. Fast & secure.">
+<meta name="twitter:image" content="https://gi28.in/og-image.jpg">
+
+<!-- ========== BRAND + THEME ========== -->
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- ========== FAVICON ========== -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+<!-- ========== PERFORMANCE BOOST ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+<!-- ========== GOOGLE FONTS ========== -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- ========== SECURITY HARDENING ========== -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+
+<!-- ========== STRUCTURED DATA (ADVANCED) ========== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GI28 Tools",
+  "url": "https://gi28.in/",
+  "description": "Free username tools, QR code generator and profile utilities.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GI28 Technologies",
+    "url": "https://gi28.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gi28.in/logo.png"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://gi28.in/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+    <style>
+        /* =========================================
+           CORE VARIABLES & RESET
+           ========================================= */
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* Background & Cursor */
+        #canvas-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0.5; }
+        
+        /* Custom Cursor - Only visible on non-touch devices via JS/Media Query */
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid var(--c-magenta); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+
+        /* Navigation */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center; padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4); backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease;
+        }
+        .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px; }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .nav-trigger:hover { background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan); transform: scale(1.05); }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px); z-index: 999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; color: #888; text-decoration: none;
+            display: block; transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* Layout & Typography */
+        .main-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 4rem) 2rem 4rem 2rem;
+            display: flex; flex-direction: column; gap: 5rem;
+            min-height: 100vh; position: relative; z-index: 2;
+        }
+        .reveal-text { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s var(--ease-out); }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+        .tech-head { font-family: var(--font-tech); text-transform: uppercase; letter-spacing: 2px; color: var(--c-purple); margin-bottom: 1rem; display: block; font-size: 1rem; }
+        
+        /* =========================================
+           TOOLS PAGE SPECIFIC STYLES
+           ========================================= */
+        
+        /* Tools Hero */
+        .tools-hero { text-align: center; max-width: 800px; margin: 0 auto; }
+        .tools-hero h1 {
+            font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--c-cyan) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;
+        }
+        .tools-hero p { font-size: 1.1rem; color: #ccc; line-height: 1.6; }
+
+        /* RESPONSIVE GRID */
+        .tools-grid {
+            display: grid;
+            /* Auto-fill creates responsive columns. Min 280px wide, or 1 fraction of space */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: var(--c-panel); backdrop-filter: blur(25px);
+            border: 1px solid var(--c-border); border-radius: 20px;
+            padding: 1.5rem; text-decoration: none; color: white;
+            position: relative; overflow: hidden; transition: all 0.4s var(--ease-out);
+            display: flex; flex-direction: column;
+        }
+        .tool-card:hover {
+            transform: translateY(-10px); border-color: var(--c-cyan);
+            box-shadow: 0 15px 40px rgba(0, 242, 234, 0.1);
+        }
+
+        /* 1:1 SQUARE IMAGE CONTAINER */
+        .card-visual {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Forces strict square ratio */
+            background: #000;
+            border-radius: 12px; margin-bottom: 1.5rem; overflow: hidden;
+            position: relative; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .card-visual img {
+            width: 100%; height: 100%;
+            object-fit: cover; /* Ensures image covers square without distortion */
+            opacity: 0.8; transition: 0.5s ease;
+        }
+        .tool-card:hover .card-visual img { opacity: 1; transform: scale(1.1); }
+
+        /* Badges & Screws */
+        .tool-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: linear-gradient(90deg, var(--c-purple), var(--c-magenta));
+            font-family: var(--font-tech); font-weight: 700; font-size: 0.75rem;
+            padding: 4px 10px; border-radius: 4px; z-index: 5; letter-spacing: 1px;
+            color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .screw {
+            position: absolute; width: 8px; height: 8px; border-radius: 50%;
+            background: #222; border: 1px solid #444; opacity: 0.5;
+        }
+        .screw.bl { bottom: 15px; left: 15px; } .screw.br { bottom: 15px; right: 15px; }
+
+        /* Card Text */
+        .tool-info h3 { font-family: 'Space Grotesk'; font-size: 1.4rem; margin-bottom: 0.5rem; color: #fff; }
+        .tool-info p { font-size: 0.9rem; color: #9aa; line-height: 1.5; }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(45deg, rgba(5,5,7,0.9), rgba(160,0,255,0.1));
+            border: 1px dashed var(--c-border); border-radius: 20px;
+            padding: 4rem 2rem; text-align: center; position: relative;
+        }
+        .submit-btn {
+            background: linear-gradient(90deg, var(--c-cyan), var(--c-purple));
+            border: none; padding: 15px 40px; color: #000; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px; border-radius: 4px;
+            display: inline-block; margin-top: 20px; text-decoration: none;
+            transition: 0.3s; clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+        .submit-btn:hover { box-shadow: 0 0 20px rgba(0, 242, 234, 0.4); transform: scale(1.05); color: #000; }
+
+        /* Footer */
+        .pro-footer {
+            margin-top: auto; border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8); padding: 2rem; text-align: center;
+            font-size: 0.9rem; color: #666; position: relative; z-index: 5;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        /* MOBILE SPECIFIC ADJUSTMENTS */
+        @media (max-width: 768px) {
+            .glass-nav { padding: 0 1.5rem; }
+            .main-container { padding-top: 100px; gap: 3rem; }
+            
+            /* Disable custom cursor on touch devices */
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+            
+            /* Adjust grid gap for smaller screens */
+            .tools-grid { gap: 1.5rem; }
+            
+            /* Make text slightly smaller */
+            .tool-info h3 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <a href="https://gi28.in/" class="nav-logo">GI<span>28</span></a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/">Home</a></li>
+            <li><a href="https://gi28.in/Tools/" style="color:white; border-bottom: 2px solid var(--c-cyan);">Tools</a></li>
+            <li><a href="https://gi28.in/about/">About</a></li>
+            <li><a href="https://gi28.in/contact/">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        
+        <section class="tools-hero reveal-text">
+            <h1>System Tools</h1>
+            <p>Privacy-friendly, no-login utilities designed for high-performance growth.</p>
+            <span class="tech-head">Secure • Fast • Free</span>
+        </section>
+
+        <section class="tools-grid">
+
+            <a href="/Font-Changer/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">FREE</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Font-Changer.png" alt="Font Changer" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Font Changer</h3>
+                    <p>Generate aesthetic text styles and symbols. Bypass default font restrictions.</p>
+                </div>
+            </a>
+
+            <a href="/Link-Creator/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">FREE</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Link-Creator.png" alt="Link Creator" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Universal Link Gen</h3>
+                    <p>Convert usernames into direct, multi-platform deeplinks instantly.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/Profile-Card/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">POPULAR</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Profile-Card.png" alt="Profile Card" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>ID Card Maker</h3>
+                    <p>Create high-fidelity, fully customizable profile cards for your socials.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/I-Profile-QR-Generator/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">V1.0</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="I-Profile-QR-Generator.png" alt="QR V1" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>QR Core V1</h3>
+                    <p>Standard high-resolution profile QR code generator.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/QR-Generator/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge" style="background:var(--c-cyan); color:#000;">UPDATED</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="QR-Generator.png" alt="QR V2" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>All type QR Generation</h3>
+                    <p>Advanced customization. Custom colors, logos, error correction levels & All type QR Generation.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/Particle-Engine/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">WEBGL</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Particle-Engine.png" alt="Particle" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Particle Engine</h3>
+                    <p>Interactive physics simulation. Turn names and text into floating particles.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/Zenitm/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">PRO</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Zenitm-Pro.png" alt="Zenitm" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Zenitm Pro</h3>
+                    <p>The evolved Particle Engine. Higher density, more control features.</p>
+                </div>
+            </a>
+
+             <a href="https://gi28.in/Tools/Aether/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge" style="background: linear-gradient(90deg, #ffd700, #ffaa00);">BETA</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Aether.png" alt="Aether" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Aether</h3>
+                    <p>The flagship engine. Video uploads, reactive audio & premium UI.</p>
+                </div>
+            </a>
+
+            <a href="https://gi28.in/Tools/Username/" class="tool-card reveal-text" data-tilt>
+                <div class="tool-badge">PUBLIC DATA</div>
+                <div class="screw bl"></div><div class="screw br"></div>
+                <div class="card-visual">
+                    <img src="Username.png" alt="Viewer" onerror="this.src='https://via.placeholder.com/400x400/111/00f2ea?text=GI28'">
+                </div>
+                <div class="tool-info">
+                    <h3>Profile Preview</h3>
+                    <p>Visual preview of public Instagram profiles. No login required.</p>
+                </div>
+            </a>
+
+        </section>
+
+        <section class="reveal-text">
+            <div class="cta-box">
+                <span class="tech-head">Sorry If I did Any Mistake</span>
+                <h2 style="font-family:'Space Grotesk'; font-size:2rem; margin-bottom:10px;">A New Tool?</h2>
+                <p style="color:#999; margin-bottom: 20px;">We build what you need. Send a transmission detailing your requirements.</p>
+                <a href="https://gi28.in/Contact/" class="submit-btn">
+                    Request<i class="fa-solid fa-code" style="margin-left:8px;"></i>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="pro-footer">
+        <div class="container">
+            © 2026 <b>Genuine Intelligence 28</b>. System Operational.<br>
+            <div style="margin-top: 10px;">
+                <a href="https://gi28.in/Terms/">Terms</a> • <a href="https://gi28.in/Contact/">Contact</a> • <a href="https://gi28.in/Cookies/">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        /* --- 1. NAVIGATION TOGGLE --- */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        /* --- 2. SMOOTH SCROLL REVEAL --- */
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+
+        /* --- 3. CUSTOM CURSOR (Desktop Only) --- */
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX; const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+            });
+            document.querySelectorAll('a, button, .nav-trigger, .tool-card').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    cursorOutline.style.backgroundColor = "rgba(0, 242, 234, 0.1)";
+                    cursorOutline.style.borderColor = "var(--c-cyan)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.backgroundColor = "transparent";
+                    cursorOutline.style.borderColor = "var(--c-magenta)";
+                });
+            });
+        }
+
+        /* --- 4. TILT EFFECT --- */
+        // Check if device is not mobile to apply tilt to save battery/resources
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.2 });
+        }
+
+        /* --- 5. THREE.JS BACKGROUND --- */
+        const canvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Performance optimization
+        canvas.appendChild(renderer.domElement);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 350;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+
+        // Ring
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        scene.add(ring);
+
+        camera.position.z = 5;
+
+        let mouseX = 0; let mouseY = 0;
+        // Throttle mousemove for performance
+        let timeout;
+        document.addEventListener('mousemove', (event) => {
+             if (timeout) return;
+             timeout = setTimeout(() => {
+                mouseX = event.clientX / window.innerWidth - 0.5;
+                mouseY = event.clientY / window.innerHeight - 0.5;
+                timeout = undefined;
+             }, 10);
+        });
+
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            particlesMesh.rotation.y += mouseX * 0.5;
+            ring.rotation.x = elapsedTime * 0.1;
+            ring.rotation.y = elapsedTime * 0.1;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
