@@ -1,0 +1,190 @@
+
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.6);
+            --c-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* Background */
+        #canvas-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; opacity: 0.5; pointer-events: none;
+        }
+
+        /* Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid var(--c-magenta);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* =========================================
+           LIQUID GLASS NAVIGATION
+           ========================================= */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s;
+        }
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2); transform: scale(1.05);
+        }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+            color: #888; text-decoration: none; display: block;
+            transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* =========================================
+           MAIN CONTENT
+           ========================================= */
+        .main-container {
+            width: 100%; max-width: 1400px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 4rem) 1.5rem 4rem;
+            text-align: center; position: relative; z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk'; font-size: 3rem; font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, white 20%, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle { color: #94a3b8; font-size: 1rem; margin-bottom: 4rem; letter-spacing: 0.5px; }
+
+        /* =========================================
+           3D CARD GRID
+           ========================================= */
+        .terms-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem; padding: 1rem; perspective: 2000px;
+        }
+
+        .card-scene {
+            width: 100%; height: 360px; position: relative;
+            perspective: 1000px; cursor: grab; touch-action: pan-y;
+        }
+        .card-scene:active { cursor: grabbing; }
+
+        .card-object {
+            width: 100%; height: 100%; position: absolute;
+            transform-style: preserve-3d; transition: transform 0.1s linear;
+            border-radius: 24px;
+        }
+
+        .card-face {
+            position: absolute; width: 100%; height: 100%; border-radius: 24px;
+            padding: 2rem; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            backface-visibility: hidden;
+            background: var(--c-panel); backdrop-filter: blur(20px);
+            /* Borders and Glows are handled via JS inline styles now */
+            transition: box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .face-front { z-index: 2; }
+        
+        .face-back {
+            background: #050507; transform: rotateY(180deg);
+        }
+
+        .term-number {
+            font-size: 3rem; font-weight: 900; opacity: 0.1;
+            position: absolute; top: 1rem; right: 1.5rem; font-family: monospace;
+            background: linear-gradient(to bottom, white, transparent);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .icon-box {
+            width: 60px; height: 60px; background: rgba(255,255,255,0.03);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease; font-size: 1.5rem;
+        }
+        .card-scene:hover .icon-box { transform: scale(1.1); }
+
+        h3 { color: white; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700; }
+        p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+        .back-text { font-size: 0.95rem; color: #fff; }
+
+        .drag-hint {
+            position: absolute; bottom: 20px; font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 1px; color: #94a3b8;
+            display: flex; align-items: center; gap: 5px; opacity: 0.5; pointer-events: none;
+        }
+
+        /* Footer */
+        .pro-footer {
+            margin-top: auto; border-top: 1px solid var(--c-border);
+            background: rgba(0,0,0,0.8); padding: 2rem; text-align: center;
+            font-size: 0.9rem; color: #666; position: relative; z-index: 5;
+        }
+        .pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+        .pro-footer a:hover { color: var(--c-cyan); }
+
+        @media (max-width: 992px) {
+            .glass-nav { padding: 0 1.5rem; }
+            .terms-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .cursor-dot, .cursor-outline { display: none; }
+            * { cursor: auto; }
+        }
+    
