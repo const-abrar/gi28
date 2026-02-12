@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Fancy Text, Unicode Fonts & Cipher Generator – GI28 Ultimate Engine</title>
+
+<meta name="description" content="GI28 Ultimate Engine is an all-in-one fancy text generator, Unicode font converter, glitch text creator and cipher encryption tool. Generate stylish fonts, Zalgo text, Base64, Binary, Morse and more instantly.">
+
+<meta name="keywords" content="fancy text generator, unicode font generator, glitch text generator, zalgo text generator, cipher generator, base64 encoder, binary converter, morse code translator, stylish text copy paste, text encryption tool">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="English">
+<meta name="distribution" content="global">
+
+<link rel="canonical" href="https://gi28.in/Tools/Ultimate-Engine/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fancy Text, Glitch & Cipher Generator – GI28 Ultimate Engine">
+<meta property="og:description" content="Generate Unicode fonts, glitch text, Base64, Binary, Morse and cipher outputs instantly. The most complete text transformation engine online.">
+<meta property="og:url" content="https://gi28.in/Tools/Ultimate-Engine/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/ultimate-og.png">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GI28 Ultimate Text Engine">
+<meta name="twitter:description" content="Unicode Fonts, Glitch Text, Cipher & Encryption Tool in One Place.">
+<meta name="twitter:image" content="https://gi28.in/assets/ultimate-og.png">
+
+<meta name="theme-color" content="#030305">
+<meta name="color-scheme" content="dark">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GI28 Ultimate Engine",
+  "url": "https://gi28.in/Tools/Ultimate-Engine/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "creator": {
+    "@type": "Person",
+    "name": "Constant Abrar"
+  },
+  "description": "All-in-one fancy text generator, Unicode font converter, glitch text creator and cipher encryption tool.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           GI28 DESIGN SYSTEM V3
+           ========================================= */
+        :root {
+            --bg-deep: #030305;
+            --bg-panel: #0f0f13;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #bc13fe;
+            --accent-green: #0aff50;
+            --accent-red: #ff0050;
+            
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(20, 20, 25, 0.6);
+            --font-main: 'Inter', sans-serif;
+            --font-head: 'Outfit', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body {
+            background-color: var(--bg-deep);
+            color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND FX --- */
+        #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
+        .vignette { position: fixed; inset: 0; background: radial-gradient(circle, transparent 0%, #000 90%); pointer-events: none; z-index: -1; }
+
+        /* --- NAVIGATION --- */
+        .glass-nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 100;
+            background: rgba(5,5,5,0.9); border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .container { max-width: 1200px; margin: 0 auto; width: 92%; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .brand span { color: var(--accent-cyan); }
+        .status-pill { 
+            font-family: var(--font-code); font-size: 0.75rem; color: var(--accent-green);
+            border: 1px solid rgba(10, 255, 80, 0.3); padding: 4px 10px; border-radius: 20px;
+            background: rgba(10, 255, 80, 0.05);
+        }
+
+        /* --- LAYOUT --- */
+        .app-wrapper { margin-top: 100px; padding-bottom: 80px; }
+        
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { 
+            font-family: var(--font-head); font-size: 3rem; margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: #888; max-width: 600px; margin: 0 auto; }
+
+        /* --- MAIN PANEL --- */
+        .control-panel {
+            background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 25px; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            min-height: 600px;
+        }
+
+        /* Input Area */
+        .master-input {
+            width: 100%; background: #050508; border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 20px; color: #fff; font-family: var(--font-main);
+            font-size: 1.1rem; min-height: 100px; resize: vertical; margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .master-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 20px rgba(188, 19, 254, 0.15); }
+
+        /* Tabs */
+        .tab-bar {
+            display: flex; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; margin-bottom: 25px;
+            overflow-x: auto;
+        }
+        .tab-btn {
+            background: transparent; border: none; color: #666; font-family: var(--font-head);
+            font-weight: 700; padding: 10px 20px; cursor: pointer; border-radius: 8px; white-space: nowrap;
+            transition: 0.3s;
+        }
+        .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .tab-btn.active { background: var(--accent-cyan); color: #000; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+
+        /* --- VIEWS --- */
+        .view-section { display: none; animation: fadeIn 0.4s ease; }
+        .view-section.active { display: block; }
+
+        /* View 1: Font Grid */
+        .font-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+        .font-card {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 10px;
+            padding: 15px; display: flex; flex-direction: column; cursor: pointer; transition: 0.2s;
+        }
+        .font-card:hover { border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.05); }
+        .font-label { font-size: 0.7rem; color: #666; text-transform: uppercase; margin-bottom: 5px; font-family: var(--font-code); }
+        .font-text { font-size: 1.1rem; word-break: break-word; color: #fff; }
+
+        /* View 2: Glitch */
+        .glitch-controls { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; 
+            margin-bottom: 20px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px;
+        }
+        .range-group label { display: block; font-size: 0.8rem; color: var(--accent-red); margin-bottom: 8px; font-family: var(--font-code); }
+        input[type=range] { width: 100%; accent-color: var(--accent-red); }
+        .glitch-box {
+            background: #000; border: 1px dashed var(--accent-red); padding: 30px; border-radius: 12px;
+            font-family: 'Courier New', monospace; color: var(--accent-red); font-size: 1.2rem;
+            text-align: center; min-height: 150px; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* View 3: Decorations */
+        .decor-mixer {
+            display: grid; grid-template-columns: 1fr 2fr; gap: 20px;
+        }
+        .decor-list, .decor-fonts {
+            max-height: 400px; overflow-y: auto; background: rgba(0,0,0,0.2); 
+            border: 1px solid var(--glass-border); border-radius: 12px; padding: 10px;
+        }
+        .decor-item {
+            padding: 10px; border-bottom: 1px solid var(--glass-border); cursor: pointer; 
+            font-family: var(--font-code); font-size: 0.9rem; text-align: center; transition: 0.2s;
+        }
+        .decor-item:hover, .decor-item.selected { background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); }
+        .decor-preview-box {
+            grid-column: 1 / -1; background: #000; padding: 20px; text-align: center; border-radius: 12px;
+            font-size: 1.5rem; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); margin-top: 10px;
+        }
+
+        /* View 4: Cipher Vault */
+        .cipher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .cipher-card {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 10px; padding: 15px;
+        }
+        .cipher-head { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .cipher-title { color: var(--accent-purple); font-family: var(--font-code); font-weight: 700; font-size: 0.9rem; }
+        .cipher-out {
+            width: 100%; background: #000; border: 1px solid #333; color: #aaa; 
+            padding: 10px; font-family: var(--font-code); font-size: 0.85rem; border-radius: 6px; resize: none; height: 80px;
+        }
+        .cipher-btn {
+            margin-top: 8px; width: 100%; background: #222; border: 1px solid #444; color: #fff;
+            padding: 6px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: 0.2s;
+        }
+        .cipher-btn:hover { background: var(--accent-purple); border-color: var(--accent-purple); color: #000; }
+        
+        .secret-input { width: 100%; background: #111; border: 1px solid #444; color: #fff; padding: 5px; margin-bottom: 5px; font-family: var(--font-code); font-size: 0.8rem; }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: #fff; color: #000; padding: 10px 25px; border-radius: 50px; font-weight: 700;
+            opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 999;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        @media (max-width: 768px) {
+            .decor-mixer { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-canvas"></canvas>
+    <div class="vignette"></div>
+    <div class="toast" id="toast">Copied to Clipboard!</div>
+
+    <nav class="glass-nav">
+        <div class="container nav-flex">
+            <div class="brand">GI<span>28</span> Encoder</div>
+           <a href="https://gi28.in/Tools/Decoder/">
+    <div class="status-pill">Decode</div>
+</a>
+        </div>
+    </nav>
+
+    <main class="app-wrapper container">
+        <div class="hero">
+    <h1>Fancy Text, Unicode Font & Cipher Generator</h1>
+            <p>The most comprehensive Unicode & Encryption engine on the web.</p>
+        </div>
+
+        <div class="control-panel">
+            
+            <textarea id="input-text" class="master-input" placeholder="Enter your text here..." spellcheck="false">Genuine Intelligence 28</textarea>
+
+            <div class="tab-bar">
+                <button class="tab-btn active" onclick="setTab('fonts', this)">Font Styles</button>
+                <button class="tab-btn" onclick="setTab('decor', this)">Wing-Man Mixer</button>
+                <button class="tab-btn" onclick="setTab('glitch', this)">Chaos / Glitch</button>
+                <button class="tab-btn" onclick="setTab('vault', this)">Cipher Vault</button>
+            </div>
+
+            <div id="view-fonts" class="view-section active">
+                <div class="font-grid" id="font-container"></div>
+            </div>
+
+            <div id="view-decor" class="view-section">
+                <div class="decor-preview-box" id="decor-preview">Select a Wing and a Font</div>
+                <button class="cipher-btn" style="margin-bottom: 20px; background: var(--accent-cyan); color: #000; border: none;" onclick="copyDecor()">Copy Decoration</button>
+                
+                <div class="decor-mixer">
+                    <div>
+                        <div style="color:var(--accent-cyan); margin-bottom:10px; font-family:var(--font-code)">1. SELECT WING</div>
+                        <div class="decor-list" id="wing-list"></div>
+                    </div>
+                    <div>
+                        <div style="color:var(--accent-cyan); margin-bottom:10px; font-family:var(--font-code)">2. SELECT FONT BASE</div>
+                        <div class="decor-fonts" id="decor-font-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-glitch" class="view-section">
+                <div class="glitch-controls">
+                    <div class="range-group">
+                        <label>UPPER CHAOS</label>
+                        <input type="range" id="g-up" min="0" max="15" value="5">
+                    </div>
+                    <div class="range-group">
+                        <label>MIDDLE CHAOS</label>
+                        <input type="range" id="g-mid" min="0" max="10" value="2">
+                    </div>
+                    <div class="range-group">
+                        <label>LOWER CHAOS</label>
+                        <input type="range" id="g-down" min="0" max="15" value="5">
+                    </div>
+                </div>
+                <div class="glitch-box" id="glitch-output"></div>
+                <button class="cipher-btn" style="margin-top:10px; background: var(--accent-red); color: #fff; border:none;" onclick="copyText(document.getElementById('glitch-output').innerText)">COPY GLITCH RESULT</button>
+            </div>
+
+            <div id="view-vault" class="view-section">
+                <div class="cipher-grid" id="cipher-container">
+                    </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        /** * GI28 ULTIMATE ENGINE
+         * Handles: Unicode Maps, Zalgo, Cipher Logic, Decor Mixer
+         */
+
+        // --- 1. DATASETS ---
+        const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        const FONTS = {
+            "Bold Serif": "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "Italic Serif": "𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍0123456789",
+            "Bold Sans": "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "Script": "𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝒦𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵0123456789",
+            "Bold Script": "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "Fraktur": "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ0123456789",
+            "Bold Fraktur": "𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "Double Struck": "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡",
+            "Monospace": "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿",
+            "Small Caps": "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            "Bubbles": "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ0①②③④⑤⑥⑦⑧⑨",
+            "Black Bubbles": "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩0123456789",
+            "Square": "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉0123456789",
+            "Wide": "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９",
+            "Slash": "a̷b̷c̷d̷e̷f̷g̷h̷i̷j̷k̷l̷m̷n̷o̷p̷q̷r̷s̷t̷u̷v̷w̷x̷y̷z̷A̷B̷C̷D̷E̷F̷G̷H̷I̷J̷K̷L̷M̷N̷O̷P̷Q̷R̷S̷T̷U̷V̷W̷X̷Y̷Z̷0̷1̷2̷3̷4̷5̷6̷7̷8̷9̷"
+        };
+
+        const WINGS = [
+            ["꧁", "꧂"], ["★", "★"], ["❛", "❜"], ["❝", "❞"], ["『", "』"], 
+            ["【", "】"], ["〖", "〗"], ["〘", "〙"], ["☾", "☽"], ["☠", "☠"],
+            ["☮", "☮"], ["✈", "✈"], ["×", "×"], ["•", "•"], ["~", "~"],
+            ["|", "|"], ["/", "/"], ["\\", "\\"], ["<", ">"], ["<<", ">>"],
+            ["✧", "✧"], ["⚡", "⚡"], ["★·.·´¯`·.·★", "★·.·´¯`·.·★"], ["  ▂ ▄ ▅ ▆ ▇ █", "█ ▇ ▆ ▅ ▄ ▂  "]
+        ];
+
+        const MORSE = { 'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.', 'G':'--.', 'H':'....', 'I':'..', 'J':'.---', 'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---', 'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...', 'T':'-', 'U':'..-', 'V':'...-', 'W':'.--', 'X':'-..-', 'Y':'-.--', 'Z':'--..', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', '0':'-----', ' ': '/' };
+        
+        const LEET = { 'a':'4', 'b':'8', 'e':'3', 'g':'6', 'i':'1', 'o':'0', 's':'5', 't':'7', 'z':'2' };
+
+        // --- 2. ENGINE LOGIC ---
+        const input = document.getElementById('input-text');
+        let selectedWingIdx = 0;
+        let selectedDecorFont = "Bold Serif";
+
+        function init() {
+            input.addEventListener('input', renderAll);
+            renderAll();
+            setupDecorMixer();
+            setupGlitchListeners();
+        }
+
+        function renderAll() {
+            const txt = input.value || "GI28";
+            renderFonts(txt);
+            updateDecorPreview(txt);
+            renderGlitch(txt);
+            renderCiphers(txt);
+        }
+
+        // --- FONTS ---
+        function transform(text, map) {
+            return text.split('').map(c => {
+                const idx = CHARS.indexOf(c);
+                if (idx > -1) {
+                    const arr = [...map]; // Handle wide chars
+                    return arr[idx] || c;
+                }
+                return c;
+            }).join('');
+        }
+
+        function renderFonts(txt) {
+            const container = document.getElementById('font-container');
+            container.innerHTML = '';
+            
+            Object.keys(FONTS).forEach(name => {
+                const res = transform(txt, FONTS[name]);
+                const card = document.createElement('div');
+                card.className = 'font-card';
+                card.onclick = () => copyText(res);
+                card.innerHTML = `
+                    <div class="font-label">${name}</div>
+                    <div class="font-text">${res}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- DECOR MIXER ---
+        function setupDecorMixer() {
+            // Populate Wings
+            const wList = document.getElementById('wing-list');
+            WINGS.forEach((w, idx) => {
+                const div = document.createElement('div');
+                div.className = `decor-item ${idx === 0 ? 'selected' : ''}`;
+                div.innerText = `${w[0]} Text ${w[1]}`;
+                div.onclick = function() {
+                    document.querySelectorAll('#wing-list .decor-item').forEach(e => e.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedWingIdx = idx;
+                    updateDecorPreview(input.value || "GI28");
+                };
+                wList.appendChild(div);
+            });
+
+            // Populate Fonts
+            const fList = document.getElementById('decor-font-list');
+            Object.keys(FONTS).forEach((name, idx) => {
+                const div = document.createElement('div');
+                div.className = `decor-item ${idx === 0 ? 'selected' : ''}`;
+                div.innerText = name;
+                div.onclick = function() {
+                    document.querySelectorAll('#decor-font-list .decor-item').forEach(e => e.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedDecorFont = name;
+                    updateDecorPreview(input.value || "GI28");
+                };
+                fList.appendChild(div);
+            });
+        }
+
+        function updateDecorPreview(txt) {
+            const fontTxt = transform(txt, FONTS[selectedDecorFont]);
+            const wing = WINGS[selectedWingIdx];
+            const res = `${wing[0]} ${fontTxt} ${wing[1]}`;
+            document.getElementById('decor-preview').innerText = res;
+        }
+
+        function copyDecor() {
+            copyText(document.getElementById('decor-preview').innerText);
+        }
+
+        // --- GLITCH ---
+        function setupGlitchListeners() {
+            ['g-up', 'g-mid', 'g-down'].forEach(id => {
+                document.getElementById(id).addEventListener('input', () => renderGlitch(input.value || "GI28"));
+            });
+        }
+
+        function renderGlitch(txt) {
+            const up = parseInt(document.getElementById('g-up').value);
+            const mid = parseInt(document.getElementById('g-mid').value);
+            const down = parseInt(document.getElementById('g-down').value);
+            
+            const Z_UP = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342'];
+            const Z_MID = ['\u0315', '\u031b', '\u0340', '\u0341', '\u0358', '\u0321', '\u0322', '\u0327', '\u0328', '\u0334', '\u0335', '\u0336', '\u034f', '\u035c'];
+            const Z_DOWN = ['\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f', '\u0320', '\u0324', '\u0325', '\u0326', '\u0329'];
+
+            let res = "";
+            for(let i=0; i<txt.length; i++) {
+                res += txt[i];
+                for(let j=0; j<up; j++) res += Z_UP[Math.floor(Math.random()*Z_UP.length)];
+                for(let j=0; j<mid; j++) res += Z_MID[Math.floor(Math.random()*Z_MID.length)];
+                for(let j=0; j<down; j++) res += Z_DOWN[Math.floor(Math.random()*Z_DOWN.length)];
+            }
+            document.getElementById('glitch-output').innerText = res;
+        }
+
+        // --- CIPHER VAULT ---
+        function renderCiphers(txt) {
+            const container = document.getElementById('cipher-container');
+            container.innerHTML = '';
+            
+            // 1. Binary
+            addCipher(container, "Binary (8-bit)", txt.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' '));
+            
+            // 2. Base64
+            try { addCipher(container, "Base64", btoa(txt)); } catch(e) { addCipher(container, "Base64", "Error: Invalid chars"); }
+            
+            // 3. Hexadecimal
+            addCipher(container, "Hexadecimal", txt.split('').map(c => "0x" + c.charCodeAt(0).toString(16).toUpperCase()).join(' '));
+            
+            // 4. ASCII Decimal
+            addCipher(container, "ASCII Decimal", txt.split('').map(c => c.charCodeAt(0)).join(' '));
+            
+            // 5. Morse Code
+            addCipher(container, "Morse Code", txt.toUpperCase().split('').map(c => MORSE[c] || c).join(' '));
+            
+            // 6. Reverse Binary
+            addCipher(container, "Reverse Binary", txt.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0').split('').reverse().join('')).join(' '));
+            
+            // 7. Octal
+            addCipher(container, "Octal", txt.split('').map(c => c.charCodeAt(0).toString(8)).join(' '));
+            
+            // 8. Unicode Escape
+            addCipher(container, "Unicode Escape", txt.split('').map(c => "\\u" + c.charCodeAt(0).toString(16).padStart(4, '0')).join(''));
+            
+            // 9. Leetspeak
+            addCipher(container, "Leetspeak", txt.toLowerCase().split('').map(c => LEET[c] || c).join(''));
+            
+            // 10. Atbash (Reverse Alphabet)
+            const atbash = txt.replace(/[a-zA-Z]/g, (c) => {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode(base + (25 - (c.charCodeAt(0) - base)));
+            });
+            addCipher(container, "Atbash Cipher", atbash);
+
+            // 11. ROT13
+            const rot13 = txt.replace(/[a-zA-Z]/g, (c) => {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode(base + (c.charCodeAt(0) - base + 13) % 26);
+            });
+            addCipher(container, "ROT13", rot13);
+
+            // 12. Caesar Cipher (+3) - Adjustable in logic but fixed display for speed
+            const caesar = txt.replace(/[a-zA-Z]/g, (c) => {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode(base + (c.charCodeAt(0) - base + 3) % 26);
+            });
+            addCipher(container, "Caesar Cipher (+3)", caesar);
+
+            // 13. GI28 Secret Map (Substitution A=7, B=3...)
+            // Just a simple random seed substitution for demo
+            addCipher(container, "GI28 Secret Map", "Enter mapping key in settings (Pro Feature)");
+
+        }
+
+        function addCipher(parent, title, value) {
+            const div = document.createElement('div');
+            div.className = 'cipher-card';
+            div.innerHTML = `
+                <div class="cipher-head"><span class="cipher-title">${title}</span></div>
+                <textarea class="cipher-out" readonly>${value}</textarea>
+                <button class="cipher-btn" onclick="copyText(this.previousElementSibling.value)">Copy Result</button>
+            `;
+            parent.appendChild(div);
+        }
+
+        // --- UTILS ---
+        window.setTab = (id, btn) => {
+            document.querySelectorAll('.view-section').forEach(e => e.classList.remove('active'));
+            document.getElementById('view-' + id).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+            btn.classList.add('active');
+        };
+
+        window.copyText = (text) => {
+            navigator.clipboard.writeText(text);
+            const t = document.getElementById('toast');
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        };
+
+        // --- BG FX ---
+        const cvs = document.getElementById('matrix-canvas');
+        const ctx = cvs.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() { width = cvs.width = window.innerWidth; height = cvs.height = window.innerHeight; }
+        
+        function animate() {
+            ctx.clearRect(0,0,width,height);
+            ctx.fillStyle = "rgba(0, 240, 255, 0.5)";
+            particles.forEach((p, i) => {
+                p.y += p.speed;
+                if(p.y > height) particles[i] = {x: Math.random()*width, y: 0, speed: Math.random()*2+1};
+                ctx.fillRect(p.x, p.y, 1, Math.random()*20);
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        for(let i=0; i<100; i++) particles.push({x: Math.random()*width, y: Math.random()*height, speed: Math.random()*2+1});
+        animate();
+
+        // Start
+        init();
+
+    </script>
+</body>
+</html>
