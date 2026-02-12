@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Universal Decoder Tool – Base64, Binary, Morse, Hex & Cipher | GI28 Omni-Decoder</title>
+
+<meta name="description" content="GI28 Omni-Decoder is a powerful universal decoder tool. Instantly decode Base64, Binary, Hexadecimal, Morse Code, ROT13, Caesar cipher, Unicode fonts and more. Free online cryptography analysis tool.">
+
+<meta name="keywords" content="universal decoder, base64 decoder, binary to text, morse code translator, hex to text converter, rot13 decoder, caesar cipher decoder, unicode normalizer, cipher decoder online, cryptography tool">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="English">
+<meta name="distribution" content="global">
+
+<link rel="canonical" href="https://gi28.in/Tools/Omni-Decoder/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Universal Decoder – Base64, Binary, Morse & Cipher Tool">
+<meta property="og:description" content="Decode Base64, Binary, Hex, Morse, ROT13 and more instantly. Free online cryptography decoder.">
+<meta property="og:url" content="https://gi28.in/Tools/Omni-Decoder/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/decoder-og.png">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Universal Decoder Tool – GI28">
+<meta name="twitter:description" content="Decode Base64, Binary, Morse, Hex and cipher text instantly.">
+<meta name="twitter:image" content="https://gi28.in/assets/decoder-og.png">
+
+<meta name="theme-color" content="#030305">
+<meta name="color-scheme" content="dark">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GI28 Omni-Decoder",
+  "url": "https://gi28.in/Tools/Omni-Decoder/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "creator": {
+    "@type": "Person",
+    "name": "Constant Abrar"
+  },
+  "description": "Universal online decoder tool for Base64, Binary, Morse Code, Hexadecimal and classical cipher analysis.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           GI28 DESIGN SYSTEM (SHARED)
+           ========================================= */
+        :root {
+            --bg-deep: #030305;
+            --bg-panel: #0f0f13;
+            --accent-green: #0aff50; /* Primary for Decoder (Matrix vibes) */
+            --accent-cyan: #00f0ff;
+            --accent-red: #ff0050;
+            
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-head: 'Outfit', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body {
+            background-color: var(--bg-deep);
+            color: #fff;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND --- */
+        #matrix-rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; pointer-events: none; }
+
+        /* --- NAV --- */
+        .glass-nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 100;
+            background: rgba(5,5,5,0.95); border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+        .container { max-width: 1200px; margin: 0 auto; width: 92%; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .brand span { color: var(--accent-green); }
+        .mode-badge { 
+            font-family: var(--font-code); font-size: 0.75rem; color: var(--accent-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.3); padding: 4px 10px; border-radius: 20px;
+        }
+
+        /* --- LAYOUT --- */
+        .app-wrapper { margin-top: 100px; padding-bottom: 80px; }
+        
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { 
+            font-family: var(--font-head); font-size: 3rem; margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { color: #888; max-width: 600px; margin: 0 auto; }
+
+        /* --- INPUT --- */
+        .decoder-input {
+            width: 100%; background: #050508; border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 20px; color: var(--accent-green); font-family: var(--font-code);
+            font-size: 1.1rem; min-height: 120px; resize: vertical; margin-bottom: 40px;
+            transition: 0.3s; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .decoder-input:focus { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(10, 255, 80, 0.15); }
+
+        /* --- GRID SYSTEM --- */
+        .results-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; 
+        }
+
+        .result-card {
+            background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: 12px;
+            overflow: hidden; display: flex; flex-direction: column; transition: 0.2s; position: relative;
+        }
+        .result-card:hover { transform: translateY(-3px); border-color: var(--accent-green); }
+
+        .card-header {
+            padding: 15px; border-bottom: 1px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.02);
+        }
+        .method-name { font-family: var(--font-head); font-weight: 700; color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #333; }
+        .result-card.success .status-dot { background: var(--accent-green); box-shadow: 0 0 10px var(--accent-green); }
+
+        .card-body {
+            padding: 20px; flex-grow: 1;
+        }
+        .output-text {
+            width: 100%; background: transparent; border: none; color: #ccc;
+            font-family: var(--font-code); font-size: 0.95rem; resize: none; height: 100%;
+            word-break: break-all;
+        }
+
+        .card-footer {
+            padding: 10px 20px; border-top: 1px solid var(--glass-border); text-align: right;
+        }
+        .copy-btn {
+            background: transparent; border: 1px solid var(--glass-border); color: #888;
+            padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: 0.2s;
+        }
+        .copy-btn:hover { border-color: var(--accent-green); color: var(--accent-green); }
+
+        /* --- TOAST --- */
+        .toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: #fff; color: #000; padding: 10px 25px; border-radius: 50px; font-weight: 700;
+            opacity: 0; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 999;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix-rain"></canvas>
+    <div class="toast" id="toast">Decoded Text Copied!</div>
+
+    <nav class="glass-nav">
+        <div class="container nav-flex">
+            <div class="brand">GI<span>28</span> Decoder</div>
+      <a href="https://gi28.in/Tools/Encoder">
+    <div class="mode-badge">Encode</div>
+</a>  </div>
+    </nav>
+
+    <main class="app-wrapper container">
+        
+        <div class="hero">
+        <h1>Universal Decoder Tool</h1>
+<p>Base64, Binary, Morse Code, Hex & Cipher Decoder</p>
+<p>
+This universal decoder automatically attempts to decode Base64 strings,
+binary sequences, hexadecimal values, Morse code, ROT13, Caesar cipher,
+Unicode styled fonts and other common cryptographic formats.
+</p>
+</div>
+        <textarea id="cipher-input" class="decoder-input" placeholder="PASTE ENCODED TEXT HERE... (e.g., 01001000, ... --- ..., 𝐇𝐞𝐥𝐥𝐨)" spellcheck="false"></textarea>
+
+        <div class="results-grid" id="grid">
+            </div>
+
+    </main>
+
+    <script>
+       const REVERSE_MAP = {};
+        const ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        // We define the styled maps again to reverse them
+        const FONTS = [
+            "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍0123456789",
+            "𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜𝐵𝒞𝒟𝐸𝐹𝒢𝐻𝐼𝒥𝒦𝐿𝑀𝒩𝒪𝒫𝒬𝑅𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵0123456789",
+            "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ0123456789",
+            "𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗",
+            "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡",
+            "𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿",
+            "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+            "ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ0①②③④⑤⑥⑦⑧⑨",
+            "🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩0123456789",
+            "🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉0123456789",
+            "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９"
+        ];
+
+        // Build the lookup table
+        FONTS.forEach(fontStr => {
+            const fontArr = [...fontStr]; // Spread to handle surrogate pairs
+            fontArr.forEach((char, index) => {
+                if (index < ALPHABET.length) {
+                    REVERSE_MAP[char] = ALPHABET[index];
+                }
+            });
+        });
+
+        // --- 2. DECODING FUNCTIONS ---
+
+        const DECODERS = [
+            {
+                name: "Unicode / Font Normalizer",
+                fn: (txt) => {
+                    return [...txt].map(c => REVERSE_MAP[c] || c).join('');
+                }
+            },
+            {
+                name: "Zalgo / Glitch Cleaner",
+                fn: (txt) => {
+                    // Removes combining diacritical marks (Unicode range 0300-036F)
+                    return txt.replace(/[\u0300-\u036f]/g, "");
+                }
+            },
+            {
+                name: "Base64",
+                fn: (txt) => {
+                    try { return atob(txt); } catch(e) { return "Invalid Base64"; }
+                }
+            },
+            {
+                name: "Hexadecimal",
+                fn: (txt) => {
+                    const hex = txt.replace(/\s|0x/g, '');
+                    if (!/^[0-9A-Fa-f]+$/.test(hex)) return "Invalid Hex";
+                    let str = '';
+                    for (let i = 0; i < hex.length; i += 2) {
+                        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+                    }
+                    return str;
+                }
+            },
+            {
+                name: "Binary",
+                fn: (txt) => {
+                    const bin = txt.replace(/\s/g, '');
+                    if (!/^[01]+$/.test(bin)) return "Invalid Binary";
+                    let str = '';
+                    for (let i = 0; i < bin.length; i += 8) {
+                        str += String.fromCharCode(parseInt(bin.substr(i, 8), 2));
+                    }
+                    return str;
+                }
+            },
+            {
+                name: "Morse Code",
+                fn: (txt) => {
+                    const MORSE_REV = { '.-':'A', '-...':'B', '-.-.':'C', '-..':'D', '.':'E', '..-.':'F', '--.':'G', '....':'H', '..':'I', '.---':'J', '-.-':'K', '.-..':'L', '--':'M', '-.':'N', '---':'O', '.--.':'P', '--.-':'Q', '.-.':'R', '...':'S', '-':'T', '..-':'U', '...-':'V', '.--':'W', '-..-':'X', '-.--':'Y', '--..':'Z', '.----':'1', '..---':'2', '...--':'3', '....-':'4', '.....':'5', '-....':'6', '--...':'7', '---..':'8', '----.':'9', '-----':'0', '/':' ' };
+                    return txt.split(' ').map(c => MORSE_REV[c] || '?').join('');
+                }
+            },
+            {
+                name: "URL Decode / Unicode Escape",
+                fn: (txt) => {
+                    try { 
+                        // First try JSON parse for \uXXXX
+                        if (txt.includes("\\u")) return JSON.parse(`"${txt}"`);
+                        // Then decode URI
+                        return decodeURIComponent(txt); 
+                    } catch(e) { return "Invalid Encoding"; }
+                }
+            },
+            {
+                name: "Reverse",
+                fn: (txt) => txt.split('').reverse().join('')
+            },
+            {
+                name: "Atbash (Reverse Alphabet)",
+                fn: (txt) => {
+                    return txt.replace(/[a-zA-Z]/g, (c) => {
+                        const base = c <= 'Z' ? 65 : 97;
+                        return String.fromCharCode(base + (25 - (c.charCodeAt(0) - base)));
+                    });
+                }
+            },
+            {
+                name: "ROT13",
+                fn: (txt) => {
+                    return txt.replace(/[a-zA-Z]/g, (c) => {
+                        const base = c <= 'Z' ? 65 : 97;
+                        return String.fromCharCode(base + (c.charCodeAt(0) - base + 13) % 26);
+                    });
+                }
+            },
+            {
+                name: "Caesar (-3 Shift)",
+                fn: (txt) => {
+                    return txt.replace(/[a-zA-Z]/g, (c) => {
+                        const base = c <= 'Z' ? 65 : 97;
+                        let code = c.charCodeAt(0) - base - 3;
+                        if (code < 0) code += 26;
+                        return String.fromCharCode(base + code);
+                    });
+                }
+            },
+            {
+                name: "Octal",
+                fn: (txt) => {
+                    const oct = txt.split(' ');
+                    let str = '';
+                    try {
+                        oct.forEach(o => str += String.fromCharCode(parseInt(o, 8)));
+                    } catch(e) { return "Invalid Octal"; }
+                    return str;
+                }
+            }
+        ];
+
+        // --- 3. UI CONTROLLER ---
+
+        const input = document.getElementById('cipher-input');
+        const grid = document.getElementById('grid');
+
+        // Initial Grid Setup
+        DECODERS.forEach((d, i) => {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            card.id = `card-${i}`;
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="method-name">${d.name}</span>
+                    <div class="status-dot"></div>
+                </div>
+                <div class="card-body">
+                    <textarea class="output-text" readonly id="out-${i}"></textarea>
+                </div>
+                <div class="card-footer">
+                    <button class="copy-btn" onclick="copyText(document.getElementById('out-${i}').value)">Copy</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Event Listener
+        input.addEventListener('input', runAnalysis);
+
+        function runAnalysis() {
+            const txt = input.value;
+            if(!txt) return;
+
+            DECODERS.forEach((d, i) => {
+                const outputEl = document.getElementById(`out-${i}`);
+                const cardEl = document.getElementById(`card-${i}`);
+                
+                let res = "";
+                try {
+                    res = d.fn(txt);
+                } catch(e) {
+                    res = "Error";
+                }
+
+                outputEl.value = res;
+
+                // Basic "Success" Detection (Does it look like English/Readable text?)
+                // This is heuristic and basic
+                const isError = res.includes("Invalid") || res.includes("Error") || res.length === 0;
+                // Check if result has letters and isn't just same as input (unless normalized)
+                const seemsValid = !isError && /[a-zA-Z]/.test(res);
+                
+                if (seemsValid) {
+                    cardEl.classList.add('success');
+                } else {
+                    cardEl.classList.remove('success');
+                }
+            });
+        }
+
+        // Copy Utility
+        window.copyText = (text) => {
+            if(!text) return;
+            navigator.clipboard.writeText(text);
+            const t = document.getElementById('toast');
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        };
+
+        // --- BACKGROUND MATRIX ---
+        const cvs = document.getElementById('matrix-rain');
+        const ctx = cvs.getContext('2d');
+        let width, height;
+        const chars = "01"; 
+        let columns;
+        let drops = [];
+
+        function resize() {
+            width = cvs.width = window.innerWidth;
+            height = cvs.height = window.innerHeight;
+            columns = Math.floor(width / 20);
+            drops = Array(columns).fill(1);
+        }
+
+        function draw() {
+            ctx.fillStyle = "rgba(3, 3, 5, 0.1)"; // Fade effect
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = "#0aff50"; // Matrix Green
+            ctx.font = "15px monospace";
+
+            for(let i=0; i<drops.length; i++) {
+                const text = chars[Math.floor(Math.random()*chars.length)];
+                ctx.fillText(text, i*20, drops[i]*20);
+                
+                if(drops[i]*20 > height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        setInterval(draw, 50);
+
+    </script>
+</body>
+</html>
