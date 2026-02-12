@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GI28 Unicode Engine – Fancy Text & Unicode Font Generator (Copy & Paste)</title>
+
+<meta name="description" content="GI28 Unicode Engine is a powerful fancy text and Unicode font generator. Convert normal text into stylish fonts for Instagram, WhatsApp, Facebook, gaming names and more. 100+ copy-paste styles.">
+
+<meta name="keywords" content="unicode font generator, fancy text generator, stylish text copy paste, instagram font changer, cool fonts online, text converter unicode, gaming name generator, copy paste fonts tool">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="English">
+<meta name="distribution" content="global">
+
+<link rel="canonical" href="https://gi28.in/Tools/Unicode-Engine/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="GI28 Unicode Engine – Fancy Text Generator">
+<meta property="og:description" content="Generate stylish Unicode fonts instantly. Copy & paste fancy text for Instagram bios, gaming names, WhatsApp and more.">
+<meta property="og:url" content="https://gi28.in/Tools/Unicode-Engine/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/unicode-og.png">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unicode Font Generator – GI28">
+<meta name="twitter:description" content="Create stylish text with 100+ Unicode font styles. Copy and paste anywhere.">
+<meta name="twitter:image" content="https://gi28.in/assets/unicode-og.png">
+
+<meta name="theme-color" content="#050507">
+<meta name="color-scheme" content="dark">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GI28 Unicode Engine",
+  "url": "https://gi28.in/Tools/Unicode-Engine/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "creator": {
+    "@type": "Person",
+    "name": "Constant Abrar"
+  },
+  "description": "Online Unicode font generator and fancy text converter tool with copy-paste functionality.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --c-cyan: #00f2ea;
+            --c-magenta: #ff0050;
+            --c-purple: #a000ff;
+            --c-dark: #050507;
+            --c-panel: rgba(10, 10, 12, 0.75); /* Darker panel for contrast */
+            --c-glass: rgba(255, 255, 255, 0.03);
+            --c-border: rgba(255, 255, 255, 0.15); /* Sharper border */
+            --font-main: 'Outfit', sans-serif;
+            --font-tech: 'Rajdhani', sans-serif;
+            --nav-height: 80px;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        
+        body {
+            background-color: var(--c-dark);
+            color: white;
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--c-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--c-purple); border-radius: 3px; }
+
+        /* --- 3D Canvas --- */
+        #canvas-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; opacity: 0.5;
+        }
+/* --- Footer --- */
+.pro-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--c-border);
+    background: rgba(5, 5, 7, 0.9);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+    color: #666;
+    position: relative;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    letter-spacing: 2px;
+}
+.pro-footer a { color: #888; text-decoration: none; margin: 0 10px; transition: 0.3s; }
+.pro-footer a:hover { color: var(--c-cyan); }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            z-index: 9999; pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--c-cyan); }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 1px solid var(--c-magenta);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* =========================================
+           LIQUID GLASS NAVIGATION
+           ========================================= */
+        .glass-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: 1.5rem; color: white; text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--c-cyan); }
+        .nav-trigger {
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-border);
+            cursor: pointer; transition: all 0.3s var(--ease-out);
+        }
+        .nav-trigger:hover {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2); transform: scale(1.05);
+        }
+        .burger-icon { font-size: 1.2rem; color: white; }
+
+        /* Full Screen Menu */
+        .menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 7, 0.95); backdrop-filter: blur(20px);
+            z-index: 999; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .menu-links { list-style: none; text-align: center; }
+        .menu-links li { margin: 20px 0; overflow: hidden; }
+        .menu-links a {
+            font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+            color: #888; text-decoration: none; display: block;
+            transform: translateY(100%); transition: transform 0.5s ease, color 0.3s;
+        }
+        .menu-overlay.active .menu-links a { transform: translateY(0); }
+        .menu-links a:hover { color: var(--c-cyan); letter-spacing: 2px; }
+
+        /* --- Layout --- */
+        .main-container {
+            max-width: 1400px; margin: 0 auto;
+            padding: calc(var(--nav-height) + 4rem) 2rem 4rem 2rem;
+            display: flex; flex-direction: column; gap: 4rem; /* Reduced gap since panels are gone */
+            min-height: 100vh; position: relative; z-index: 2;
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal-text {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s var(--ease-out);
+        }
+        .reveal-text.visible { opacity: 1; transform: translateY(0); }
+        .d-100 { transition-delay: 0.1s; }
+
+        .tech-head { 
+            font-family: var(--font-tech); text-transform: uppercase; 
+            letter-spacing: 2px; color: var(--c-purple); 
+            margin-bottom: 1rem; display: block; font-size: 1rem;
+        }
+
+        /* --- Reusable Glass Panel Class --- */
+        .glass-panel {
+            background: var(--c-panel); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--c-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative; 
+            /* Added specific padding for output cards */
+            padding: 1.5rem; 
+            border-radius: 16px;
+        }
+        
+        /* Screws - The Signature Look */
+        .screw {
+            position: absolute; width: 8px; height: 8px; border-radius: 50%;
+            background: #111; border: 1px solid #555; display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+        }
+        .screw::after { content: '+'; font-size: 8px; color: #666; }
+        .screw.tl { top: 10px; left: 10px; } .screw.tr { top: 10px; right: 10px; }
+        .screw.bl { bottom: 10px; left: 10px; } .screw.br { bottom: 10px; right: 10px; }
+
+        /* =========================================
+           TOOL INPUT SECTION (FLOATING)
+           ========================================= */
+        .input-section {
+            margin-bottom: 1rem;
+        }
+
+        /* --- COMPOSITE INPUT BAR --- */
+        /* Now stronger background since it sits on canvas */
+        .input-composite {
+            display: flex; align-items: center;
+            background: rgba(0, 0, 0, 0.7); /* Darker */
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--c-border);
+            border-radius: 16px; margin-bottom: 2rem; overflow: hidden;
+            transition: all 0.3s ease; position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .input-composite:focus-within {
+            border-color: var(--c-cyan);
+            box-shadow: 0 0 25px rgba(0, 242, 234, 0.2);
+        }
+        
+        .generator-input {
+            flex: 1; background: transparent; border: none;
+            padding: 1.5rem; font-size: 1.8rem; color: var(--c-cyan);
+            font-family: var(--font-main); min-width: 0; font-weight: 700;
+        }
+        .generator-input:focus { outline: none; }
+        .generator-input::placeholder { color: rgba(255,255,255,0.2); font-weight: 300; }
+
+        .input-divider {
+            width: 1px; height: 40px; background: rgba(255,255,255,0.15);
+        }
+
+        .search-group {
+            display: flex; align-items: center; padding: 0 1.5rem;
+            gap: 12px; width: 240px; background: rgba(255,255,255,0.02); height: 100%;
+        }
+        .search-icon { color: var(--c-magenta); font-size: 1.2rem; }
+        .search-filter-input {
+            width: 100%; background: transparent; border: none;
+            color: white; font-family: var(--font-tech); font-size: 1.1rem;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .search-filter-input:focus { outline: none; }
+
+        /* --- HORIZONTAL SCROLL CATEGORIES --- */
+        .category-scroll-container {
+            margin-bottom: 3rem; position: relative;
+        }
+        /* Fade effect on the right */
+        .category-scroll-container::after {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 100px; height: 100%; pointer-events: none;
+            background: linear-gradient(90deg, transparent, var(--c-dark));
+        }
+
+        .category-scroll {
+            display: flex; gap: 15px; overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+        .category-scroll::-webkit-scrollbar { display: none; }
+
+        .filter-btn {
+            background: rgba(10, 10, 12, 0.8); /* Darker for standalone visibility */
+            border: 1px solid var(--c-border);
+            color: #aaa; padding: 0.8rem 1.8rem; border-radius: 40px;
+            font-family: var(--font-tech); text-transform: uppercase; 
+            letter-spacing: 2px; font-size: 0.9rem; white-space: nowrap;
+            flex-shrink: 0; transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .filter-btn:hover {
+            border-color: var(--c-cyan); color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,242,234,0.15);
+        }
+        .filter-btn.active {
+            border-color: var(--c-cyan); color: #000;
+            background: var(--c-cyan); font-weight: 700;
+            box-shadow: 0 0 20px rgba(0,242,234,0.4);
+        }
+
+        /* =========================================
+           RESULTS GRID (INDIVIDUAL BOXES)
+           ========================================= */
+        .results-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem; min-height: 200px;
+        }
+
+        /* STYLE CARD is now the GLASS PANEL
+           We add animation here since they are dynamically added
+        */
+        .style-card {
+            /* Inherits .glass-panel styles */
+            display: flex; flex-direction: column; gap: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: card-up 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0; transform: translateY(20px);
+        }
+        
+        @keyframes card-up {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .style-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--c-cyan);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+
+        .card-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;
+            margin-top: 5px; /* Space for top screws */
+        }
+        .style-name {
+            font-family: var(--font-tech); font-size: 0.8rem; color: var(--c-purple); 
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .fav-btn { color: #444; font-size: 1rem; transition: 0.2s; padding: 5px; cursor: pointer; }
+        .fav-btn:hover { color: var(--c-magenta); transform: scale(1.2); }
+        .fav-btn.active { color: var(--c-magenta); text-shadow: 0 0 10px var(--c-magenta); }
+
+        .preview-text {
+            font-size: 1.3rem; color: #fff; word-break: break-all;
+            min-height: 1.5em; line-height: 1.4; font-weight: 400;
+            text-align: center; padding: 10px 0;
+        }
+
+        .copy-overlay { margin-top: auto; margin-bottom: 5px; /* Space for bottom screws */ }
+        .copy-btn {
+            background: rgba(255,255,255,0.03); color: #ccc;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.8rem; border-radius: 8px;
+            font-family: var(--font-tech); font-weight: 700; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+            cursor: pointer;
+        }
+        .style-card:hover .copy-btn {
+            background: rgba(0, 242, 234, 0.1); border-color: var(--c-cyan); color: var(--c-cyan);
+        }
+        .copy-btn.copied { background: var(--c-magenta) !important; color: white !important; border-color: var(--c-magenta); }
+
+        /* Loader */
+        .loader-sentinel { height: 80px; width: 100%; display: flex; justify-content: center; align-items: center; }
+        .loader-dots { color: #555; font-family: var(--font-tech); letter-spacing: 3px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
+
+        @media (max-width: 768px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .input-composite { flex-direction: column; align-items: stretch; height: auto; }
+            .input-divider { width: 100%; height: 1px; }
+            .search-group { width: 100%; padding: 15px 1.5rem; }
+            .generator-input { font-size: 1.4rem; padding: 1rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="glass-nav">
+        <a href="#" class="nav-logo">GI<span>28</span></a>
+        <div class="nav-trigger" id="menuToggle">
+            <i class="fa-solid fa-bars burger-icon"></i>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="https://gi28.in/">Home</a></li>
+            <li><a href="https://gi28.in/Tools/">More Tools</a></li>
+            <li><a href="https://gi28.in/About/">About</a></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+
+        <section class="hero-section reveal-text">
+            <div class="brand-block">
+                <h1>GI28 UNICODE ENGINE</h1>
+            </div>
+            <div class="tech-desc">
+                Advanced text transformation system. <br>
+Enjoy your page for what some users demanded, I'll notify if I update this and users need update.<br>
+                ⚠ I know some text are not properly visible here, Copy from here abd try pasting in other platform there you'll see perfectly</div>
+        </section>
+
+        <div class="input-section reveal-text d-100">
+            <div class="input-composite" data-tilt>
+                <input type="text" id="masterInput" class="generator-input" placeholder="ABRAR" autocomplete="off">
+                <div class="input-divider"></div>
+                <div class="search-group">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="styleSearch" class="search-filter-input" placeholder="FILTER STYLES">
+                </div>
+            </div>
+
+            <div class="category-scroll-container">
+                <div class="category-scroll">
+                    <button class="filter-btn active" data-cat="all">All Styles</button>
+                    <button class="filter-btn" data-cat="serif">Serif</button>
+                    <button class="filter-btn" data-cat="sans">Sans</button>
+                    <button class="filter-btn" data-cat="script">Script</button>
+                    <button class="filter-btn" data-cat="mono">Mono</button>
+                    <button class="filter-btn" data-cat="decorative">Decor</button>
+                    <button class="filter-btn" data-cat="special">Special</button>
+                    <button class="filter-btn" data-cat="fav">Favorites ★</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsGrid" class="results-grid">
+            </div>
+
+        <div class="loader-sentinel" id="loaderSentinel">
+            <span class="loader-dots">/// SYSTEM LOADING ///</span>
+        </div>
+
+        </div>
+
+    <footer class="pro-footer">
+        <p>GI28 SYSTEM &copy; 2026. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        /* [PRESERVED ORIGINAL LOGIC FOR NAV, CURSOR, THREEJS] */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const burgerIcon = document.querySelector('.burger-icon');
+        let isMenuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                menuOverlay.classList.add('active');
+                burgerIcon.classList.remove('fa-bars');
+                burgerIcon.classList.add('fa-xmark');
+            } else {
+                menuOverlay.classList.remove('active');
+                burgerIcon.classList.remove('fa-xmark');
+                burgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
+            });
+            document.querySelectorAll('a, button, .nav-trigger, input').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                    cursorOutline.style.backgroundColor = "rgba(0, 242, 234, 0.1)";
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                    cursorOutline.style.backgroundColor = "transparent";
+                });
+            });
+        }
+
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
+
+        const canvas = document.querySelector('#canvas-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvas.appendChild(renderer.domElement);
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 350;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i = 0; i < particlesCount * 3; i++) { posArray[i] = (Math.random() - 0.5) * 15; }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f2ea, transparent: true, opacity: 0.8 });
+        const particlesMesh = new THREE.Points(particlesGeometry, material);
+        scene.add(particlesMesh);
+        const geo2 = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const mat2 = new THREE.MeshBasicMaterial({ color: 0xff0050, wireframe: true, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(geo2, mat2);
+        scene.add(ring);
+        camera.position.z = 5;
+        let mouseX = 0; let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+        const clock = new THREE.Clock();
+        const animate = () => {
+            const elapsedTime = clock.getElapsedTime();
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.5;
+            particlesMesh.rotation.y += mouseX * 0.5;
+            ring.rotation.x = elapsedTime * 0.1;
+            ring.rotation.y = elapsedTime * 0.1;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        };
+        animate();
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+    <script>
+        (function() {
+            /** * ENGINE CONFIGURATION */
+             
+            // --- CONSTANTS ---
+            const DEFAULT_TEXT = "ABRAR";
+            
+            // --- ENGINE 1: OFFSET CALCULATOR ---
+            const offsetEngine = (text, type) => {
+                let result = '';
+                for (let char of text) {
+                    let code = char.codePointAt(0);
+                    let transformed = char;
+                    if (code >= 65 && code <= 90) { // A-Z
+                         if(type.upper) transformed = String.fromCodePoint(type.upper + (code - 65));
+                    } else if (code >= 97 && code <= 122) { // a-z
+                         if(type.lower) transformed = String.fromCodePoint(type.lower + (code - 97));
+                    } else if (code >= 48 && code <= 57) { // 0-9
+                         if(type.digit) transformed = String.fromCodePoint(type.digit + (code - 48));
+                    }
+                    result += transformed;
+                }
+                return result;
+            };
+
+            // --- ENGINE 2: MANUAL MAPPING ---
+            const mappingEngine = (text, map, reverse = false) => {
+                let res = text.split('').map(c => map[c] || c);
+                if(reverse) res.reverse();
+                return res.join('');
+            };
+
+            // --- ENGINE 3: COMBINING MARKS ---
+            const combiningEngine = (text, mark) => {
+                return text.split('').map(c => c + mark).join('');
+            };
+
+            // --- ENGINE 4: DECORATIVE WRAPPER ---
+            const wrapperEngine = (text, pre, suf, space = false) => {
+                if(space) text = text.split('').join(' ');
+                return pre + text + suf;
+            };
+
+            // --- DATASETS ---
+            const MAP_SMALL_CAPS = {}; 
+            [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].forEach((c,i) => MAP_SMALL_CAPS[c] = c);
+            [..."abcdefghijklmnopqrstuvwxyz"].forEach((c,i) => MAP_SMALL_CAPS[c] = "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"[i]);
+
+            const MAP_UPSIDE = {};
+            const normal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            const upside = "zʎxʍʌnʇsɹbdoouɯlʞɾıɥƃɟǝpɔqɐZ⅄XMΛ∩⊥SᴚQԀOOᴎW˥➦ſIH⅁ℲƎPƆq∀68ㄥ9ϛㄣƐᄅƖ0";
+            for(let i=0; i<normal.length; i++) MAP_UPSIDE[normal[i]] = upside[i];
+
+            // --- STYLE DEFINITIONS ---
+            const STYLES = [
+                { id: 'bold_serif', name: 'Serif Bold', cat: 'serif', engine: 'offset', upper: 0x1D400, lower: 0x1D41A, digit: 0x1D7CE },
+                { id: 'italic_serif', name: 'Serif Italic', cat: 'serif', engine: 'offset', upper: 0x1D434, lower: 0x1D44E },
+                { id: 'bi_serif', name: 'Serif Bold Italic', cat: 'serif', engine: 'offset', upper: 0x1D468, lower: 0x1D482 },
+                
+                { id: 'sans', name: 'Sans Normal', cat: 'sans', engine: 'offset', upper: 0x1D5A0, lower: 0x1D5BA, digit: 0x1D7E2 },
+                { id: 'sans_b', name: 'Sans Bold', cat: 'sans', engine: 'offset', upper: 0x1D5D4, lower: 0x1D5EE, digit: 0x1D7EC },
+                { id: 'sans_i', name: 'Sans Italic', cat: 'sans', engine: 'offset', upper: 0x1D608, lower: 0x1D622 },
+                { id: 'sans_bi', name: 'Sans Bold Italic', cat: 'sans', engine: 'offset', upper: 0x1D63C, lower: 0x1D656 },
+
+                { id: 'script', name: 'Script Normal', cat: 'script', engine: 'offset', upper: 0x1D49C, lower: 0x1D4B6 },
+                { id: 'script_b', name: 'Script Bold', cat: 'script', engine: 'offset', upper: 0x1D4D0, lower: 0x1D4EA },
+                
+                { id: 'fraktur', name: 'Fraktur', cat: 'special', engine: 'offset', upper: 0x1D504, lower: 0x1D51E },
+                { id: 'fraktur_b', name: 'Fraktur Bold', cat: 'special', engine: 'offset', upper: 0x1D56C, lower: 0x1D586 },
+
+                { id: 'mono', name: 'Monospace', cat: 'mono', engine: 'offset', upper: 0x1D670, lower: 0x1D68A, digit: 0x1D7F6 },
+                { id: 'double', name: 'Double Struck', cat: 'special', engine: 'offset', upper: 0x1F130, lower: 0x1D552, digit: 0x1D7D8 },
+
+                { id: 'circle_w', name: 'Circled', cat: 'decorative', engine: 'offset', upper: 0x24B6, lower: 0x24D0, digit: 0x2460 },
+                { id: 'parent_x', name: 'Parenthesized', cat: 'decorative', engine: 'offset', upper: 0x1F110, lower: 0x249C, digit: 0x2474 },
+                { id: 'squared', name: 'Squared', cat: 'decorative', engine: 'offset', upper: 0x1F130, lower: 0x1F130, digit: 0x2080 },
+
+                { id: 'smallcaps', name: 'Small Caps', cat: 'special', engine: 'map', map: MAP_SMALL_CAPS },
+                { id: 'upside', name: 'Upside Down', cat: 'special', engine: 'map', map: MAP_UPSIDE, reverse: true },
+
+                { id: 'strike', name: 'Strikethrough', cat: 'special', engine: 'combine', mark: '\u0336' },
+                { id: 'under', name: 'Underline', cat: 'special', engine: 'combine', mark: '\u0332' },
+                { id: 'slash', name: 'Slash', cat: 'special', engine: 'combine', mark: '\u0338' },
+                { id: 'tilde', name: 'Tilde Strike', cat: 'special', engine: 'combine', mark: '\u0334' },
+                { id: 'bridge', name: 'Bridge Above', cat: 'special', engine: 'combine', mark: '\u0346' },
+                { id: 'seagull', name: 'Seagull Below', cat: 'special', engine: 'combine', mark: '\u033C' },
+            ];
+
+            // EXTENDED DECORATIONS
+            const decorations = [
+                ['[', ']'], ['{', '}'], ['(', ')'], ['<<', '>>'], ['★', '★'], ['☠', '☠'], 
+                ['☾', '☽'], ['//', '//'], ['╔', '╗'], ['░', '░'], ['█', '█'], ['►', '◄'], ['⚡', '⚡'],
+                ['✿', '✿'], ['⚔', '⚔'], ['⚓', '⚓'], ['✈', '✈'], ['✉', '✉'],
+                ['꧁', '꧂'], ['ʕ•', '•ʔ'], ['(͡°', '͡°)'], ['¯\\_', '_/¯'],
+                ['─=≡', '≡=─'], ['<<<', '>>>'], ['•', '•'], ['|', '|'],
+                ['⫷', '⫸'], ['╭', '╮'], ['【', '】'], ['『', '』'], ['❝', '❞'],
+                ['☢', '☢'], ['☮', '☮'], ['✪', '✪'], ['❄', '❄'], ['❦', '❦'],
+                ['➔', '➔'], ['★', '★'], ['✧', '✧'], ['✩', '✩'], ['✫', '✫']
+            ];
+
+            decorations.forEach((d, i) => {
+                STYLES.push({ 
+                    id: `deco_${i}`, name: `Decor ${i+1}`, cat: 'decorative', 
+                    engine: 'wrapper', pre: d[0] + ' ', suf: ' ' + d[1] 
+                });
+                STYLES.push({ 
+                    id: `deco_s_${i}`, name: `Spaced ${i+1}`, cat: 'decorative', 
+                    engine: 'wrapper', pre: d[0] + ' ', suf: ' ' + d[1], space: true 
+                });
+                STYLES.push({
+                   id: `hybrid_${i}`, name: `Tech Box ${i+1}`, cat: 'decorative',
+                   engine: 'hybrid', pre: d[0], suf: d[1], baseStyle: 'mono' 
+                });
+            });
+
+            // --- STATE MANAGEMENT ---
+            let state = {
+                input: '',
+                category: 'all',
+                search: '',
+                renderedCount: 0,
+                favorites: JSON.parse(localStorage.getItem('gi28_favs') || '[]'),
+                generatedCache: []
+            };
+
+            // --- DOM ELEMENTS ---
+            const inputEl = document.getElementById('masterInput');
+            const searchEl = document.getElementById('styleSearch');
+            const gridEl = document.getElementById('resultsGrid');
+            const filters = document.querySelectorAll('.filter-btn');
+            const sentinel = document.getElementById('loaderSentinel');
+
+            // --- TRANSFORM LOGIC ---
+            function transformText(text, style) {
+                const txtToUse = text ? text : DEFAULT_TEXT;
+                
+                if (style.engine === 'offset') {
+                    return offsetEngine(txtToUse, style);
+                } else if (style.engine === 'map') {
+                    return mappingEngine(txtToUse, style.map, style.reverse);
+                } else if (style.engine === 'combine') {
+                    return combiningEngine(txtToUse, style.mark);
+                } else if (style.engine === 'wrapper') {
+                    return wrapperEngine(txtToUse, style.pre, style.suf, style.space);
+                } else if (style.engine === 'hybrid') {
+                    const base = STYLES.find(s => s.id === style.baseStyle);
+                    const intermediate = offsetEngine(txtToUse, base);
+                    return wrapperEngine(intermediate, style.pre + ' ', ' ' + style.suf);
+                }
+                return txtToUse;
+            }
+
+            // --- RENDERING ---
+            function createCard(style, transformedText) {
+                const isFav = state.favorites.includes(style.id);
+                const div = document.createElement('div');
+                
+                // CRITICAL: ADDING THE "GLASS-PANEL" CLASS TO EACH OUTPUT
+                div.className = 'glass-panel style-card';
+                
+                div.innerHTML = `
+                    <div class="screw tl"></div><div class="screw tr"></div>
+                    <div class="screw bl"></div><div class="screw br"></div>
+
+                    <div class="card-header">
+                        <span class="style-name">${style.name}</span>
+                        <i class="fa-${isFav ? 'solid' : 'regular'} fa-star fav-btn ${isFav ? 'active' : ''}" data-id="${style.id}"></i>
+                    </div>
+                    <div class="preview-text">${transformedText}</div>
+                    <div class="copy-overlay">
+                        <button class="copy-btn" data-text="${transformedText.replace(/"/g, '&quot;')}">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                `;
+                return div;
+            }
+
+            function render() {
+                gridEl.innerHTML = '';
+                
+                let filtered = STYLES.filter(s => {
+                    if (state.category === 'fav') return state.favorites.includes(s.id);
+                    if (state.category !== 'all' && s.cat !== state.category) return false;
+                    if (state.search) return s.name.toLowerCase().includes(state.search.toLowerCase());
+                    return true;
+                });
+
+                if (state.category === 'all') {
+                    filtered.sort((a, b) => {
+                        const favA = state.favorites.includes(a.id);
+                        const favB = state.favorites.includes(b.id);
+                        return (favA === favB) ? 0 : favA ? -1 : 1;
+                    });
+                }
+
+                state.generatedCache = filtered;
+                state.renderedCount = 0;
+                loadMore();
+            }
+
+            function loadMore() {
+                const toRender = state.generatedCache.slice(state.renderedCount, state.renderedCount + 30);
+                
+                const fragment = document.createDocumentFragment();
+                toRender.forEach(style => {
+                    const txt = transformText(state.input, style);
+                    fragment.appendChild(createCard(style, txt));
+                });
+                gridEl.appendChild(fragment);
+                
+                state.renderedCount += 30;
+
+                if (state.renderedCount >= state.generatedCache.length) {
+                    sentinel.style.display = 'none';
+                } else {
+                    sentinel.style.display = 'flex';
+                }
+            }
+
+            // --- EVENT HANDLERS ---
+            function debounce(func, wait) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
+                };
+            }
+
+            inputEl.addEventListener('input', debounce((e) => {
+                state.input = e.target.value;
+                render();
+            }, 150));
+
+            searchEl.addEventListener('input', debounce((e) => {
+                state.search = e.target.value;
+                render();
+            }, 150));
+
+            filters.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filters.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    state.category = btn.dataset.cat;
+                    render();
+                });
+            });
+
+            gridEl.addEventListener('click', (e) => {
+                const copyBtn = e.target.closest('.copy-btn');
+                if (copyBtn) {
+                    const text = copyBtn.dataset.text;
+                    navigator.clipboard.writeText(text).then(() => {
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.classList.add('copied');
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = originalHTML;
+                        }, 1500);
+                    });
+                    return;
+                }
+
+                const favBtn = e.target.closest('.fav-btn');
+                if (favBtn) {
+                    const id = favBtn.dataset.id;
+                    if (state.favorites.includes(id)) {
+                        state.favorites = state.favorites.filter(fid => fid !== id);
+                        favBtn.classList.remove('active', 'fa-solid');
+                        favBtn.classList.add('fa-regular');
+                    } else {
+                        state.favorites.push(id);
+                        favBtn.classList.add('active', 'fa-solid');
+                        favBtn.classList.remove('fa-regular');
+                    }
+                    localStorage.setItem('gi28_favs', JSON.stringify(state.favorites));
+                    if (state.category === 'fav') render();
+                }
+            });
+
+            const scrollObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMore();
+                }
+            }, { root: null, rootMargin: '100px', threshold: 0.1 });
+            
+            scrollObserver.observe(sentinel);
+
+            // Init
+            render();
+
+        })();
+    </script>
+</body>
+</html>
