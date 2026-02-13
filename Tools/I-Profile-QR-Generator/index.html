@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insta Profile QR Generator – High Resolution Instagram QR Code Tool | GI28</title>
+
+<meta name="description" content="Insta Profile QR Generator by GI28 lets you create high-resolution Instagram QR codes with custom colors, gradients and shapes. Download PNG up to 2000px instantly.">
+
+<meta name="keywords" content="insta profile qr generator, instagram qr code generator, custom instagram qr code, qr code png download, high resolution qr code maker, instagram username qr">
+
+<meta name="author" content="Constant Abrar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="English">
+
+<link rel="canonical" href="https://gi28.in/Tools/I-Profile-QR-Generator/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Insta Profile QR Generator – GI28">
+<meta property="og:description" content="Generate custom high-resolution Instagram QR codes instantly. Free PNG download with color & shape customization.">
+<meta property="og:url" content="https://gi28.in/Tools/I-Profile-QR-Generator/">
+<meta property="og:site_name" content="GI28">
+<meta property="og:image" content="https://gi28.in/assets/insta-qr-og.png">
+<meta property="og:locale" content="en_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insta Profile QR Generator – GI28">
+<meta name="twitter:description" content="Create stylish Instagram QR codes with full customization.">
+<meta name="twitter:image" content="https://gi28.in/assets/insta-qr-og.png">
+
+<meta name="theme-color" content="#050505">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Insta Profile QR Generator",
+  "url": "https://gi28.in/Tools/I-Profile-QR-Generator/",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "creator": {
+    "@type": "Person",
+    "name": "Constant Abrar"
+  },
+  "description": "High-resolution Instagram profile QR code generator with PNG download and color customization.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. GI28 SAVED CORE VARIABLES
+           ========================================================================== */
+        :root {
+            --color-bg-deep: #050505;
+            --color-bg-surface: #0a0a0f;
+            --neon-cyan: #00f0ff;
+            --neon-magenta: #e92efb;
+            --neon-purple: #8a2be2;
+            --neon-blue: #2e59fb;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(20, 20, 25, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(20px);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --font-tech: 'Space Grotesk', monospace;
+            --font-label: 'Rajdhani', sans-serif;
+            --border-radius-lg: 24px;
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==========================================================================
+           2. BASE & UTILITIES
+           ========================================================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
+        body {
+            background-color: var(--color-bg-deep);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Noise & Background */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0MDAnIGhlaWdodD0nNDAwJz48ZmlsdGVyIGlkPSdub2lzZSc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bT1vY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI25vaXNlKScgb3BhY2l0eT0nMC4wNScvPjwvc3ZnPg==');
+            opacity: 0.05; pointer-events: none; z-index: -1;
+        }
+
+        #canvas-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; opacity: 0.5; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+
+        /* ==========================================================================
+           3. UI COMPONENTS (Buttons, Inputs, Panels)
+           ========================================================================== */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            transition: border-color 0.3s;
+        }
+        
+        .glass-panel:hover { border-color: rgba(255, 255, 255, 0.15); }
+
+        .btn-glow {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+            transition: all 0.3s var(--ease-smooth);
+            font-family: var(--font-heading);
+            letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(138, 43, 226, 0.5); }
+
+        /* Inputs */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block; margin-bottom: 0.8rem;
+            color: var(--text-secondary); font-family: var(--font-label);
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
+        }
+        
+        .gi-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .gi-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); }
+
+        /* Range Slider Customization */
+        input[type=range] {
+            -webkit-appearance: none; width: 100%; background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+            background: var(--neon-cyan); cursor: pointer; margin-top: -6px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer;
+            background: rgba(255,255,255,0.1); border-radius: 2px;
+        }
+
+        /* Color Input Customization */
+        .color-wrapper {
+            position: relative; height: 50px; border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+        }
+        input[type="color"] {
+            -webkit-appearance: none; border: none; width: 150%; height: 150%;
+            position: absolute; top: -25%; left: -25%; cursor: pointer; padding: 0;
+        }
+
+        /* ==========================================================================
+           4. PAGE SPECIFIC LAYOUT
+           ========================================================================== */
+        .nav-height-spacer { height: 100px; }
+
+        .forge-header { text-align: center; margin-bottom: 4rem; }
+        .forge-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 16px; background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 20px;
+            font-family: var(--font-tech); color: var(--neon-cyan);
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 1rem;
+        }
+        
+        .forge-title {
+            font-family: var(--font-heading); font-size: 3.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-cyan) 50%, var(--neon-magenta) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .forge-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+        }
+
+        /* Preview Card (3D Tilt Logic) */
+        .preview-3d-wrapper { perspective: 1000px; }
+        
+        .qr-card-3d {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            display: flex; flex-direction: column; align-items: center;
+            transform-style: preserve-3d;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.1s ease-out; /* Smooth tilt */
+        }
+
+        canvas {
+            max-width: 100%; border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            transform: translateZ(30px); /* Pop out effect */
+        }
+
+        .meta-info {
+            font-family: var(--font-tech); color: var(--text-secondary);
+            font-size: 0.9rem; margin-top: 1rem; transform: translateZ(20px);
+        }
+
+        .disclaimer-box {
+            margin-top: 4rem; padding: 1rem; border-left: 2px solid var(--neon-magenta);
+            background: rgba(233, 46, 251, 0.05); color: var(--text-secondary);
+            font-size: 0.85rem; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .forge-grid { grid-template-columns: 1fr; }
+            .preview-3d-wrapper { order: -1; margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-bg"></div>
+    <div class="noise-overlay"></div>
+
+    <nav class="glass-nav" style="position:fixed; top:0; width:100%; padding: 1.5rem 0; z-index:100; border-bottom:1px solid var(--glass-border); backdrop-filter:blur(15px); background:rgba(5,5,5,0.8);">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:12px; color:#fff; font-family:var(--font-tech); font-weight:700; font-size:1.2rem;">
+ GI28
+            </div>
+            <a href="https://gi28.in/Tools/Link-Creator" style="color:var(--text-secondary); text-decoration:none;q@% font-size:0.9rem;">Create Link</a>
+        </div>
+    </nav>
+
+    <div class="nav-height-spacer"></div>
+
+    <div class="container">
+        
+        <header class="forge-header">
+            <span class="forge-badge"><i class="fa-solid fa-bolt"></i> Instant Generation</span>
+    <h1 class="forge-title">INSTA PROFILE QR</h1>
+      <p style="color:var(--text-secondary); max-width:600px; margin:0 auto;">
+Create high-resolution Instagram profile QR codes instantly. 
+Customize colors, shapes, gradients and download PNG up to 2000px.
+</p>
+        </header>
+
+        <div class="forge-grid">
+            
+            <div class="glass-panel">
+                <div class="form-group">
+                    <label><i class="fa-brands fa-instagram"></i> Target Profile</label>
+                    <input type="text" class="gi-input" id="usernameInput" placeholder="username" spellcheck="false">
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom:1.5rem;">
+                    <div class="form-group">
+                        <label>Modules</label>
+                        <div class="color-wrapper">
+                            <input type="color" id="fgColor" value="#ffffff">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Background</label>
+                        <div class="color-wrapper">
+                            <input type="color" id="bgColor" value="#050505">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Resolution: <span id="res-val" style="color:var(--neon-cyan)">1000px</span></label>
+                    <input type="range" id="size" min="200" max="2000" step="100" value="1000">
+                </div>
+
+                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+                <div class="form-group">
+                    <label>Module Architecture</label>
+                    <select id="shapeStyle" class="gi-input" style="cursor:pointer;">
+                        <option value="square">Standard Squares</option>
+                        <option value="rounded">Rounded Squares</option>
+                        <option value="dots">Quantum Dots</option>
+                        <option value="diamond">Diamonds</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fill Aesthetics</label>
+                    <select id="fillStyle" class="gi-input" style="cursor:pointer;">
+                        <option value="solid">Solid Color</option>
+                        <option value="gradient-cyan">Cyber Gradient (Cyan)</option>
+                        <option value="gradient-magenta">Neon Gradient (Magenta)</option>
+                        <option value="gradient-gold">Luxury Gold</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="preview-3d-wrapper" id="tiltWrapper">
+                <div class="qr-card-3d" id="tiltCard">
+                    <canvas id="qrCanvas"></canvas>
+                    
+                    <button class="btn-glow" id="downloadBtn" style="width:100%; justify-content:center;">
+                        <i class="fa-solid fa-download"></i> Download PNG
+                    </button>
+                    
+                    <div class="meta-info">
+                        <span id="meta-res">1000x1000</span> • <span style="color:var(--neon-purple)">PNG Format</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="disclaimer-box">
+            <strong><i class="fa-solid fa-triangle-exclamation"></i> NOTE:</strong> 
+            Complex gradients or light colors on light backgrounds may affect scannability. 
+            Always test your QR code with a physical device before printing.
+        </div>
+
+        <footer style="margin-top:5rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center; color:var(--text-muted); font-size:0.8rem;">
+            <div class="container">
+                © 2026 GI28 Enterprise System. All rights reserved.<br>
+                <span style="opacity:0.5; display:block; margin-top:5px;">This tool operates entirely offline in your browser.</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        /* ==========================================================================
+           1. THREE.JS BACKGROUND (Simplified Neural Network)
+           ========================================================================== */
+        const initThreeJS = () => {
+            const container = document.getElementById('canvas-bg');
+            if (!container) return;
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Particles
+            const geometry = new THREE.BufferGeometry();
+            const count = 400;
+            const positions = new Float32Array(count * 3);
+            for (let i = 0; i < count * 3; i++) positions[i] = (Math.random() - 0.5) * 15;
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({ size: 0.03, color: 0x00f0ff, transparent: true, opacity: 0.6 });
+            const mesh = new THREE.Points(geometry, material);
+            scene.add(mesh);
+            camera.position.z = 5;
+
+            // Animate
+            const animate = () => {
+                requestAnimationFrame(animate);
+                mesh.rotation.y += 0.001;
+                mesh.rotation.x += 0.0005;
+                renderer.render(scene, camera);
+            };
+            animate();
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+        initThreeJS();
+
+        /* ==========================================================================
+           2. 3D TILT LOGIC (Memory Recreation)
+           ========================================================================== */
+        const wrapper = document.getElementById('tiltWrapper');
+        const card = document.getElementById('tiltCard');
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+            wrapper.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
+            });
+        }
+
+        /* ==========================================================================
+           3. QR GENERATION ENGINE
+           ========================================================================== */
+        const canvas = document.getElementById('qrCanvas');
+        const ctx = canvas.getContext('2d');
+        const els = {
+            username: document.getElementById('usernameInput'),
+            fg: document.getElementById('fgColor'),
+            bg: document.getElementById('bgColor'),
+            size: document.getElementById('size'),
+            shape: document.getElementById('shapeStyle'),
+            fill: document.getElementById('fillStyle'),
+            resVal: document.getElementById('res-val'),
+            metaRes: document.getElementById('meta-res')
+        };
+
+        function generateQR() {
+            const username = els.username.value.trim() || "gi28.in";
+            const profileURL = `https://instagram.com/${username}`;
+            
+            const qr = qrcode(0, 'H');
+            qr.addData(profileURL);
+            qr.make();
+            drawQR(qr);
+        }
+
+        function drawQR(qr) {
+            const moduleCount = qr.getModuleCount();
+            const size = parseInt(els.size.value);
+            const margin = 2; // Fixed small margin for aesthetics
+            
+            // Update UI Labels
+            els.resVal.innerText = `${size}px`;
+            els.metaRes.innerText = `${size}x${size}`;
+
+            const totalModules = moduleCount + margin * 2;
+            const cellSize = Math.floor(size / totalModules);
+            const finalSize = cellSize * totalModules;
+
+            canvas.width = finalSize;
+            canvas.height = finalSize;
+
+            // Background
+            ctx.fillStyle = els.bg.value;
+            ctx.fillRect(0, 0, finalSize, finalSize);
+
+            // Fill Style
+            let fill;
+            if (els.fill.value === 'solid') {
+                fill = els.fg.value;
+            } else {
+                const g = ctx.createLinearGradient(0, 0, finalSize, finalSize);
+                if (els.fill.value === 'gradient-cyan') {
+                    g.addColorStop(0, '#00f0ff'); g.addColorStop(1, '#8a2be2');
+                } else if (els.fill.value === 'gradient-magenta') {
+                    g.addColorStop(0, '#ff0050'); g.addColorStop(1, '#8a2be2');
+                } else {
+                    g.addColorStop(0, '#bf953f'); g.addColorStop(0.5, '#fcf6ba'); g.addColorStop(1, '#bf953f');
+                }
+                fill = g;
+            }
+
+            ctx.fillStyle = fill;
+
+            for (let r = 0; r < moduleCount; r++) {
+                for (let c = 0; c < moduleCount; c++) {
+                    if (qr.isDark(r, c)) {
+                        const x = (c + margin) * cellSize;
+                        const y = (r + margin) * cellSize;
+                        const shape = els.shape.value;
+                        
+                        ctx.beginPath();
+                        if (shape === 'dots') {
+                            ctx.arc(x + cellSize/2, y + cellSize/2, cellSize*0.4, 0, Math.PI*2);
+                        } else if (shape === 'rounded') {
+                            roundRect(ctx, x, y, cellSize, cellSize, cellSize*0.3);
+                        } else if (shape === 'diamond') {
+                             ctx.moveTo(x + cellSize/2, y);
+                             ctx.lineTo(x + cellSize, y + cellSize/2);
+                             ctx.lineTo(x + cellSize/2, y + cellSize);
+                             ctx.lineTo(x, y + cellSize/2);
+                        } else {
+                            ctx.rect(x, y, cellSize, cellSize);
+                        }
+                        ctx.fill();
+                    }
+                }
+            }
+        }
+
+        function roundRect(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.lineTo(x + w - r, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+            ctx.lineTo(x + w, y + h - r);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+            ctx.lineTo(x + r, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+            ctx.lineTo(x, y + r);
+            ctx.quadraticCurveTo(x, y, x + r, y);
+            ctx.closePath();
+        }
+
+        // Event Listeners
+        Object.values(els).forEach(el => {
+            if(el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+                el.addEventListener('input', generateQR);
+            }
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = `gi28-qr-${els.username.value || 'profile'}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        // Initialize
+        generateQR();
+
+    </script>
+</body>
+</html>
