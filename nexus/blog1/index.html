@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GI28 NEXUS BLOG 1 | GENUINE INTELLIGENCE 28 BY ABRAR</title>
+    <meta name="description" content="In-depth guides on Social Media Algorithms, SEO mechanics, and Growth Hacking.">
+
+    <style>
+        :root {
+            /* --- Core Palette (Matches Main Site) --- */
+            --bg-body: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            
+            /* Accents */
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #ec4899; /* Pink */
+            --accent-tertiary: #06b6d4; /* Cyan */
+            --accent-warning: #f59e0b; /* Amber for tips */
+            
+            /* Glass Vars */
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --backdrop-blur: blur(16px);
+            
+            /* Spacing */
+            --container-padding: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Advanced Background Animation --- */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: float-liquid 25s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, var(--accent-secondary), rgba(255,255,255,0));
+        }
+        .blob-2 {
+            bottom: -10%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--accent-primary), rgba(255,255,255,0));
+            animation-direction: alternate-reverse;
+            animation-duration: 35s;
+        }
+        .blob-3 {
+            top: 40%; left: 30%; width: 40vw; height: 40vw;
+            background: radial-gradient(circle, var(--accent-tertiary), rgba(255,255,255,0));
+            opacity: 0.3;
+            animation-duration: 20s;
+        }
+
+        @keyframes float-liquid {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(30px, -50px) scale(1.1) rotate(10deg); }
+            66% { transform: translate(-20px, 20px) scale(0.9) rotate(-5deg); }
+            100% { transform: translate(50px, 50px) scale(1) rotate(0deg); }
+        }
+
+        /* --- Header --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem var(--container-padding);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .nav-link:hover { background: rgba(0,0,0,0.05); }
+
+        /* --- Hero Section with Typing Effect --- */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--text-main), #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Typing cursor effect */
+        .typewriter {
+            border-right: 4px solid var(--accent-secondary);
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Filter Bar --- */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--text-main);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
+        }
+
+        /* --- Blog Grid --- */
+        .grid-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding) 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            opacity: 0; /* Hidden for scroll animation */
+            transform: translateY(30px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            z-index: 10;
+        }
+
+        .card-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .card:hover .card-img { transform: scale(1.1); }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.Instagram { background: rgba(236, 72, 153, 0.1); color: #db2777; }
+        .tag.YouTube { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
+        .tag.Website { background: rgba(59, 130, 246, 0.1); color: #2563eb; }
+        .tag.Telegram { background: rgba(6, 182, 212, 0.1); color: #0891b2; }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* --- Reading Modal --- */
+        .reader-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.32, 0.725, 0, 1);
+            overflow-y: auto;
+        }
+
+        .reader-modal.open { transform: translateY(0); }
+
+        .progress-bar-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: rgba(0,0,0,0.05);
+            z-index: 1002;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .modal-nav {
+            position: sticky;
+            top: 0;
+            padding: 1rem var(--container-padding);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1001;
+        }
+
+        .close-btn {
+            background: #f1f5f9;
+            border: none;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center; justify-content: center;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .close-btn:hover { background: #e2e8f0; transform: rotate(90deg); }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem;
+        }
+
+        .article-header { text-align: center; margin-bottom: 3rem; }
+        .article-meta { color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 1rem; }
+        .article-h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.1; margin-bottom: 2rem; color: var(--text-main); }
+        .article-img { width: 100%; height: 400px; border-radius: 20px; object-fit: cover; margin-bottom: 3rem; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); }
+
+        /* Rich Text Styling within Modal */
+        .prose p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; color: #334155; }
+        .prose h3 { font-size: 1.75rem; font-weight: 700; margin: 2.5rem 0 1rem; color: var(--text-main); }
+        .prose ul, .prose ol { margin-bottom: 1.5rem; margin-left: 1.5rem; }
+        .prose li { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.6; padding-left: 0.5rem; }
+        
+        .prose .highlight-box {
+            background: linear-gradient(to right, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+            border-left: 4px solid var(--accent-primary);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        
+        .prose strong { color: var(--text-main); font-weight: 700; }
+        
+        .cta-box {
+            background: var(--text-main);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background: white;
+            color: var(--text-main);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        @media (max-width: 600px) {
+            .article-img { height: 250px; }
+            .grid-container { grid-template-columns: 1fr; }
+            .prose p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <header>
+        <a href="https://gi28.in/nexus/" class="logo">Nexus</a>
+        <a href="https://gi28.in/nexus/" class="nav-link">Buy Service</a>
+    </header>
+
+    <section class="hero">
+        <span class="hero-badge">Nexus Blog 1</span>
+        <h1>Unlock the secrets of <br><span class="typewriter" id="typewriter"></span></h1>
+        <p>Expert analysis on algorithms, retention metrics and safe growth strategies. Understand the mechanism behind the services we offer.</p>
+    </section>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterGrid('All')">All </button>
+        <button class="filter-btn" onclick="filterGrid('Instagram')">Instagram</button>
+        <button class="filter-btn" onclick="filterGrid('YouTube')">YouTube</button>
+        <button class="filter-btn" onclick="filterGrid('Website')">SEO & Web</button>
+    </div>
+
+    <div class="grid-container" id="blogGrid">
+        </div>
+
+    <div class="reader-modal" id="readerModal">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="modal-nav">
+            <span style="font-weight:700; color:var(--text-muted);">Nexus Reader Mode</span>
+            <button class="close-btn" onclick="closeReader()">&times;</button>
+        </div>
+
+        <div class="article-content" id="readerContent">
+            </div>
+    </div>
+
+    <script>
+        // --- 1. Data Source (Rich Content) ---
+        const getGradient = (id) => {
+            const hues = [240, 320, 200, 280, 180, 30];
+            const h = hues[id % hues.length];
+            return `linear-gradient(135deg, hsl(${h}, 60%, 20%), hsl(${h + 40}, 60%, 10%))`;
+        };
+
+        const blogData = [
+            {
+                id: 1,
+                title: "The Math Behind YouTube Monetization (4000 Hours)",
+                category: "YouTube",
+                readTime: "4 min read",
+                date: "Nov 28, 2025",
+                excerpt: "It’s not just about views. Learn how retention rate and video length impact your journey to the YouTube Partner Program.",
+                image: getGradient(0),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">YouTube &bull; Monetization Strategy</div>
+                        <h1 class="article-h1">The Math Behind YouTube Monetization</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(0)}"></div>
+                    <div class="prose">
+                        <p>Joining the YouTube Partner Program (YPP) requires 1,000 subscribers and 4,000 public watch hours. While subscribers are a vanity metric that can be achieved relatively quickly, the watch time requirement is the real gatekeeper.</p>
+                        
+                        <h3>The 240,000 Minute Problem</h3>
+                        <p>4,000 hours equals 240,000 minutes. If you upload a 5-minute video and users watch 50% of it (2.5 minutes), you need nearly 100,000 views to hit the threshold. This is why viral Shorts often fail to monetize channels—Shorts watch time <strong>does not count</strong> toward the 4,000-hour requirement.</p>
+                        
+                        <div class="highlight-box">
+                            <strong>Nexus Tip:</strong> This is why we offer specific "Long Video Watch Time" packs. These services simulate long-session viewers who watch 80-90% of your 10+ minute videos, drastically reducing the total views needed.
+                        </div>
+
+                        <h3>Quality vs. Quantity</h3>
+                        <p>YouTube's algorithm detects "bot" behavior. If 1,000 views come from the same IP address or watch for exactly 5 seconds, those hours will be deducted. This is known as the "Drop Rate."</p>
+                        <p>To avoid drops:</p>
+                        <ul>
+                            <li>Ensure your content is at least 5-8 minutes long.</li>
+                            <li>Use our "Organic Enhanced" likes to signal to the algorithm that the engagement is genuine.</li>
+                            <li>Mix paid traffic with organic promotion to keep your analytics curve looking natural.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "Why Instagram Followers Drop (And How to Fix It)",
+                category: "Instagram",
+                readTime: "3 min read",
+                date: "Jan 24, 2026",
+                excerpt: "Understanding the difference between 'Cheapest' and 'High Quality' servers, and how the Instagram cleanup algorithm works.",
+                image: getGradient(1),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">Instagram &bull; Troubleshooting</div>
+                        <h1 class="article-h1">Why Followers Drop & How to Fix It</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(1)}"></div>
+                    <div class="prose">
+                        <p>You bought 1,000 followers, and a week later, you have 850. Why does this happen? Is the service broken? No, this is actually a sign of a working ecosystem.</p>
+                        
+                        <h3>The "Purge" Cycle</h3>
+                        <p>Instagram constantly scans for inactive accounts. If an account hasn't logged in for 6 months, or follows 7,000 people but has 0 posts, it gets flagged. When Instagram deletes these accounts, your follower count drops.</p>
+
+                        <h3>Cheapest vs. High Quality</h3>
+                        <p>We offer different tiers for this exact reason:</p>
+                        <ul>
+                            <li><strong>Cheapest (No Refill):</strong> These are often bot accounts created in bulk. They are great for a quick number boost (social proof) but expect a 20-30% drop.</li>
+                            <li><strong>High Quality (Refill):</strong> These accounts have profile pictures, bios, and posts. They survive purges longer. Plus, our Refill guarantee means if they drop, our system auto-replaces them within 30 days.</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <strong>Strategy:</strong> Don't buy 10k cheap followers on a fresh account. It looks suspicious. Start with 1k High Quality, post 5-10 times, then add more gradually.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "SEO: Bounce Rate vs. Dwell Time",
+                category: "Website",
+                readTime: "5 min read",
+                date: "Jan 30, 2026",
+                excerpt: "Traffic volume is vanity. Engagement is sanity. Why Google ranks sites that keep users on the page longer.",
+                image: getGradient(2),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">Website &bull; Search Engine Optimization</div>
+                        <h1 class="article-h1">Bounce Rate vs. Dwell Time</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(2)}"></div>
+                    <div class="prose">
+                        <p>Sending 10,000 visitors to your website sounds amazing, but if they all leave within 1 second, you might actually <strong>harm</strong> your SEO rankings. This is called a high "Bounce Rate."</p>
+                        
+                        <h3>What Google Sees</h3>
+                        <p>If a user clicks your link in Google, then immediately hits the "Back" button, it tells Google: "This website did not answer my question." Google will then push your site down the rankings.</p>
+
+                        <h3>The Solution: Low Bounce Engagement</h3>
+                        <p>Our "Low Bounce" traffic services are designed to mimic interested users:</p>
+                        <ul>
+                            <li><strong>Session Duration:</strong> Visitors stay for 30-60 seconds.</li>
+                            <li><strong>Internal Clicks:</strong> They visit a second page on your site.</li>
+                            <li><strong>Scroll Depth:</strong> They scroll down to read content.</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <strong>Pro Tip:</strong> Combine "Keyword Click Boost" with "Low Bounce Traffic." This simulates people searching for your keyword, clicking your site, and staying there. This is a massive trust signal to search engines.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "The Psychology of Social Proof on Telegram",
+                category: "Telegram",
+                readTime: "3 min read",
+                date: "Oct 16, 2025",
+                excerpt: "Nobody wants to be the first to join an empty group. How to make your community look alive and thriving.",
+                image: getGradient(3),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">Telegram &bull; Community Building</div>
+                        <h1 class="article-h1">The Psychology of Social Proof</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(3)}"></div>
+                    <div class="prose">
+                        <p>Imagine walking past two restaurants. One is completely empty. The other is full of people. Which one do you trust? This is the core concept of <strong>Social Proof</strong>.</p>
+                        
+                        <h3>The Telegram Problem</h3>
+                        <p>Telegram channels are purely chronological. Unlike Facebook, there is no algorithm to "suggest" your group. You need to attract people manually. If a user clicks your link and sees "12 Members," they will likely leave.</p>
+
+                        <h3>Balancing the Metrics</h3>
+                        <p>Fake members are easy to spot if you don't balance them with engagement. Here is the golden ratio we recommend:</p>
+                        <ul>
+                            <li><strong>Members:</strong> 1,000 (Base trust)</li>
+                            <li><strong>Post Views:</strong> 200-300 (20-30% of members)</li>
+                            <li><strong>Reactions:</strong> 20-50 per post</li>
+                        </ul>
+                        <p>If you have 10,000 members but only 10 views, it looks suspicious. Use our "Post View" and "Reaction" packs to maintain a healthy, organic appearance.</p>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "Indian vs. Global Services: What do you need?",
+                category: "Instagram",
+                readTime: "2 min read",
+                date: "Jan 30, 2026",
+                excerpt: "Location matters. Why buying global followers might hurt your local reach in India.",
+                image: getGradient(4),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">Instagram &bull; Geo-Targeting</div>
+                        <h1 class="article-h1">Indian vs. Global Services</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(4)}"></div>
+                    <div class="prose">
+                        <p>Algorithms are now location-aware. If you are a business based in Delhi, but 90% of your engagement comes from Brazil or Russia, Instagram gets confused.</p>
+                        <h3>The Relevance Score</h3>
+                        <p>Instagram wants to show your content to people who are likely to visit your business or buy your product. If you confuse the algorithm with global bot traffic, your "Explore Page" reach in India will suffer.</p>
+                        <div class="highlight-box">
+                            <strong>Recommendation:</strong> Always choose "Cheap Indian Followers" or "Targeted Traffic" if your primary audience is local. It costs slightly more but ensures the algorithm categorizes your account correctly within the Indian region.
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "Shorts vs. Reels: The Algorithm War",
+                category: "YouTube",
+                readTime: "4 min read",
+                date: "Jan 30, 2026",
+                excerpt: "Comparing the viral potential of YouTube Shorts vs Instagram Reels and how to boost both.",
+                image: getGradient(5),
+                content: `
+                    <div class="article-header">
+                        <div class="article-meta">Comparison &bull; Strategy</div>
+                        <h1 class="article-h1">Shorts vs. Reels: The War</h1>
+                    </div>
+                    <div class="article-img" style="background: ${getGradient(5)}"></div>
+                    <div class="prose">
+                        <p>Both platforms are fighting for your attention, but their algorithms prioritize different things.</p>
+                        <h3>Instagram Reels</h3>
+                        <p>Reels rely heavily on <strong>Audio</strong> and <strong>Shares</strong>. Using a trending audio track and getting people to share your reel to their story is the fastest way to grow.</p>
+                        <h3>YouTube Shorts</h3>
+                        <p>Shorts rely on <strong>Retention</strong> and <strong>Swipe-Away Rate</strong>. If people swipe away in the first second, your video dies. The loop is critical.</p>
+                        <p>For both, an initial boost of 1k-2k views within the first hour of posting can trigger the "viral velocity" needed to hit the main feed.</p>
+                    </div>
+                `
+            }
+        ];
+
+        // --- 2. Typing Effect Logic ---
+        const typeText = ["Instagram Growth.", "YouTube Revenue.", "SEO Rankings.", "Social Game"];
+        let typeIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeEl = document.getElementById('typewriter');
+
+        function typeLoop() {
+            const currentString = typeText[typeIndex];
+            
+            if (isDeleting) {
+                typeEl.textContent = currentString.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeEl.textContent = currentString.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentString.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typeIndex = (typeIndex + 1) % typeText.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', typeLoop);
+
+
+        // --- 3. Grid & Filtering Logic ---
+        const gridEl = document.getElementById('blogGrid');
+        
+        function renderGrid(filter = "All") {
+            gridEl.innerHTML = '';
+            
+            const filtered = filter === "All" 
+                ? blogData 
+                : blogData.filter(p => p.category === filter);
+
+            filtered.forEach((post, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => openReader(post.id);
+                
+                card.innerHTML = `
+                    <div class="card-img-wrapper">
+                        <div class="card-img" style="background: ${post.image}"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tags">
+                            <span class="tag ${post.category}">${post.category}</span>
+                        </div>
+                        <h3 class="card-title">${post.title}</h3>
+                        <p class="card-excerpt">${post.excerpt}</p>
+                        <div class="card-footer">
+                            <span>${post.date}</span>
+                            <span>${post.readTime}</span>
+                        </div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
+                
+                // Staggered Animation
+                setTimeout(() => card.classList.add('visible'), i * 100);
+            });
+        }
+
+        function filterGrid(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.includes(category) || (category === 'All' && btn.innerText === 'All Posts')) {
+                    btn.classList.add('active');
+                }
+            });
+            renderGrid(category);
+        }
+
+
+        // --- 4. Reader Modal & Progress Bar ---
+        const modal = document.getElementById('readerModal');
+        const readerContent = document.getElementById('readerContent');
+        const progressBar = document.getElementById('progressBar');
+
+        function openReader(id) {
+            const post = blogData.find(p => p.id === id);
+            if(!post) return;
+
+            readerContent.innerHTML = post.content + `
+                <div class="cta-box">
+                    <h2>Ready to boost your ${post.category}?</h2>
+                    <p>Get started with our premium services today.</p>
+                    <a href="https://gi28.in/nexus/" class="cta-btn">View ${post.category} Packages</a>
+                </div>
+            `;
+            
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReader() {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Progress Bar Logic
+        modal.addEventListener('scroll', () => {
+            const scrollTop = modal.scrollTop;
+            const docHeight = modal.scrollHeight - modal.clientHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Initialize
+        renderGrid();
+
+    </script>
+</body>
+</html>
