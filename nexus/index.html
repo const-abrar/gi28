@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Services | Premium Suite</title>
+    <meta name="description" content="Buy premium social media growth services for Instagram, YouTube, Facebook and more. Fast delivery, secure UPI payment, affordable prices.">
+
+<meta name="keywords" content="Instagram followers, YouTube subscribers, SMM panel, social media growth, buy likes, buy views India">
+
+<meta name="author" content="Nexus Services">
+
+<meta property="og:title" content="GI28 Nexus Services | Premium Social Media Growth">
+<meta property="og:description" content="Affordable Instagram & YouTube growth services with secure UPI checkout.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://gi28.in/gi28-logo.jpg">
+
+<meta name="robots" content="index, follow">
+
+
+<style>
+    :root {
+        /* --- Color Palette (Light & Fresh) --- */
+        --bg-body: #f8fafc;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        
+        /* Accents */
+        --accent-primary: #6366f1; /* Indigo */
+        --accent-secondary: #ec4899; /* Pink */
+        --accent-tertiary: #06b6d4; /* Cyan */
+        
+        /* Glass Vars */
+        --glass-bg: rgba(255, 255, 255, 0.45);
+        --glass-border: rgba(255, 255, 255, 0.6);
+        --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        --backdrop-blur: blur(14px);
+        
+        /* Spacing */
+        --container-padding: 2rem;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        -webkit-tap-highlight-color: transparent; /* Removes blue tap box on mobile */
+    }
+
+    /* --- Live Liquid Background --- */
+    body {
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        position: relative;
+    }
+
+    /* Shared Blob Styles */
+    .blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        z-index: -1;
+        animation: float-liquid 20s infinite alternate ease-in-out;
+    }
+
+    /* Blob 1: Pink/Orange (Top Left) */
+    .blob-1 {
+        top: -10%;
+        left: -10%;
+        width: 50vw;
+        height: 50vw;
+        background: radial-gradient(circle, var(--accent-secondary), rgba(255, 255, 255, 0));
+        animation-duration: 25s;
+    }
+
+    /* Blob 2: Indigo (Bottom Right) */
+    .blob-2 {
+        bottom: -10%;
+        right: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(circle, var(--accent-primary), rgba(255, 255, 255, 0));
+        animation-duration: 30s;
+        animation-direction: alternate-reverse;
+    }
+
+    /* Blob 3: Cyan (Moving Center) */
+    .blob-3 {
+        top: 40%;
+        left: 30%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(circle, var(--accent-tertiary), rgba(255, 255, 255, 0));
+        animation-duration: 20s;
+        opacity: 0.4;
+    }
+
+    @keyframes float-liquid {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(50px, 50px) scale(1); }
+    }
+
+    /* --- Responsive Typography --- */
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+    p { font-size: clamp(0.9rem, 2vw, 1.1rem); }
+
+    /* --- Header & Nav --- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 1rem var(--container-padding);
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: var(--backdrop-blur);
+        -webkit-backdrop-filter: var(--backdrop-blur);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: padding 0.3s;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .cart-toggle {
+        background: white;
+        border: 1px solid rgba(0,0,0,0.05);
+        color: var(--text-main);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+    }
+    
+    .cart-toggle:active { transform: scale(0.95); }
+
+    .cart-count {
+        background: var(--accent-primary);
+        color: white;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+
+    /* --- Main Container --- */
+    main {
+        padding: 2rem var(--container-padding);
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        text-align: center;
+        margin: 2rem 0 4rem;
+        padding: 0 1rem;
+    }
+
+    .hero-content p {
+        max-width: 600px;
+        margin: 1rem auto;
+        color: var(--text-muted);
+    }
+
+    /* --- Tabs (Scrollable on Mobile) --- */
+    .tabs {
+        display: flex;
+        gap: 0.8rem;
+        overflow-x: auto;
+        padding: 0.5rem 0.5rem 1.5rem 0.5rem; /* Padding for shadow clearance */
+        margin-bottom: 1rem;
+        /* Hide scrollbar but keep functionality */
+        scrollbar-width: none; 
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid white;
+        color: var(--text-muted);
+        padding: 0.6rem 1.4rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        white-space: nowrap; /* Prevent breaking text */
+        transition: all 0.3s;
+        backdrop-filter: blur(4px);
+    }
+
+    .tab-btn.active {
+        background: white;
+        color: var(--accent-primary);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        border-color: white;
+    }
+
+    /* --- Responsive Grid --- */
+    .grid {
+        display: grid;
+        /* Auto-fit: Fits as many as possible, minimum width 260px. 
+           If screen < 260px, it fills 100% */
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* --- Glass Card --- */
+    .card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: var(--glass-shadow);
+        height: 100%; /* Ensure equal height in grid */
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        background: rgba(255,255,255,0.6);
+    }
+
+    .card-img {
+        height: 180px;
+        width: 100%;
+        background: rgba(255,255,255,0.5); /* Placeholder */
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 1.25rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-category {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent-primary);
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .card-desc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit text to 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card-footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .price {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--text-main);
+    }
+
+    .add-btn {
+        background: var(--text-main);
+        color: white;
+        border: none;
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    
+    .add-btn:active { transform: scale(0.95); }
+
+    /* --- The Improved Cart Overlay --- */
+    .cart-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start completely off screen */
+        width: 100%; /* Default to full width for safety */
+        max-width: 450px; /* Limit width on desktop */
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height for mobile browsers */
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
+        z-index: 200;
+        transition: right 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+        border-left: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .cart-sidebar.open { right: 0; }
+
+    .cart-header {
+        padding: 1.2rem;
+        background: rgba(255,255,255,0.5);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .close-cart {
+        background: white;
+        border: 1px solid rgba(0,0,0,0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .cart-items {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cart-item {
+        display: flex;
+        gap: 1rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 16px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .cart-footer {
+        padding: 1.5rem;
+        background: white;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        /* Safe area for iPhone home bar */
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); 
+    }
+
+    .checkout-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 1rem; /* 16px to prevent iOS zoom */
+        outline: none;
+    }
+    
+    .form-input:focus { border-color: var(--accent-primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
+
+    .checkout-btn {
+        width: 100%;
+        padding: 1rem;
+        background: var(--text-main);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* --- Overlay Backdrop --- */
+    .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 150;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        backdrop-filter: blur(4px);
+    }
+    .overlay.active { opacity: 1; pointer-events: all; }
+
+    /* --- Mobile Specific Tweaks --- */
+    @media (max-width: 600px) {
+        :root { --container-padding: 1rem; }
+        
+        .hero { margin: 1rem 0 2rem; }
+        
+        /* Grid goes to 1 column automatically due to auto-fill minmax(260px) */
+        
+        /* Cart becomes full screen on mobile */
+        .cart-sidebar { max-width: 100%; width: 100%; }
+        
+        /* Bigger touch targets */
+        .close-cart { width: 44px; height: 44px; }
+        .checkout-btn { padding: 1.2rem; }
+    }
+    
+    /* Animation Utility */
+    .animate-in { animation: fadeInUp 0.5s ease forwards; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Icon Sizing */
+    .upi-icon {
+        width: 20px; height: 20px; background: white;
+        mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>') no-repeat center;
+        mask-size: contain; -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>') no-repeat center; -webkit-mask-size: contain;
+    }
+/* ===== Process Popup Styling ===== */
+.process-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+.process-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.process-modal {
+    width: 95%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    padding: 2rem;
+    animation: fadeInUp 0.4s ease;
+}
+
+.process-header h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.process-body {
+    max-height: 60vh;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.process-body h4 {
+    color: var(--text-main);
+    margin: 1rem 0 0.5rem;
+}
+
+.process-footer {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.process-btn {
+    padding: 0.7rem 1.2rem;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.close-btn {
+    background: #e2e8f0;
+}
+
+.blog-btn {
+    background: var(--text-main);
+    color: white;
+}
+
+.process-btn:active {
+    transform: scale(0.95);
+}
+
+@media(max-width:600px){
+    .process-modal{
+        padding:1.5rem;
+    }
+}
+</style>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+
+
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">Nexus</div>
+        <button class="cart-toggle" id="cartBtn">
+            <span>Cart</span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
+
+    <main>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>GI28 NEXUS SERVICES</h1>
+        <p>
+      Add what all you want in the <b>CART</b> and pay via UPI for your service, We'll review and You'll get a form link in Mailbox of which mail you provided then you've to fill that form with links on which you want services (ex. username for Followers, Link for likes, etc.)</p>
+    </div>
+</section>
+        <div class="tabs" id="categoryTabs"></div>
+
+        <div class="grid" id="servicesGrid"></div>
+    </main>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cartItems"></div>
+        
+  <div class="total-row" style="font-size:0.9rem;">
+    <span>Subtotal</span>
+    <span id="cartSubtotal">₹0.00</span>
+</div>
+
+<div class="total-row" style="font-size:0.9rem; color:#10b981;">
+    <span>Discount</span>
+    <span id="cartDiscount">- ₹0.00</span>
+</div>
+
+<div class="total-row" style="margin-top:10px;">
+    <span>Total</span>
+    <span id="cartTotal">₹0.00</span>
+</div>
+<div class="checkout-form">
+    <div class="form-group">
+        <input type="email" id="emailInput" class="form-input" placeholder="Enter your email address">
+        <span class="error-text">Please enter a valid email address.</span>
+    </div>
+
+    <button class="checkout-btn" id="checkoutBtn" onclick="processCheckout()">
+        <span>Pay with UPI</span>
+    </button>
+  
+</div>
+    </div>
+<form id="web3Form" method="POST" style="display:none;">
+    <input type="hidden" name="access_key" value="c157a982-9d96-489b-9657-5ef4124bf760">
+    <input type="hidden" name="order_id" id="wf_order_id">
+    <input type="hidden" name="customer_email" id="wf_email">
+    <input type="hidden" name="subtotal" id="wf_subtotal">
+    <input type="hidden" name="discount" id="wf_discount">
+    <input type="hidden" name="final_amount" id="wf_final">
+    <input type="hidden" name="items_json" id="wf_items">
+    <input type="hidden" name="timestamp" id="wf_timestamp">
+</form>
+<div id="confirmationScreen" style="display:none; padding:40px; text-align:center;">
+    <h2>Order Submitted Successfully</h2>
+    <p id="confirmText"></p>
+</div>
+    <script>
+      let payableAmount = 0;
+      let pendingOrder = null;
+        // --- 1. Data Generation ---
+        const categories = [
+    "All",
+    "Instagram",
+    "Youtube",
+    "Facebook",
+    "Telegram",
+    "Website"
+];
+        
+        const getGradient = (id) => {
+            const hues = [240, 280, 200, 160, 340];
+            const h = hues[id % hues.length];
+            return `linear-gradient(135deg, hsl(${h}, 60%, 20%), hsl(${h + 30}, 60%, 10%))`;
+        };
+
+      const servicesData = [
+  // ----- Category 1 -----
+{ id: 1,  name: "1k Cheap Followers",  category: "Instagram", price: 99, description: "Upto 20% Drop, Instant Increase, Cheapest Worldwide Accounts",  image: getGradient(1) },
+{ id: 2,  name: "1k Cheap Indian Followers",  category: "Instagram", price: 119, description: "Cheapest Indian Followers, upto 10% Drop, Instant Start",  image: getGradient(2) },
+{ id: 3,  name: "1k Post Likes",  category: "Instagram", price: 32, description: "Instagram Post Likes, Not Reels Like — Instant Start, Upto 5% Drop Rate <br> ⚠ Like counts must unhidden",  image: getGradient(3) },
+{ id: 4,  name: "1k Reels Likes ",  category: "Instagram", price: 28, description: "Only Applicable for any type of Instagram Reels <br> ⚠ Like counts must unhidden",  image: getGradient(4) },
+{ id: 5,  name: "500 Story Views + Likes ",  category: "Instagram", price: 59, description: "Account Must be Public, Applicable for all the stories of provided usename. ",  image: getGradient(5) },
+{ id: 6,  name: "1k High Quality Followers",  category: "Instagram", price: 399, description: "Worldwide Followers — Refill in 7 days if Followers dropped",  image: getGradient(6) },
+{ id: 7,  name: "1k Reels Views",  category: "Instagram", price: 5, description: "Description of Service 7, Special Price",  image: getGradient(7) },
+{ id: 8,  name: "100 Custom Comments",  category: "Instagram", price: 25, description: "You've to say what what text you want – Reply via Mail, We'll send within 2hr.",  image: getGradient(8) },
+    // ----- Category 2 -----
+  { id: 9,  name: "Youtube Channel Monetize",  category: "Youtube", price: 4999, description: "Inc 4k+ Watch time & 1k+ Subscribers. <br>⚠ Account must containing Shorts & Long Videos (min 5-7)",  image: getGradient(9) },
+{ id: 10, name: "1k+ Subscribers", category: "Youtube", price: 999, description: "Valid 1k+ Subscribers, upto 20% Drop!<br> ⚠ Not Recommend if you want to join YPP. ", image: getGradient(10) },
+{ id: 11, name: "1.2k+ Real Subscribers", category: "Youtube", price: 1499, description: "Real Subscribers – Real Persons will Subscribe Manually", image: getGradient(11) },
+{ id: 12, name: "1k Likes (Shorts)", category: "Youtube", price: 399, description: "Organic Enhanced Quality Likes – ~10% Drop Rate", image: getGradient(12) },
+{ id: 13, name: "1k Likes (Long Videos)", category: "Youtube", price: 499, description: "Organic Enhanced Quality Likes — No Drop (Drop Posaible if your channel is applied for Join YPP)", image: getGradient(13) },
+{ id: 14, name: "Short SHORTS View", category: "Youtube", price: 299, description: "Only Views — Enhanced Skip Rate Deduction", image: getGradient(14) },
+{ id: 15, name: "Long Videos Watch Time (1000hr)", category: "Youtube", price: 999, description: "Organic Watch Hour (Aditionally increases Random Videos Views)", image: getGradient(15) },
+{ id: 16, name: "Shorts & Long Videos Comment", category: "Youtube", price: 199, description: "Comment will be what you'll decide! (Check Mailbox After 6hrs)", image: getGradient(16) },
+
+  // ----- Facebook -----
+{ 
+  id: 17, 
+  name: "Facebook Page Likes - 1K", 
+  category: "Facebook", 
+  price: 249, 
+  description: "Increase likes on your Facebook page instantly.\nBuild strong social proof and brand trust.\nHigh retention delivery with safe processing.", 
+  image: getGradient(17) 
+},
+{ 
+  id: 18, 
+  name: "Facebook Page Followers - 1K", 
+  category: "Facebook", 
+  price: 299, 
+  description: "Boost followers on your Facebook page.\nEnhance credibility and audience reach.\nGradual delivery for natural growth.", 
+  image: getGradient(18) 
+},
+{ 
+  id: 19, 
+  name: "Facebook Post Likes - 1K", 
+  category: "Facebook", 
+  price: 149, 
+  description: "Increase likes on your Facebook posts.\nImprove engagement and visibility quickly.\nFast start with stable retention.", 
+  image: getGradient(19) 
+},
+{ 
+  id: 20, 
+  name: "Facebook Post Comments - 500", 
+  category: "Facebook", 
+  price: 349, 
+  description: "Add comments to your Facebook posts.\nCustom or random comment options available.\nBoost interaction and audience trust.", 
+  image: getGradient(20) 
+},
+{ 
+  id: 21, 
+  name: "Facebook Post Shares - 1K", 
+  category: "Facebook", 
+  price: 399, 
+  description: "Increase shares on your Facebook posts.\nExpand organic reach and content visibility.\nIdeal for viral marketing campaigns.", 
+  image: getGradient(21) 
+},
+{ 
+  id: 22, 
+  name: "Facebook Video Views - 10K", 
+  category: "Facebook", 
+  price: 199, 
+  description: "Boost views on Facebook videos instantly.\nImprove engagement and watch metrics.\nSafe and quick delivery system.", 
+  image: getGradient(22) 
+},
+{ 
+  id: 23, 
+  name: "Facebook Reel Views - 10K", 
+  category: "Facebook", 
+  price: 179, 
+  description: "Increase views on Facebook Reels.\nEnhance reach and short video exposure.\nFast processing with natural flow.", 
+  image: getGradient(23) 
+},
+{ 
+  id: 24, 
+  name: "Facebook Group Members - 1K", 
+  category: "Facebook", 
+  price: 499, 
+  description: "Add members to your Facebook group.\nBuild active community and engagement.\nCountry targeting option available.", 
+  image: getGradient(24) 
+},
+// ----- Telegram -----
+{ 
+  id: 25, 
+  name: "Telegram Channel Members - 1K", 
+  category: "Telegram", 
+  price: 199, 
+  description: "Increase your Telegram channel members instantly.\nHigh retention accounts with fast delivery.\nPerfect for boosting channel credibility.", 
+  image: getGradient(25) 
+},
+{ 
+  id: 26, 
+  name: "Telegram Group Members - 1K", 
+  category: "Telegram", 
+  price: 249, 
+  description: "Add active members to your Telegram group.\nImproves social proof and engagement level.\nSafe and gradual delivery option available.", 
+  image: getGradient(26) 
+},
+{ 
+  id: 27, 
+  name: "Telegram Post Views - 10K", 
+  category: "Telegram", 
+  price: 99, 
+  description: "Boost views on your Telegram posts instantly.\nEnhance visibility and reach organically.\nFast processing with stable retention.", 
+  image: getGradient(27) 
+},
+{ 
+  id: 28, 
+  name: "Telegram Post Reactions - 1K", 
+  category: "Telegram", 
+  price: 129, 
+  description: "Increase emoji reactions on your posts.\nImproves engagement rate naturally.\nSupports multiple reaction types.", 
+  image: getGradient(28) 
+},
+{ 
+  id: 29, 
+  name: "Telegram Poll Votes - 1K", 
+  category: "Telegram", 
+  price: 179, 
+  description: "Boost votes on Telegram polls quickly.\nIdeal for contests and surveys.\nBalanced delivery to avoid sudden spikes.", 
+  image: getGradient(29) 
+},
+{ 
+  id: 30, 
+  name: "Telegram Post Comments - 500", 
+  category: "Telegram", 
+  price: 299, 
+  description: "Add custom or random comments to posts.\nImproves interaction and trust factor.\nSupports text and emoji comments.", 
+  image: getGradient(30) 
+},
+{ 
+  id: 31, 
+  name: "Telegram Auto Post Views - Monthly", 
+  category: "Telegram", 
+  price: 499, 
+  description: "Automatic views on every new post.\nMonthly subscription based service.\nBest for consistent engagement growth.", 
+  image: getGradient(31) 
+},
+{ 
+  id: 32, 
+  name: "Telegram Targeted Members (India) - 1K", 
+  category: "Telegram", 
+  price: 599, 
+  description: "Get country targeted Telegram members.\nHigher retention and niche audience reach.\nSuitable for business and local promotions.", 
+  image: getGradient(32) 
+},
+{ 
+  id: 33, 
+  name: "Website Traffic - 5K Visitors", 
+  category: "Website", 
+  price: 499, 
+  description: "Increase real-time visitors to your website.\nImproves analytics visibility instantly.\nGlobal traffic with gradual delivery.", 
+  image: getGradient(33) 
+},
+{ 
+  id: 34, 
+  name: "Geo Targeted Traffic - 3K", 
+  category: "Website", 
+  price: 599, 
+  description: "Visitors from selected countries.\nBest for local campaigns and offers.\nHigher engagement compared to generic traffic.", 
+  image: getGradient(34) 
+},
+{ 
+  id: 35, 
+  name: "SEO Backlink Package - 50 Links", 
+  category: "Website", 
+  price: 899, 
+  description: "Build backlinks to improve domain authority.\nHelps boost search engine ranking.\nMixed high and medium authority links.", 
+  image: getGradient(35) 
+},
+{ 
+  id: 36, 
+  name: "Keyword Click Boost - 2K Clicks", 
+  category: "Website", 
+  price: 699, 
+  description: "Increase CTR for selected keywords.\nImproves ranking behavior signals.\nDelivered gradually for natural pattern.", 
+  image: getGradient(36) 
+},
+{ 
+  id: 37, 
+  name: "Low Bounce Engagement Traffic - 2K", 
+  category: "Website", 
+  price: 749, 
+  description: "Traffic with improved session duration.\nReduces bounce rate statistics.\nBetter on-site interaction signals.", 
+  image: getGradient(37) 
+},
+{ 
+  id: 38, 
+  name: "Ad Impression Boost - 5K Visits", 
+  category: "Website", 
+  price: 799, 
+  description: "Increase ad impressions on your site.\nOptimized traffic distribution.\nGradual and analytics-friendly delivery.", 
+  image: getGradient(38) 
+},
+{ 
+  id: 39, 
+  name: "E-commerce Product Views - 3K", 
+  category: "Website", 
+  price: 649, 
+  description: "Boost views on product pages.\nImprove store visibility metrics.\nSuitable for Shopify and WooCommerce sites.", 
+  image: getGradient(39) 
+},
+{ 
+  id: 40, 
+  name: "Website Social Share Boost - 1K", 
+  category: "Website", 
+  price: 399, 
+  description: "Increase social shares for web pages.\nEnhances online credibility signals.\nSupports multiple social platforms.", 
+  image: getGradient(40) 
+}
+];
+
+        // --- 2. State Management ---
+        let cart = [];
+        let activeCategory = "All";
+// ---- Offer Configuration ----
+let offerEnabled = true;
+
+let activeOffer = {
+    name: "Special Offer",
+    type: "percentage", // future-proof
+    value: 10 // 10% discount
+};
+        // --- 3. DOM Elements ---
+        const gridEl = document.getElementById('servicesGrid');
+        const tabsEl = document.getElementById('categoryTabs');
+        const cartItemsEl = document.getElementById('cartItems');
+        const cartTotalEl = document.getElementById('cartTotal');
+        const cartSubtotalEl = document.getElementById('cartSubtotal');
+        const cartDiscountEl = document.getElementById('cartDiscount');
+        const cartCountEl = document.getElementById('cartCount');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const overlay = document.getElementById('overlay');
+        const emailInput = document.getElementById('emailInput');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        // --- 4. Render Functions ---
+        
+        function renderTabs() {
+            tabsEl.innerHTML = categories.map(cat => `
+                <button 
+                    class="tab-btn ${cat === activeCategory ? 'active' : ''}" 
+                    onclick="setCategory('${cat}')"
+                >
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function renderServices() {
+            gridEl.innerHTML = '';
+            const filtered = activeCategory === "All" 
+                ? servicesData 
+                : servicesData.filter(s => s.category === activeCategory);
+
+            filtered.forEach((service, index) => {
+                const card = document.createElement('div');
+                card.className = 'card animate-in';
+                card.style.animationDelay = `${index * 0.05}s`;
+                
+                card.innerHTML = `
+                    <div class="card-img" style="background: ${service.image}"></div>
+                    <div class="card-body">
+                        <span class="card-category">${service.category}</span>
+                        <h3 class="card-title">${service.name}</h3>
+                        <p class="card-desc">${service.description}</p>
+                        <div class="card-footer">
+                            <span class="price">₹${service.price}</span>
+                            <button class="add-btn" onclick="addToCart(${service.id})">Add +</button>
+                        </div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
+            });
+        }
+
+      function renderCart() {
+    if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+        cartSubtotalEl.innerText = "₹0.00";
+        cartDiscountEl.innerText = "- ₹0.00";
+        cartTotalEl.innerText = "₹0.00";
+        cartCountEl.innerText = "0";
+        checkoutBtn.disabled = true;
+        emailInput.disabled = true;
+        return;
+    }
+
+    checkoutBtn.disabled = false;
+    emailInput.disabled = false;
+
+    cartItemsEl.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+            <div class="item-info">
+                <h4>${item.name}</h4>
+                <p>${item.category}</p>
+
+                <div style="margin-top:6px;">
+                    <strong>₹${item.price}</strong>
+                </div>
+
+                <div style="margin-top:6px; display:flex; align-items:center; gap:8px;">
+                    <button onclick="decreaseQty(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQty(${index})">+</button>
+                </div>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+        </div>
+    `).join('');
+    const totals = calculateTotals();
+
+// generate unique paise only once per render
+const randomPaise = Math.floor(Math.random() * 89) + 10; // 10–99
+payableAmount = parseFloat(
+    (totals.finalTotal + (randomPaise / 100)).toFixed(2)
+);
+
+cartSubtotalEl.innerText = `₹${totals.subtotal.toLocaleString()}`;
+cartDiscountEl.innerText = `- ₹${totals.discount.toLocaleString()}`;
+cartTotalEl.innerText = `₹${payableAmount.toFixed(2)}`;
+
+cartCountEl.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+        // --- 5. Logic Functions ---
+
+        window.setCategory = (cat) => {
+            activeCategory = cat;
+            renderTabs();
+            renderServices();
+        };
+window.addToCart = (id) => {
+    const existingItem = cart.find(item => item.id === id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        const item = servicesData.find(s => s.id === id);
+        cart.push({
+            ...item,
+            quantity: 1
+        });
+    }
+
+    renderCart();
+    openCart();
+};
+        window.removeFromCart = (index) => {
+            cart.splice(index, 1);
+            renderCart();
+        };
+
+        function openCart() {
+            cartSidebar.classList.add('open');
+            overlay.classList.add('active');
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            emailInput.classList.remove('error');
+        }
+window.increaseQty = (index) => {
+    cart[index].quantity += 1;
+    renderCart();
+};
+
+window.decreaseQty = (index) => {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+    renderCart();
+};
+function calculateTotals() {
+    const subtotal = cart.reduce((sum, item) => 
+        sum + (item.price * item.quantity), 0
+    );
+
+    let discount = 0;
+
+    if (offerEnabled && subtotal > 0) {
+        if (activeOffer.type === "percentage") {
+            discount = subtotal * (activeOffer.value / 100);
+        }
+    }
+discount = Math.round(discount);
+const finalTotal = Math.round(subtotal - discount);
+        return {
+        subtotal,
+        discount,
+        finalTotal
+    };
+}
+        // --- 6. UPI Generator & Checkout ---
+
+        /**
+         * Generates a generic UPI Deep Link.
+         * @param {number} amount - The transaction amount.
+         * @param {string} orderId - A unique reference ID.
+         * @returns {string} - The formatted upi:// URL.
+         */
+        function generateUPILink(amount, orderId) {
+            const payeeAddress = "abrar2809@ptyes"; // Placeholder VPA
+            const payeeName = "Nexus Services";
+            const currency = "INR";
+            const note = `Payment for ${orderId}`;
+            
+            // Encode parameters for URL safety
+            const params = new URLSearchParams();
+            params.append('pa', payeeAddress);
+            params.append('pn', payeeName);
+            params.append('am', amount.toFixed(2)); // UPI expects 2 decimal places
+            params.append('cu', currency);
+            params.append('tn', note);
+            params.append('tr', orderId); // Transaction Ref
+
+            return `upi://pay?${params.toString()}`;
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        window.processCheckout = async () => {
+    const email = emailInput.value.trim();
+
+    if (!validateEmail(email)) {
+        emailInput.classList.add('error');
+        return;
+    }
+
+    const totals = calculateTotals();
+    const orderId = 'ORD-' + Date.now().toString().slice(-6);
+
+    const orderSummary = {
+        orderId: orderId,
+        customerEmail: email,
+        timestamp: new Date().toISOString(),
+        currency: "INR",
+        subtotal: totals.subtotal,
+        discount: totals.discount,
+        totalAmount: payableAmount,
+        items: cart
+    };
+
+    // 1️⃣ Submit to Web3Forms
+    await submitToWeb3Forms(orderSummary);
+
+    // 2️⃣ Generate UPI
+    const upiLink = generateUPILink(payableAmount, orderId);
+
+    // 3️⃣ Open UPI
+    window.location.href = upiLink;
+
+    // 4️⃣
+    // Save pending order in memory
+pendingOrder = {
+    orderId,
+    amount: payableAmount
+};
+
+// Open UPI
+window.location.href = upiLink;
+
+    cart = [];
+    emailInput.value = "";
+    renderCart();
+};
+function showConfirmation(orderId, amount) {
+    document.getElementById("confirmationScreen").style.display = "block";
+    document.querySelector("main").style.display = "none";
+    document.getElementById("confirmText").innerText =
+        `Order ID: ${orderId}
+Amount: ₹${amount.toFixed(2)}
+Please complete your payment.`;
+}
+        emailInput.addEventListener('input', () => {
+            if(emailInput.classList.contains('error')) emailInput.classList.remove('error');
+        });
+
+        // --- 7. Initialization ---
+        document.getElementById('cartBtn').addEventListener('click', openCart);
+        document.getElementById('closeCart').addEventListener('click', closeCart);
+        overlay.addEventListener('click', closeCart);
+        
+        renderTabs();
+        renderServices();
+        renderCart();
+        
+        async function submitToWeb3Forms(orderData) {
+    const form = document.getElementById("web3Form");
+
+    document.getElementById("wf_order_id").value = orderData.orderId;
+    document.getElementById("wf_email").value = orderData.customerEmail;
+    document.getElementById("wf_subtotal").value = orderData.subtotal;
+    document.getElementById("wf_discount").value = orderData.discount;
+    document.getElementById("wf_final").value = orderData.totalAmount;
+    document.getElementById("wf_items").value = JSON.stringify(orderData.items);
+    document.getElementById("wf_timestamp").value = orderData.timestamp;
+
+    const formData = new FormData(form);
+
+    await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+    });
+}
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible" && pendingOrder) {
+        alert(
+            `Order ID: ${pendingOrder.orderId}\n` +
+            `Amount: ₹${pendingOrder.amount.toFixed(2)}\n\n` +
+            `If payment completed, we will verify and process your order.`
+        );
+
+        pendingOrder = null;
+    }
+});
+    </script>
+    <!-- ===== Process Popup Modal ===== -->
+<div class="process-overlay" id="processOverlay">
+    <div class="process-modal">
+        <div class="process-header">
+            <h3>How Nexus Services Works</h3>
+        </div>
+
+        <div class="process-body">
+
+            <h4>Quick Summary</h4>
+            <p>
+                Select your desired service, enter your email address, and complete the UPI payment.
+                After payment verification, you will receive an email containing a service-specific form.
+                You must provide accurate details (such as username or post link) based on the service selected.
+            </p>
+
+            <hr>
+
+            <h4>Detailed Process</h4>
+            <p>
+                1. Browse and select the service you want.<br>
+                2. Add the service to your cart.<br>
+                3. Enter a valid email address.<br>
+                4. Complete payment using UPI.<br><br>
+
+                Once your payment is verified, you will receive an email containing a form.
+                This form must be filled correctly according to the service purchased:
+                <br><br>
+                • For Likes → Provide the post or reel link.<br>
+                • For Followers/Subscribers → Provide your username.<br>
+                • For Watch Time or Views → Provide the correct video link.<br><br>
+
+                ⚠ If incorrect or invalid details are submitted, the service will not be processed.
+                Please ensure all information is accurate before submission.
+            </p>
+
+        </div>
+
+        <div class="process-footer">
+            <button class="process-btn close-btn" onclick="closeProcessPopup()">Close</button>
+            <button class="process-btn blog-btn" onclick="window.open('blog1/','_blank')">Read Blog 1</button>
+            <button class="process-btn blog-btn" onclick="window.open('/blog2/','_blank')">Read Blog 2</button>
+        </div>
+    </div>
+</div>
+<script>
+  const processOverlay = document.getElementById("processOverlay");
+
+function closeProcessPopup(){
+    processOverlay.classList.remove("active");
+}
+
+/* Auto open when page loads */
+window.addEventListener("load", function(){
+    setTimeout(() => {
+        processOverlay.classList.add("active");
+    }, 500);
+});
+</script>
+</body>
+</html>
