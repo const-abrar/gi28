@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>GI28 Link Generator | Multi-Platform Identity Architect</title>
+    <link rel="icon" href="https://gi28.in/assets/gi28-logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://gi28.in/assets/gi28-logo.png" type="image/x-icon">
+    <meta name="description" content="Instantly generate valid profile URLs for 60+ social, developer and creative platforms from a single username. A GI28 ecosystem tool.">
+    <meta name="keywords" content="Link Generator, Social Media Tools, Username Checker, Profile Builder, GI28, SEO Tools, Developer Utilities">
+    <meta name="author" content="Constant Abrar">
+    <meta name="theme-color" content="#050505">
+    <meta name="google-adsense-account" content="ca-pub-2879345966946573">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gi28.in/Link-generator/">
+    <meta property="og:title" content="GI28 Link Generator - Identity Architecture">
+    <meta property="og:description" content="Generate 60+ profile links instantly. Secure, client-side, and enterprise-grade.">
+    <meta property="og:image" content="https://gi28.in/assets/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gi28.in/Link-generator/">
+    <meta property="twitter:title" content="GI28 Link Generator">
+    <meta property="twitter:description" content="Generate 60+ profile links instantly. Secure, client-side, and enterprise-grade.">
+    <meta property="twitter:image" content="https://gi28.in/assets/og-image.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Outfit:wght@300;400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://gi28.in/style.css"> 
+    <link rel="stylesheet" href="style.css">  
+    <style>
+        /* Critical CSS for loading state */
+        .loader-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .loader-content {
+            font-family: 'Space Grotesk', monospace;
+            color: var(--neon-cyan, #00f0ff);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body id="top" class="tool-page">
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="icon-instagram" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </symbol>
+            <symbol id="icon-twitter" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </symbol>
+            <symbol id="icon-facebook" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.797 1.651-2.797 4.16v1.812h5.34l-1.018 3.667h-4.322v7.98h-5.018z"/>
+            </symbol>
+            <symbol id="icon-github" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </symbol>
+            <symbol id="icon-linkedin" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </symbol>
+            <symbol id="icon-youtube" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </symbol>
+            <symbol id="icon-twitch" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M2.149 0l-1.612 4.119v16.736h4.838v3.145h3.226l3.225-3.145h4.839l5.806-5.806V0H2.149zm19.355 14.516l-3.226 3.226h-4.838l-3.226 3.226v-3.226H5.375V1.613h16.129v12.903zm-4.838-8.065h-2.42v6.452h2.42V6.451zm-5.645 0h-2.419v6.452h2.419V6.451z"/>
+            </symbol>
+            <symbol id="icon-medium" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+            </symbol>
+            <symbol id="icon-reddit" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M14.238 15.348c.085.084.085.221 0 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.085.222-.085.307 0 .379.377 1.008.561 1.924.561l.008.002.008-.002c.915 0 1.544-.184 1.924-.561.085-.085.223-.085.307 0zm-3.44-2.418c0-.507-.414-.919-.922-.919-.509 0-.923.412-.923.919 0 .506.414.918.923.918.508.001.922-.411.922-.918zm13.202-.93c-3.951.166-3.886 4.721-3.886 6.837 0 1.996-1.611 3.612-3.593 3.612-1.983 0-3.593-1.616-3.593-3.612 0-2.116.065-6.671-3.886-6.837 0 0-4.004-.156-4.004-4.225 0-2.28 1.832-4.131 4.103-4.131 2.271 0 4.102 1.851 4.102 4.131 0 1.696-.856 3.197-2.148 3.864 1.353 1.116 3.518 1.625 5.426 1.625 1.906 0 4.07-.508 5.423-1.623-1.291-.667-2.145-2.169-2.145-3.865 0-2.28 1.83-4.131 4.102-4.131 2.271 0 4.103 1.851 4.103 4.131 0 4.07-4.004 4.224-4.004 4.224z"/>
+            </symbol>
+            <symbol id="icon-dribbble" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.386-2.036 4.13-4.953 4.392-6.87zM12 21.982c-2.31 0-4.442-.8-6.13-2.15.252-.586 1.78-4.032 3.617-7.529.766.257 1.532.664 2.292 1.255-1.575 4.315-2.062 7.647-2.127 8.356.115.006.232.006.348.006.666.066 1.332.068 1.998.062zm-7.665-3.82c-.035-.306-1.554-4.832.615-9.15C2.69 11.218 1.93 14.15 4.335 18.162zM12.96 9.87c-2.31-1.693-4.576-2.253-5.01-2.338.38-1.528 1.03-2.934 1.896-4.172.333.16.666.324.996.49 4.314 2.156 6.012 5.253 6.22 5.643-1.34.22-2.73.34-4.1.378zM8.32 2.652c.28.083 2.628.825 5.28-1.28C11.238 2.144 8.683 2.26 8.32 2.652zM16.29 4.316c-.22.417-2.122 3.826-6.88 6.132.052.123.107.245.16.368 2.646-.222 6.02-.02 8.784 1.12.06-.412.11-.826.132-1.246-.02-.27-.052-.536-.098-.798-.773-2.074-1.57-4.132-2.1-5.576z"/>
+            </symbol>
+            <symbol id="icon-behance" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M22 7h-7v-2h7v2zm1.726 10c-.05.939-.533 2.027-1.514 2.846-1.428 1.192-3.327 1.122-4.153.957-2.193-.438-3.033-2.166-3.14-2.618h7.942c.031-.564.062-1.272.062-1.272 0-3.372-1.956-5.46-5.187-5.46-3.791 0-5.443 3.321-5.443 6.088 0 3.655 2.115 6.459 6.286 6.459 1.777 0 3.737-.582 5.141-2.217.915-1.066 1.15-2.053 1.258-2.63l-1.251-2.153zm-3.666-3.826c1.171 0 1.956.963 1.956 2.27h-4.305c.135-1.594 1.255-2.27 2.349-2.27zm-12.871-3.174h-4.189v14h4.437c1.396 0 2.682-.32 3.754-.954 1.574-.931 2.379-2.585 2.379-4.708 0-1.782-.676-3.132-1.758-3.951 1.229-.824 1.584-2.203 1.584-3.376 0-3.048-2.28-4.387-6.207-4.387zm-.267 2.508c1.727 0 2.441.776 2.441 2.251 0 1.748-1.077 2.486-2.827 2.486h-2.174v-4.737h2.56zm.268 9.208h-2.828v-5.232h2.977c2.019 0 3.146.911 3.146 2.825 0 1.932-1.127 2.407-3.295 2.407z"/>
+            </symbol>
+            <symbol id="icon-link" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+            </symbol>
+            <symbol id="icon-download" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </symbol>
+            <symbol id="icon-copy" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </symbol>
+            <symbol id="icon-check" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </symbol>
+            <symbol id="icon-trash" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+            </symbol>
+            <symbol id="icon-filter" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+            </symbol>
+            <symbol id="icon-dev" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+            </symbol>
+        </defs>
+    </svg>
+   <div id="canvas-bg"></div> <div class="noise-overlay"></div>
+    
+ 
+    <div class="loader-overlay" id="preloader">
+        <div class="loader-content">
+            <span class="pulse-dot"></span>
+        </div>
+    </div>
+
+    <div id="canvas-bg"></div> 
+    <div class="noise-overlay"></div>
+    
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="glass-nav">
+        <div class="nav-container">
+            <a href="https://gi28.in/" class="nav-logo" aria-label="GI28 Homepage">
+          
+                <div class="logo-text">GI<span>28</span></div>
+            </a>
+            <nav class="desktop-menu">
+                <ul class="nav-links">
+                    <li><a href="https://gi28.in/About/" class="nav-link">About</a></li>
+                    <li><a href="https://gi28.in/Tools/" class="nav-link">Tools</a></li>
+                    <li><a href="https://gi28.in/Contact/" class="nav-link">Contact</a></li>
+                    <li><a href="https://gi28.in/#legal" class="nav-link">Legal</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://gi28/Tools/" class="btn btn-primary btn-sm">
+                    <span>Back to Tools</span>
+                </a>
+                <button class="nav-trigger" id="menuToggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars burger-icon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content">
+            <ul class="mobile-links">
+                <li><a href="https://gi28.in/" class="mobile-link">Home</a></li>
+                <li><a href="#tool-interface" class="mobile-link">Generator</a></li>
+                <li><a href="#features" class="mobile-link">Features</a></li>
+                <li><a href="#faq" class="mobile-link">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="main-wrapper tool-wrapper">
+        
+        <section class="tool-hero">
+            <div class="container hero-container text-center">
+                <div class="hero-content" data-tilt>
+                    <h1 class="hero-title">
+                        Universal <span class="text-gradient">Identity Link</span> Generator
+                    </h1>
+                    <p class="hero-subtitle">
+                        Enter one username. Generate valid profile URLs for 60+ platforms instantly. 
+                        No API required. Pure algorithmic prediction.
+                    </p>
+                </div>
+<div class="neo-glass-wrapper">
+    <div class="neo-glass-bar">
+        
+        <div class="neo-input-field">
+            <span class="neo-prefix">@</span>
+            <input 
+                type="text" 
+                id="usernameInput" 
+                placeholder="Enter digital identity..." 
+                autocomplete="off" 
+                spellcheck="false">
+        </div>
+
+        <button id="generateBtn" class="neo-generate-btn">
+    <i class="fa-solid fa-bolt"></i>    
+    <span>Generate</span>
+            <i class="fa-solid fa-bolt"></i>
+        </button>
+
+    </div>
+
+              
+    <div class="neo-status" id="inputStatus">
+        Awaiting Command...
+    </div>
+</div>
+            </div>
+        </section>
+
+        <div class="ad-container container">
+            <div class="ad-placeholder">
+                <span class="ad-label">Sponsored Content</span>
+            </div>
+        </div>
+
+        <section id="tool-interface" class="tool-interface-section">
+            <div class="container">
+                
+                <div class="controls-bar glass-panel">
+                    <div class="controls-left">
+                        <div class="search-wrapper">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" id="platformSearch" placeholder="Filter platforms...">
+                        </div>
+                        <div class="filter-wrapper">
+                            <button class="filter-btn active" data-category="all">All</button>
+                            <button class="filter-btn" data-category="social">Social</button>
+                            <button class="filter-btn" data-category="video">Video</button>
+                            <button class="filter-btn" data-category="dev">Dev</button>
+                            <button class="filter-btn" data-category="gaming">Gaming</button>
+                            <button class="filter-btn" data-category="business">Business</button>
+                        </div>
+                    </div>
+                    <div class="controls-right">
+                        <button class="action-btn" id="copyAllBtn" title="Copy all links">
+                            <svg class="icon"><use href="#icon-copy"></use></svg>
+                            <span>Copy All</span>
+                        </button>
+                        <div class="dropdown">
+                            <button class="action-btn dropdown-trigger">
+                                <svg class="icon"><use href="#icon-download"></use></svg>
+                                <span>Export</span>
+                            </button>
+                            <div class="dropdown-content">
+                                <button id="downloadTxt">As .TXT</button>
+                                <button id="downloadJson">As .JSON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-layout">
+                    <div class="platforms-container" id="platformsGrid">
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <h3>Ready to Generate</h3>
+                            <p>Enter a username above to see potential profile links across the web.</p>
+                        </div>
+                    </div>
+
+                    <aside class="preview-panel">
+                        <div class="glass-card preview-card">
+                            <div class="preview-header">
+                                <h3><i class="fa-solid fa-eye"></i> Live Check</h3>
+                                <div class="live-indicator">
+                                    <span class="dot"></span> Monitor
+                                </div>
+                            </div>
+                            <div class="preview-body" id="previewBody">
+                                <div class="preview-placeholder">
+                                    Click a link to test validity here.
+                                </div>
+                            </div>
+                            <div class="preview-stats">
+                                <div class="stat-row">
+                                    <span>Total Links</span>
+                                    <span id="totalCount">0</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span>Categories</span>
+                                    <span id="catCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card tip-card">
+                            <h4><i class="fa-solid fa-lightbulb"></i> Pro Tip</h4>
+                            <p>Most developers use the same username across GitHub, Twitter, and Dev.to. Check the "Dev" category for tech profiles.</p>
+                        </div>
+                    </aside>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="features" class="section-padding bg-surface">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Capabilities</span>
+                    <h2 class="section-title">Why use this Generator?</h2>
+                    <p class="section-desc">Streamline your digital footprint analysis and cross-platform promotion.</p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card glass-hover">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3>Instant Prediction</h3>
+                        <p>Our algorithm instantly constructs valid URL patterns for over 60 major platforms without needing slow API calls or login credentials.</p>
+                    </article>
+
+                    <article class="service-card glass-hover">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>100% Client-Side</h3>
+                        <p>Privacy first. All link generation happens directly in your browser. We never store or transmit the usernames you search for.</p>
+                    </article>
+
+                    <article class="service-card glass-hover">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-file-export"></i>
+                        </div>
+                        <h3>Bulk Export</h3>
+                        <p>Need to share your profiles? Export your entire digital identity map to JSON or TXT formats for easy sharing or documentation.</p>
+                    </article>
+
+                    <article class="service-card glass-hover">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Smart Categorization</h3>
+                        <p>Automatically filters links into logical groups like Developer, Creative, Social, and Business to help you find what matters fast.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Workflow</span>
+                    <h2 class="section-title">How Prediction Works</h2>
+                </div>
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                     
+                    <div class="timeline-item">
+                        <div class="timeline-marker">01</div>
+                        <div class="timeline-content glass-card">
+                            <h3>Input Normalization</h3>
+                            <p>We strip special characters and spaces from your input to ensure compatibility with strict URL schemes used by major platforms.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">02</div>
+                        <div class="timeline-content glass-card">
+                            <h3>Pattern Matching</h3>
+                            <p>The engine maps the sanitized username against our database of 60+ URL structures (e.g., twitter.com/user, youtube.com/@user).</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">03</div>
+                        <div class="timeline-content glass-card">
+                            <h3>Output & Verification</h3>
+                            <p>Links are generated instantly. You can then click to verify if the account actually exists on the target platform.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section-padding bg-surface">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Support</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Does this check if the username is taken?
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, this is a <strong>Link Generator</strong>, not a username checker. It assumes you already know the username exists or you want to generate the link to check it yourself. It generates the valid URL format for that username.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is my search history saved?
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We use local browser storage to remember your last searched username for your convenience, but this data never leaves your device and is not sent to our servers.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Can I request a new platform?
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely. If you notice a missing major platform, please contact Abrar via the main contact page. We update the database regularly.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Why do some links return 404?
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Since this tool predicts links based on patterns, if a user hasn't registered on a specific platform, the generated link will lead to a 404 (Not Found) page. This is normal behavior.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal-mini" class="section-padding">
+            <div class="container">
+                <div class="legal-content-box glass-card small-legal">
+                    <h3>Tool Disclaimer</h3>
+                    <p>This tool is for educational and utility purposes only. It generates URLs based on standard patterns. GI28 is not affiliated with any of the social platforms listed. Use responsibly.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <i class="fa-solid fa-cube text-neon"></i> GI<span>28</span>
+                    </div>
+                    <p>Building the next generation of social intelligence tools. Secure, ethical and powerful.</p>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Ecosystem</h4>
+                    <ul>
+                        <li><a href="../#about">About</a></li>
+                        <li><a href="../#services">Featured Tools</a></li>
+                        <li><a href="../Link-generator/">Link Generator</a></li>
+                        <li><a href="../#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <ul>
+                         <li><a href="../Contact/">Contact Us</a></li>
+                         <li><a href="../Cookies/">Privacy Policy</a></li>
+                         <li><a href="../Terms/">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../#legal">Privacy</a></li>
+                        <li><a href="../#legal">Terms</a></li>
+                        <li><a href="../#legal">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Genuine Intelligence 28. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                   <a href="../#how-it-works">Sitemap</a>
+                   <a href="../Cookies/">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    
+    <script src="script.js"></script>
+    <script src="https://gi28.in/script.js"></script>
+
+</body>
+</html>
